@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857c57952660309449fe3b118ba9871b, type: 3}
+  m_Name: Level_2_ 5
+  m_EditorClassIdentifier: 
+  baseName: 12
+  cardDescription: "Crow Claw storms the Blackwing fortress.\nLord Aeron Blackwing,
+    clad in armor adorned with black feathers, faces Kaelen in a brutal duel.\nBefore
+    his final breath, Aeron whispers:\n\n\u201CThe capital\u2026 is not what you
+    think it is, Kaelen.\u201D"
+  episodeDate: Year 1025, 6th Moon
+  levelType: 0

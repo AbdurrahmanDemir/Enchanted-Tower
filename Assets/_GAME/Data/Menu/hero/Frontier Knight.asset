@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1801e1af303c154bad66f9745b433d8, type: 3}
+  m_Name: Frontier Knight
+  m_EditorClassIdentifier: 
+  cardName: Frontier Knight
+  heroIcon: {fileID: 21300000, guid: a12c4ecbca9f3294d932875aa067e55d, type: 3}
+  cardType: 3
+  baseUpgradeCost: 100
+  range: 0.5
+  damage: 60
+  health: 2000
+  cooldown: 0.5
+  moveSpeed: 0.5
+  undergroundRange: -30
+  purchasePrice: 500
+  requiresPurchase: 1
+  specialStatName: He has no special powers.
+  specialStat: 0
+  cardDescription: Frontier Knight only targets towers. He doesn't fight any other
+    enemies while on his way to the towers.

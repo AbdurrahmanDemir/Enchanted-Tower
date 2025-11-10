@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0516b8c01547f064390f342a280cd677, type: 3}
+  m_Name: TreeGolem
+  m_EditorClassIdentifier: 
+  unitName: Tree Golem
+  cardIcon: {fileID: 21300000, guid: b5703923d29178d408244a78f2cf3363, type: 3}
+  unitType: 0
+  prefab: {fileID: 6800942229111042030, guid: deb06439703d1174ab07e96e02285d15, type: 3}
+  size: 5
+  cost: 20
+  requiresPurchase: 1
+  purchasePrice: 500

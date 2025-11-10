@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1801e1af303c154bad66f9745b433d8, type: 3}
+  m_Name: IceGolem
+  m_EditorClassIdentifier: 
+  cardName: Ice Golem
+  heroIcon: {fileID: 21300000, guid: baa6e13f607c42946969fb6e2f07ed0e, type: 3}
+  cardType: 1
+  baseUpgradeCost: 100
+  range: 3
+  damage: 20
+  health: 100
+  cooldown: 2
+  moveSpeed: 0.2
+  undergroundRange: -50
+  purchasePrice: 100
+  requiresPurchase: 1
+  specialStatName: Freeze Duration
+  specialStat: 3
+  cardDescription: Ice Golem throws snowballs that deal low damage to enemies, but
+    slow them down.

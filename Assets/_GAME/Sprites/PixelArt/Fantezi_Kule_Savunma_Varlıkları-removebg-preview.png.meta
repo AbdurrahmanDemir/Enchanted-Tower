@@ -1,0 +1,1165 @@
+fileFormatVersion: 2
+guid: d7661abbe209eff4b907e51f493263e2
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_0"
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 576
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b229b7f1d2a9ba4f928e82c2477bad3
+      internalID: 1150963272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_1"
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 594
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99742764e575b4c419b9f0af9ba8c364
+      internalID: -1934870193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_2"
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 594
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c75a7bed5e2d8f2459466c72bcbca8da
+      internalID: -1753227189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_3"
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 594
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 664a86cc83d693d4190d9535bd3df0ff
+      internalID: -1417499368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_4"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 570
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29d54e5710cb9e642a18e1f46db76375
+      internalID: -1523130433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_5"
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 582
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66464d7812351214dbc7b7b17675d729
+      internalID: -1771112831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_6"
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 564
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8113b270c2bfdee48b76358cd8bf5c5c
+      internalID: -1945276159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_7"
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 472
+        width: 96
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39e719aafdd053a49b36ddf077bd5aa9
+      internalID: -971967478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_8"
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 474
+        width: 72
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c09d0264af86c24bbb64deff1138962
+      internalID: 1418231770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_9"
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 468
+        width: 72
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5561d1982728cfc4fbaeb9c7ef7ff49b
+      internalID: -753649434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_10"
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 470
+        width: 80
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22ef549059c18724ca2fd2c3d33ae665
+      internalID: 870985150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_11"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 462
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72f025225aa203740a2251e64357e47b
+      internalID: -1154283878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_12"
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 360
+        width: 72
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f43715afa0a93304c9d114d6421c13fd
+      internalID: 1624264305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_13"
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 360
+        width: 78
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7166398cd6c60ca49a1b4c4ca2fac0ea
+      internalID: -148212527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_14"
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 450
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b02e6e036a825344bbeeff3178b3ac14
+      internalID: -1032163503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_15"
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 360
+        width: 83
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34fa5896007d8774bb12880d65e25388
+      internalID: -1335950634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_16"
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 452
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f577ce96c00f61498d32f200d6e4a0c
+      internalID: 1587164609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_17"
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 360
+        width: 68
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff2a83dc383860f4fa40574353596fa5
+      internalID: -1729769050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_18"
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 252
+        width: 71
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc1c569f7fd037044b2c6c1b17bf1f35
+      internalID: -2104458739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_19"
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 253
+        width: 78
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29ef13464034d6f4a881d24825b1edb2
+      internalID: -1065336002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_20"
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 252
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 380b911bd629435438ade9bd85eb5f6a
+      internalID: 803120021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_21"
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 342
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34c0f4296a86ded47af0985b9b6336d1
+      internalID: -957847845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_22"
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 254
+        width: 60
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 387c505ca71282a4684e9f6a431d1b70
+      internalID: 995457543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_23"
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 327
+        width: 12
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1955ee74ed54f3c42b279cc35c7dba32
+      internalID: 406431060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_24"
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 330
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20cb6a5bb6f19d24fb34764d5ae57a4c
+      internalID: 1159924543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_25"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 318
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cad0e681a6b8f974685f4ee10456cf77
+      internalID: 9405240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_26"
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 271
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c95d0228d66dc74d97fe3cc713a0640
+      internalID: -2044682822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_27"
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 234
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5dfd0b206658ef49a2b3a0967e26254
+      internalID: 1631036551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_28"
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 142
+        width: 80
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f7bd121fc79a1940b5dc0c33c83e8ef
+      internalID: -2088522519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_29"
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 228
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43c5db112f934ed45b223cf9b8150d90
+      internalID: 547033572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_30"
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 144
+        width: 63
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e1a27ccb98e0454d95a714afb1c26aa
+      internalID: 728265987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_31"
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 138
+        width: 93
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 506e94798d14ae649a0e11fe93ad4271
+      internalID: 1413600069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_32"
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 138
+        width: 72
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 018edc7bbf3c1964ebade53cdd27d2a1
+      internalID: 1360307072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_33"
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 228
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c8ac7bfbe0a5464cac7aa74b9868cfd
+      internalID: 1650805672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_34"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7baaa1aa376ac6b4cbea2aa773cb9fb6
+      internalID: -474269789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_35"
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 33
+        width: 89
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7bba102422265e41b1dee486a733c18
+      internalID: -1909918028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_36"
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 114
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fca89efe95153b548b136bfb9a4589af
+      internalID: -1363746421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_37"
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 30
+        width: 87
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b166b5f9a6369b4d90b0e6a2c8db6d4
+      internalID: -1832165892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_38"
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 29
+        width: 73
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9278c5d3d991ab4789de96312c22fe5
+      internalID: -2074995457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_39"
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 36
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b306c4ee44e7cae4ab0429496fbe867f
+      internalID: 201487991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_40"
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 114
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: deb9ad4293146e44f91ee4ab1bd447ef
+      internalID: -591430766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_41"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 78
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd242bbd402a4f14784b955b18c509ce
+      internalID: -1134514307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_42"
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 12
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04a21816e357e3d4997ca8f1daeb6205
+      internalID: 1443795422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_43"
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 6
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aada9fb2a3db5245b3c14854ec3dc33
+      internalID: 1668081050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_44"
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 12
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b85b1a73d48ce9f418a06b5513340430
+      internalID: -79628242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_45"
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 6
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f96efe1f349598468114d35925b3bd9
+      internalID: 1173801896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_0": 1150963272
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_1": -1934870193
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_10": 870985150
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_11": -1154283878
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_12": 1624264305
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_13": -148212527
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_14": -1032163503
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_15": -1335950634
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_16": 1587164609
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_17": -1729769050
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_18": -2104458739
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_19": -1065336002
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_2": -1753227189
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_20": 803120021
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_21": -957847845
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_22": 995457543
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_23": 406431060
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_24": 1159924543
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_25": 9405240
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_26": -2044682822
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_27": 1631036551
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_28": -2088522519
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_29": 547033572
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_3": -1417499368
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_30": 728265987
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_31": 1413600069
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_32": 1360307072
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_33": 1650805672
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_34": -474269789
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_35": -1909918028
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_36": -1363746421
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_37": -1832165892
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_38": -2074995457
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_39": 201487991
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_4": -1523130433
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_40": -591430766
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_41": -1134514307
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_42": 1443795422
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_43": 1668081050
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_44": -79628242
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_45": 1173801896
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_5": -1771112831
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_6": -1945276159
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_7": -971967478
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_8": 1418231770
+      "Fantezi_Kule_Savunma_Varl\u0131klar\u0131-removebg-preview_9": -753649434
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

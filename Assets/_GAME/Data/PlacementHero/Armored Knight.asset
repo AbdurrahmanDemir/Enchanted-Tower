@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0516b8c01547f064390f342a280cd677, type: 3}
+  m_Name: Armored Knight
+  m_EditorClassIdentifier: 
+  unitName: Armored Knight
+  cardIcon: {fileID: 21300000, guid: a3bad4cc574f3384998a59f76b918ae1, type: 3}
+  unitType: 0
+  prefab: {fileID: 1598065257905697597, guid: 0a27c1f0e984cea409cb27ff9cf7b0e2, type: 3}
+  size: 1
+  cost: 10

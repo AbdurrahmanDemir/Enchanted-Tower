@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857c57952660309449fe3b118ba9871b, type: 3}
+  m_Name: Level_2_
+  m_EditorClassIdentifier: 
+  baseName: 7
+  cardDescription: "Crow Claw forces march north, they reach the outer ruins of House
+    Blackwing\u2019s domain. The border villages are abandoned, stone houses whispering
+    with the wind.\nSpies report: \u201CBlackwing has been supplied with gold from
+    the capital.\u201D\nKaelen realizes this silence is only the calm before the
+    storm."
+  episodeDate: Year 1025, 1st Moon
+  levelType: 0

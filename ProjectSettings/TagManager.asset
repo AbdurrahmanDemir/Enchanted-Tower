@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - HookedHero
+  - Hero
+  - Tower
+  - Enemy
+  - CoinText
+  - XpText
+  - EnergyText
+  - GemText
+  - ParticleManager
+  - EnemyTower
+  - Angel
+  - RangeAngel
+  - AngelMan
+  - IcoGolem
+  - Ground
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Placement
+  - Water
+  - UI
+  - Enemy
+  - Hero
+  - Tower
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 3705238467
+    locked: 0
+  - name: Object
+    uniqueID: 1730904965
+    locked: 0
+  - name: Tower
+    uniqueID: 3150281881
+    locked: 0
+  - name: Characters
+    uniqueID: 1254377755
+    locked: 0

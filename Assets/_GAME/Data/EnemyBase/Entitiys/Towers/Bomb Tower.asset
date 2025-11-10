@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6147249e7dc562445b22e1f35f3bd248, type: 3}
+  m_Name: Bomb Tower
+  m_EditorClassIdentifier: 
+  entityName: Bomb Tower
+  prefab: {fileID: 578766004734205452, guid: af7d7b1cf50d9514e832a98bb2dc4855, type: 3}

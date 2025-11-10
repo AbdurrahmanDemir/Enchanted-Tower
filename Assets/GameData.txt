@@ -1,0 +1,32 @@
+{
+	"data": {
+		"Tabsil.DailyMissions.MissionTimer_DailyMissionStartTime": {
+			"dataType": "Tabsil.Sijil.SerializableObject`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+			"value": "{\r\n\t\"myObject\": \"17/11/2024 14:22:47\"\r\n}"
+		},
+		"Tabsil.DailyMissions.MissionTimer_DailyMissionEndTime": {
+			"dataType": "Tabsil.Sijil.SerializableObject`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+			"value": "{\r\n\t\"myObject\": \"18/11/2024 14:22:47\"\r\n}"
+		},
+		"Tabsil.DailyMissions.MissionManager_MissionDataAmounts": {
+			"dataType": "Tabsil.Sijil.SerializableObject`1[[System.Int32[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+			"value": "{\r\n\t\"myObject\": [\r\n\t\t5,\r\n\t\t10,\r\n\t\t3\r\n\t]\r\n}"
+		},
+		"Tabsil.DailyMissions.MissionManager_MissionClaimedStates": {
+			"dataType": "Tabsil.Sijil.SerializableObject`1[[System.Boolean[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+			"value": "{\r\n\t\"myObject\": [\r\n\t\ttrue,\r\n\t\ttrue,\r\n\t\ttrue\r\n\t]\r\n}"
+		},
+		"Tabsil.DailyMissions.MissionManager_MissionXp": {
+			"dataType": "Tabsil.Sijil.SerializableObject`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+			"value": "{\r\n\t\"myObject\": 450\r\n}"
+		},
+		"Tabsil.DailyMissions.MainMissionSlider_MissionLastRewardIndex": {
+			"dataType": "Tabsil.Sijil.SerializableObject`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+			"value": "{\r\n\t\"myObject\": 4\r\n}"
+		},
+		"Tabsil.DailyMissions.MainMissionSlider_MissionItemsOpened": {
+			"dataType": "Tabsil.Sijil.SerializableObject`1[[System.Boolean[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+			"value": "{\r\n\t\"myObject\": [\r\n\t\ttrue,\r\n\t\ttrue,\r\n\t\ttrue,\r\n\t\ttrue\r\n\t]\r\n}"
+		}
+	}
+}

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857c57952660309449fe3b118ba9871b, type: 3}
+  m_Name: Level_2_ 4
+  m_EditorClassIdentifier: 
+  baseName: 11
+  cardDescription: 'Cracks appear within House Blackwing. Some soldiers secretly
+    aid Crow Claw, while others remain loyal to their lord.
+
+    The war now rages
+    both outside and within the fortress walls.'
+  episodeDate: Year 1025, 5th Moon
+  levelType: 0

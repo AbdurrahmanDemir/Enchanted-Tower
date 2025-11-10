@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caa075e987c302848ad4f7172b815549, type: 3}
+  m_Name: Reward Group Data
+  m_EditorClassIdentifier: 
+  rewardMilestoneDatas:
+  - icon: {fileID: 4727633781103762509, guid: 5949898c8529c0d4fb11cfe9aa4cc813, type: 3}
+    rewards:
+    - type: 1
+      amount: 100
+    requiredXp: 100
+  - icon: {fileID: 4727633781103762509, guid: 5949898c8529c0d4fb11cfe9aa4cc813, type: 3}
+    rewards:
+    - type: 1
+      amount: 100
+    - type: 2
+      amount: 20
+    requiredXp: 200
+  - icon: {fileID: 4727633781103762509, guid: 5949898c8529c0d4fb11cfe9aa4cc813, type: 3}
+    rewards:
+    - type: 101
+      amount: 1
+    requiredXp: 300
+  - icon: {fileID: -7986023702553734918, guid: 610aaad2bfc4fc643900084156cf7699, type: 3}
+    rewards:
+    - type: 1
+      amount: 1000
+    - type: 201
+      amount: 1
+    requiredXp: 400
