@@ -10,10 +10,12 @@ public class DataManager : MonoBehaviour
     [SerializeField] private int gold;
     [SerializeField] private int xp;
     [SerializeField] private int energy;
+    [SerializeField] private int heroUpgradeToken;
     [Header(" Text ")]
     [SerializeField] private TextMeshProUGUI[] GoldText;
     [SerializeField] private TextMeshProUGUI[] XpText;
     [SerializeField] private TextMeshProUGUI[] EnergyText;
+    [SerializeField] private TextMeshProUGUI[] HeroUpgradeTokenText;
 
     private GameObject popUp;
 
@@ -70,8 +72,6 @@ public class DataManager : MonoBehaviour
 
     private void UpdateXPText()
     {
-        //TextMeshProUGUI xpText = GameObject.FindGameObjectWithTag("XpText").GetComponent<TextMeshProUGUI>();
-        //xpText.text = xp.ToString();
         for (int i = 0; i < XpText.Length; i++)
         {
             XpText[i].text = xp.ToString();
@@ -84,6 +84,7 @@ public class DataManager : MonoBehaviour
         PlayerPrefs.SetInt("Gold", gold);
         PlayerPrefs.SetInt("XP", xp);
         PlayerPrefs.SetInt("Energy", energy);
+        PlayerPrefs.SetInt("HeroUpgradeToken", heroUpgradeToken);
     }
 
     private void LoadData()
@@ -91,15 +92,17 @@ public class DataManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Gold"))
         {
             gold = PlayerPrefs.GetInt("Gold");
-            AddGold(20000);
+            xp = PlayerPrefs.GetInt("XP", 0);
+            energy = PlayerPrefs.GetInt("Energy", energy);
+            heroUpgradeToken = PlayerPrefs.GetInt("HeroUpgradeToken", heroUpgradeToken);
         }
         else
         {
             AddGold(200);
             AddEnergy(5);
+            AddHeroToken(100);
         }
-        xp = PlayerPrefs.GetInt("XP", 0);
-        energy = PlayerPrefs.GetInt("Energy", energy);
+        
 
         Debug.Log("GOLD" + gold + "XP" + xp);
 
@@ -107,6 +110,7 @@ public class DataManager : MonoBehaviour
         UpdateGoldText();
         UpdateXPText();
         UpdateEnergyText();
+        UpdateHeroTokenText();
     }
 
     // Energy
@@ -142,6 +146,36 @@ public class DataManager : MonoBehaviour
         SaveData();
     }
 
+    //Hero Token
+
+    public bool TryPurchaseHeroUpgradeToken(int price)
+    {
+        if (price <= heroUpgradeToken)
+        {
+            heroUpgradeToken -= price;
+            SaveData();
+            UpdateHeroTokenText();
+            return true;
+        }
+        else
+        {
+            PopUpController.instance.OpenPopUp("NOT ENOUGH HERO UPGRADE TOKEN");
+        }
+        return false;
+    }
+    private void UpdateHeroTokenText()
+    {
+        for (int i = 0; i < HeroUpgradeTokenText.Length; i++)
+        {
+            HeroUpgradeTokenText[i].text = heroUpgradeToken.ToString();
+        }
+    }
+    public void AddHeroToken(int value)
+    {
+        heroUpgradeToken += value;
+        UpdateHeroTokenText();
+        SaveData();
+    }
     public int GetGoldCount()
     {
         return gold;

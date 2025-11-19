@@ -30,7 +30,7 @@ public class MenuHeroDetails : MonoBehaviour
 
     public void Config(MenuHeroCardSO heroCard, string name, Sprite icon, string type, string cardDetails,
                        int damage, int health, float range, float attackSpeed, float moveSpeed,
-                       int price, string specialStatName, float specialStat, int buyPrice)
+                       float price, string specialStatName, float specialStat, int buyPrice)
     {
         currentHeroCard = heroCard;
 

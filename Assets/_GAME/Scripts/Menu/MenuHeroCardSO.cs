@@ -8,7 +8,7 @@ public class MenuHeroCardSO : ScriptableObject
     public string cardName;
     public Sprite heroIcon;
     public CardType cardType;
-    public int baseUpgradeCost = 10;
+    public float baseUpgradeCost = 100;
     public float range;
     public int damage;
     public int health;
@@ -33,7 +33,7 @@ public class MenuHeroCardSO : ScriptableObject
         if (!requiresPurchase || IsPurchased())
             return false;
 
-        if (DataManager.instance.TryPurchaseGold(purchasePrice))
+        if (DataManager.instance.TryPurchaseGold((int)purchasePrice))
         {
             PlayerPrefs.SetInt($"{cardName}_Purchased", 1);
             PlayerPrefs.Save();
@@ -49,28 +49,28 @@ public class MenuHeroCardSO : ScriptableObject
     {
         return PlayerPrefs.GetInt($"{cardName}_Damage", damage);
     }
-    public int GetUpgradeCost()
+    public float GetUpgradeCost()
     {
-        return PlayerPrefs.GetInt($"{cardName}_UpgradeCost", baseUpgradeCost);
+        return PlayerPrefs.GetFloat($"{cardName}_UpgradeCost", baseUpgradeCost);
     }
     public void UpgradeHero()
     {
         int currentDamage = GetCurrentDamage();
-        int upgradeCost = GetUpgradeCost();
+        float upgradeCost = GetUpgradeCost();
         int currentHealth = GetCurrentHealth();
         int upgradeLevel = PlayerPrefs.GetInt($"{cardName}_UpgradeLevel", 1);
 
-        if (DataManager.instance.TryPurchaseGold(upgradeCost))
+        if (DataManager.instance.TryPurchaseHeroUpgradeToken((int)upgradeCost))
         {
             int newDamage = currentDamage + 5;
-            int newUpgradeCost = upgradeCost * 2;
+            float newUpgradeCost = upgradeCost * 1.5f;
             int newHealth = currentHealth + 50;
 
             upgradeLevel++;
 
             PlayerPrefs.SetInt($"{cardName}_Damage", newDamage);
             PlayerPrefs.SetInt($"{cardName}_Health", newHealth);
-            PlayerPrefs.SetInt($"{cardName}_UpgradeCost", newUpgradeCost);
+            PlayerPrefs.SetFloat($"{cardName}_UpgradeCost", newUpgradeCost);
             PlayerPrefs.SetInt($"{cardName}_UpgradeLevel", upgradeLevel);
             PlayerPrefs.Save();
         }

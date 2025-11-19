@@ -55,11 +55,11 @@ public class LevelMapManager : MonoBehaviour
             {
                 if (isActive)
                 {
-                    //buttonImage.color = Color.white; 
+                    buttonImage.color = Color.white;
                 }
                 else
-                { 
-                    //buttonImage.color = Color.gray; 
+                {
+                    buttonImage.color = Color.gray;
                 }
             }
 

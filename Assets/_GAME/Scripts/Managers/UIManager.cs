@@ -58,6 +58,7 @@ public class UIManager : MonoBehaviour
         DOTween.To(() => 0, x => loseGoldText.text = x.ToString(), 0, 0.5f).SetDelay(1f);
 
         DataManager.instance.AddGold(rewardedGold);
+        DataManager.instance.AddXP(5);
 
     }
 
@@ -98,6 +99,8 @@ public class UIManager : MonoBehaviour
 
 
         DataManager.instance.AddGold(/*totalGold*/ 100);
+        DataManager.instance.AddXP(20);
+
     }
 
     public void GameWinButton()

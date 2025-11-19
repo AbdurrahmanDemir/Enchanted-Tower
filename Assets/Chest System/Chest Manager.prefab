@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8239464264812061086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7380060208696922974}
+  - component: {fileID: 2963726991934945364}
+  - component: {fileID: 1890675327787539915}
+  m_Layer: 0
+  m_Name: Chest Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7380060208696922974
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8239464264812061086}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2963726991934945364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8239464264812061086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e078f5a10e6dca843afc1fe0ed46639d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rewardPopUp: {fileID: 0}
+  rewardPopUpShop: {fileID: 0}
+  rewardContainerPrefab: {fileID: 5402994573855685148, guid: 436489c41a5cb0c4f92c80cbc77fc45d, type: 3}
+  rewardContainersParent: {fileID: 0}
+  rewardContainersParentShop: {fileID: 0}
+  rewardGoldIcon: {fileID: 21300000, guid: 9d911362ef12d4c8a935c7b8e05d7037, type: 3}
+  rewardEnergyIcon: {fileID: 21300000, guid: 14d722e5cb773403aa2415d38bb6ab8e, type: 3}
+  cardboardGoldPossibilities: 02000000050000000a000000320000003200000019000000250000002800000048000000500000005a0000005f000000640000000a0000000a0000000a000000140000001400000014000000140000001400000032000000320000003200000032000000320000003200000032000000500000005000000050000000500000005000000050000000500000005000000050000000
+  cardboardEnergyPossibilities: 010000000200000003000000040000000400000004000000040000000500000005000000
+  goldBoxGoldPossibilities: 6400000096000000af000000c8000000d2000000fa000000220100002c0100002c010000c80000007d000000
+  goldBoxEnergyPossibilities: 0a0000000f0000000f00000014000000190000001e00000023000000280000002d00000032000000
+  legendaryBoxGoldPossibilities: ee020000e8030000e8030000e8030000e8030000dc050000dc050000dc050000d0070000d0070000d0070000d0070000d007000088130000
+  legendaryBoxEnergyPossibilities: 320000003200000032000000640000006400000064000000c8000000
+--- !u!114 &1890675327787539915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8239464264812061086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e3e31ed10c6b1d45b71840e246b0669, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeSelectManager: {fileID: 0}
