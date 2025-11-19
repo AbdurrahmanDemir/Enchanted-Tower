@@ -1,12 +1,34 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using Random = UnityEngine.Random;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 
+[System.Serializable]
+public class RewardData
+{
+    public RewardType rewardType;
+    public int minAmount;
+    public int maxAmount;
+    [Range(0f, 100f)] public float dropChance = 100f;
+}
+
+[System.Serializable]
+public class ChestConfig
+{
+    public string chestName;
+    public int price;
+    public List<RewardData> possibleRewards;
+}
+
+public enum RewardType
+{
+    Gold,
+    Energy,
+    HeroUpgradeToken,
+    RandomHeroCard
+}
 
 public class ChestManager : MonoBehaviour
 {
@@ -16,226 +38,197 @@ public class ChestManager : MonoBehaviour
     [SerializeField] private GameObject rewardContainerPrefab;
     [SerializeField] private Transform rewardContainersParent;
     [SerializeField] private Transform rewardContainersParentShop;
+
+    [Header("Reward Icons")]
     [SerializeField] private Sprite rewardGoldIcon;
     [SerializeField] private Sprite rewardEnergyIcon;
-    [Header("Wooden Chest Settings")]
-    [SerializeField] private int[] woodenChestGoldPossibilities;
-    [SerializeField] private int[] woodenChestEnergyPossibilities;
-    [Header("silverChest Settings")]
-    [SerializeField] private int[] silverChestGoldPossibilities;
-    [SerializeField] private int[] silverChestEnergyPossibilities;
-    [Header("Legendary Settings")]
-    [SerializeField] private int[] legendaryBoxGoldPossibilities;
-    [SerializeField] private int[] legendaryBoxEnergyPossibilities;
+    [SerializeField] private Sprite rewardTokenIcon;
+    [SerializeField] private Sprite rewardHeroCardIcon;
 
-
-
-
-    public void WoodenChest()
+    [Header("Chest Configurations")]
+    [SerializeField]
+    private ChestConfig woodenChestConfig = new ChestConfig
     {
-
-        rewardContainersParent.Clear();
-
-        int randomType = Random.Range(0, 2);
-        int randomGoldNumber = Random.Range(0, woodenChestGoldPossibilities.Length);
-        int randomEnergyNumber = Random.Range(0, woodenChestEnergyPossibilities.Length);
-        TogglePanel(rewardPopUp);
-
-        switch (randomType)
+        chestName = "Wooden Chest",
+        price = 100,
+        possibleRewards = new List<RewardData>
         {
-            case 0:
-                GameObject containerInstance = Instantiate(rewardContainerPrefab, rewardContainersParent);
-                Image targetImage = containerInstance.transform.GetChild(0).GetComponent<Image>();
-                targetImage.sprite = rewardGoldIcon;
-                containerInstance.GetComponentInChildren<TextMeshProUGUI>().text = woodenChestGoldPossibilities[randomGoldNumber].ToString();
+            new RewardData { rewardType = RewardType.Gold, minAmount = 50, maxAmount = 150, dropChance = 70f },
+            new RewardData { rewardType = RewardType.Energy, minAmount = 1, maxAmount = 3, dropChance = 60f },
+            new RewardData { rewardType = RewardType.HeroUpgradeToken, minAmount = 5, maxAmount = 15, dropChance = 40f },
+            new RewardData { rewardType = RewardType.RandomHeroCard, minAmount = 1, maxAmount = 1, dropChance = 10f }
+        }
+    };
 
-                DataManager.instance.AddGold(woodenChestGoldPossibilities[randomGoldNumber]);
-                break;
-            case 1:
-                GameObject containerInstance2 = Instantiate(rewardContainerPrefab, rewardContainersParent);
-                Image targetImage2 = containerInstance2.transform.GetChild(0).GetComponent<Image>();
-                targetImage2.sprite = rewardEnergyIcon;
+    [SerializeField]
+    private ChestConfig silverChestConfig = new ChestConfig
+    {
+        chestName = "Silver Chest",
+        price = 250,
+        possibleRewards = new List<RewardData>
+        {
+            new RewardData { rewardType = RewardType.Gold, minAmount = 150, maxAmount = 300, dropChance = 80f },
+            new RewardData { rewardType = RewardType.Energy, minAmount = 3, maxAmount = 7, dropChance = 70f },
+            new RewardData { rewardType = RewardType.HeroUpgradeToken, minAmount = 15, maxAmount = 35, dropChance = 60f },
+            new RewardData { rewardType = RewardType.RandomHeroCard, minAmount = 1, maxAmount = 1, dropChance = 30f }
+        }
+    };
 
-                containerInstance2.GetComponentInChildren<Image>().sprite = rewardEnergyIcon;
-                containerInstance2.GetComponentInChildren<TextMeshProUGUI>().text = woodenChestEnergyPossibilities[randomEnergyNumber].ToString();
+    [SerializeField]
+    private ChestConfig legendaryChestConfig = new ChestConfig
+    {
+        chestName = "Legendary Chest",
+        price = 500,
+        possibleRewards = new List<RewardData>
+        {
+            new RewardData { rewardType = RewardType.Gold, minAmount = 400, maxAmount = 800, dropChance = 90f },
+            new RewardData { rewardType = RewardType.Energy, minAmount = 7, maxAmount = 15, dropChance = 85f },
+            new RewardData { rewardType = RewardType.HeroUpgradeToken, minAmount = 40, maxAmount = 80, dropChance = 80f },
+            new RewardData { rewardType = RewardType.RandomHeroCard, minAmount = 1, maxAmount = 2, dropChance = 60f }
+        }
+    };
 
-                DataManager.instance.AddEnergy(woodenChestEnergyPossibilities[randomEnergyNumber]);
-                break;
+    [Header("Hero Cards Pool")]
+    [SerializeField] private MenuHeroCardSO[] availableHeroCards;
+
+    public void WoodenChest() => OpenChest(woodenChestConfig, false, rewardContainersParent, rewardPopUp);
+    public void WoodenChestBuy() => OpenChest(woodenChestConfig, true, rewardContainersParent, rewardPopUp);
+    public void SilverChest() => OpenChest(silverChestConfig, false, rewardContainersParent, rewardPopUp);
+    public void SilverChestBuy() => OpenChest(silverChestConfig, true, rewardContainersParent, rewardPopUp);
+    public void LegendaryBox() => OpenChest(legendaryChestConfig, true, rewardContainersParentShop, rewardPopUpShop);
+
+    private void OpenChest(ChestConfig config, bool requiresPurchase, Transform containerParent, GameObject popUp)
+    {
+        if (requiresPurchase && !DataManager.instance.TryPurchaseGold(config.price))
+        {
+            return;
         }
 
-        GameObject button = EventSystem.current.currentSelectedGameObject;
-        button.SetActive(false);
+        containerParent.Clear();
 
+        List<(RewardType type, int amount)> earnedRewards = GenerateRewards(config);
 
-    }
-    public void WoodenChestBuy()
-    {
-        if (DataManager.instance.TryPurchaseGold(100))
+        foreach (var reward in earnedRewards)
         {
-            rewardContainersParent.Clear();
+            GiveReward(reward.type, reward.amount);
+            CreateRewardUI(reward.type, reward.amount, containerParent);
+        }
 
-            int randomType = Random.Range(0, 2);
-            int randomGoldNumber = Random.Range(0, woodenChestGoldPossibilities.Length);
-            int randomEnergyNumber = Random.Range(0, woodenChestEnergyPossibilities.Length);
-            TogglePanel(rewardPopUp);
+        TogglePanel(popUp);
 
-            switch (randomType)
-            {
-                case 0:
-                    GameObject containerInstance = Instantiate(rewardContainerPrefab, rewardContainersParent);
-                    Image targetImage = containerInstance.transform.GetChild(0).GetComponent<Image>();
-                    targetImage.sprite = rewardGoldIcon;
-                    containerInstance.GetComponentInChildren<TextMeshProUGUI>().text = woodenChestGoldPossibilities[randomGoldNumber].ToString();
-
-                    DataManager.instance.AddGold(woodenChestGoldPossibilities[randomGoldNumber]);
-                    break;
-                case 1:
-                    GameObject containerInstance2 = Instantiate(rewardContainerPrefab, rewardContainersParent);
-                    Image targetImage2 = containerInstance2.transform.GetChild(0).GetComponent<Image>();
-                    targetImage2.sprite = rewardEnergyIcon;
-
-                    containerInstance2.GetComponentInChildren<Image>().sprite = rewardEnergyIcon;
-                    containerInstance2.GetComponentInChildren<TextMeshProUGUI>().text = woodenChestEnergyPossibilities[randomEnergyNumber].ToString();
-
-                    DataManager.instance.AddEnergy(woodenChestEnergyPossibilities[randomEnergyNumber]);
-                    break;
-            }
-
-            GameObject button = EventSystem.current.currentSelectedGameObject;
+        GameObject button = EventSystem.current.currentSelectedGameObject;
+        if (button != null)
+        {
             button.SetActive(false);
         }
-
-
-
-
     }
 
-
-    public void SilverChest()
+    private List<(RewardType type, int amount)> GenerateRewards(ChestConfig config)
     {
-        //Bridge.advertisement.ShowRewarded();
+        List<(RewardType type, int amount)> rewards = new List<(RewardType type, int amount)>();
 
-        rewardContainersParent.Clear();
-
-        int randomType = Random.Range(0, 2);
-        int randomGoldNumber = Random.Range(0, silverChestGoldPossibilities.Length);
-        int randomEnergyNumber = Random.Range(0, silverChestEnergyPossibilities.Length);
-        TogglePanel(rewardPopUp);
-
-        switch (randomType)
+        foreach (var rewardData in config.possibleRewards)
         {
-            case 0:
-                GameObject containerInstance = Instantiate(rewardContainerPrefab, rewardContainersParent);
-
-                Image targetImage = containerInstance.transform.GetChild(0).GetComponent<Image>();
-                targetImage.sprite = rewardGoldIcon;
-                containerInstance.GetComponentInChildren<TextMeshProUGUI>().text = silverChestGoldPossibilities[randomGoldNumber].ToString();
-
-                DataManager.instance.AddGold(silverChestGoldPossibilities[randomGoldNumber]);
-                break;
-            case 1:
-                GameObject containerInstance2 = Instantiate(rewardContainerPrefab, rewardContainersParent);
-                Image targetImage2 = containerInstance2.transform.GetChild(0).GetComponent<Image>();
-                targetImage2.sprite = rewardEnergyIcon;
-                containerInstance2.GetComponentInChildren<TextMeshProUGUI>().text = silverChestEnergyPossibilities[randomEnergyNumber].ToString();
-
-
-                DataManager.instance.AddEnergy(silverChestEnergyPossibilities[randomEnergyNumber]);
-                break;
-        }
-
-        GameObject button = EventSystem.current.currentSelectedGameObject;
-        button.SetActive(false);
-
-
-    }
-    public void SilverChestBuy()
-    {
-        if (DataManager.instance.TryPurchaseGold(250))
-        {
-            rewardContainersParent.Clear();
-
-            int randomType = Random.Range(0, 2);
-            int randomGoldNumber = Random.Range(0, silverChestGoldPossibilities.Length);
-            int randomEnergyNumber = Random.Range(0, silverChestEnergyPossibilities.Length);
-            TogglePanel(rewardPopUp);
-
-            switch (randomType)
+            float randomChance = Random.Range(0f, 100f);
+            if (randomChance <= rewardData.dropChance)
             {
-                case 0:
-                    GameObject containerInstance = Instantiate(rewardContainerPrefab, rewardContainersParent);
+                int amount = Random.Range(rewardData.minAmount, rewardData.maxAmount + 1);
 
-                    Image targetImage = containerInstance.transform.GetChild(0).GetComponent<Image>();
-                    targetImage.sprite = rewardGoldIcon;
-                    containerInstance.GetComponentInChildren<TextMeshProUGUI>().text = silverChestGoldPossibilities[randomGoldNumber].ToString();
-
-                    DataManager.instance.AddGold(silverChestGoldPossibilities[randomGoldNumber]);
-                    break;
-                case 1:
-                    GameObject containerInstance2 = Instantiate(rewardContainerPrefab, rewardContainersParent);
-                    Image targetImage2 = containerInstance2.transform.GetChild(0).GetComponent<Image>();
-                    targetImage2.sprite = rewardEnergyIcon;
-                    containerInstance2.GetComponentInChildren<TextMeshProUGUI>().text = silverChestEnergyPossibilities[randomEnergyNumber].ToString();
-
-
-                    DataManager.instance.AddEnergy(silverChestEnergyPossibilities[randomEnergyNumber]);
-                    break;
+                if (rewardData.rewardType == RewardType.RandomHeroCard)
+                {
+                    for (int i = 0; i < amount; i++)
+                    {
+                        rewards.Add((rewardData.rewardType, 1));
+                    }
+                }
+                else
+                {
+                    rewards.Add((rewardData.rewardType, amount));
+                }
             }
-
-            GameObject button = EventSystem.current.currentSelectedGameObject;
-            button.SetActive(false);
         }
 
+        if (rewards.Count == 0)
+        {
+            var fallbackReward = config.possibleRewards[0];
+            int amount = Random.Range(fallbackReward.minAmount, fallbackReward.maxAmount + 1);
+            rewards.Add((fallbackReward.rewardType, amount));
+        }
 
-
-
-
+        return rewards;
     }
 
-    public void LegendaryBox()
+    private void GiveReward(RewardType type, int amount)
     {
-
-        rewardContainersParentShop.Clear();
-
-        int randomType = Random.Range(0, 2);
-        int randomGoldNumber = Random.Range(0, legendaryBoxGoldPossibilities.Length);
-        int randomEnergyNumber = Random.Range(0, legendaryBoxEnergyPossibilities.Length);
-        TogglePanel(rewardPopUpShop);
-
-        switch (randomType)
+        switch (type)
         {
-            case 0:
-                GameObject containerInstance = Instantiate(rewardContainerPrefab, rewardContainersParentShop);
-
-
-                Image targetImage = containerInstance.transform.GetChild(0).GetComponent<Image>();
-                targetImage.sprite = rewardGoldIcon;
-                containerInstance.GetComponentInChildren<TextMeshProUGUI>().text = legendaryBoxGoldPossibilities[randomGoldNumber].ToString();
-
-                DataManager.instance.AddGold(legendaryBoxGoldPossibilities[randomGoldNumber]);
+            case RewardType.Gold:
+                DataManager.instance.AddGold(amount);
                 break;
-            case 1:
-                GameObject containerInstance2 = Instantiate(rewardContainerPrefab, rewardContainersParentShop);
-                Image targetImage2 = containerInstance2.transform.GetChild(0).GetComponent<Image>();
-                targetImage2.sprite = rewardEnergyIcon;
-                containerInstance2.GetComponentInChildren<TextMeshProUGUI>().text = legendaryBoxEnergyPossibilities[randomEnergyNumber].ToString();
 
+            case RewardType.Energy:
+                DataManager.instance.AddEnergy(amount);
+                break;
 
-                DataManager.instance.AddEnergy(legendaryBoxEnergyPossibilities[randomEnergyNumber]);
+            case RewardType.HeroUpgradeToken:
+                DataManager.instance.AddHeroToken(amount);
+                break;
+
+            case RewardType.RandomHeroCard:
+                if (availableHeroCards != null && availableHeroCards.Length > 0)
+                {
+                    MenuHeroCardSO randomHero = availableHeroCards[Random.Range(0, availableHeroCards.Length)];
+                    // Hero card sisteminize göre kart ekleme iþlemi
+                    // Örnek: HeroCardManager.Instance.AddCard(randomHero, 1);
+                    Debug.Log($"Hero Card kazanýldý: {randomHero.cardName}");
+                }
                 break;
         }
+    }
 
-        GameObject button = EventSystem.current.currentSelectedGameObject;
-        button.SetActive(false);
+    private void CreateRewardUI(RewardType type, int amount, Transform parent)
+    {
+        GameObject containerInstance = Instantiate(rewardContainerPrefab, parent);
+        Image targetImage = containerInstance.transform.GetChild(0).GetComponent<Image>();
+        TextMeshProUGUI amountText = containerInstance.GetComponentInChildren<TextMeshProUGUI>();
 
+        Sprite icon = GetRewardIcon(type);
+        targetImage.sprite = icon;
 
+        if (type == RewardType.RandomHeroCard && availableHeroCards.Length > 0)
+        {
+            MenuHeroCardSO randomHero = availableHeroCards[Random.Range(0, availableHeroCards.Length)];
+            amountText.text = randomHero.cardName;
+        }
+        else
+        {
+            amountText.text = amount.ToString();
+        }
+    }
+
+    private Sprite GetRewardIcon(RewardType type)
+    {
+        switch (type)
+        {
+            case RewardType.Gold:
+                return rewardGoldIcon;
+            case RewardType.Energy:
+                return rewardEnergyIcon;
+            case RewardType.HeroUpgradeToken:
+                return rewardTokenIcon;
+            case RewardType.RandomHeroCard:
+                return rewardHeroCardIcon;
+            default:
+                return rewardGoldIcon;
+        }
     }
 
     public void TogglePanel(GameObject panel)
     {
         if (panel.activeSelf)
         {
-            panel.transform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack).OnComplete(() => panel.SetActive(false));
+            panel.transform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack)
+                .OnComplete(() => panel.SetActive(false));
         }
         else
         {
@@ -244,57 +237,4 @@ public class ChestManager : MonoBehaviour
             panel.transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutBack);
         }
     }
-
-    //public void CardboardBoxPass()
-    //{
-    //    rewardContainersParent.Clear();
-
-    //    int randomType = Random.Range(0, 2);
-    //    int randomGoldNumber = Random.Range(0, cardboardGoldPossibilities.Length);
-    //    int randomEnergyNumber = Random.Range(0, cardboardEnergyPossibilities.Length);
-    //    MenuManager.instance.TogglePanel(rewardPopUp);
-
-    //    switch (randomType)
-    //    {
-    //        case 0:
-    //            UIRewardContainer containerInstance = Instantiate(rewardContainerPrefab, rewardContainersParent);
-    //            containerInstance.Configure(rewardGoldIcon, cardboardGoldPossibilities[randomGoldNumber].ToString());
-    //            DataManager.instance.AddGold(cardboardGoldPossibilities[randomGoldNumber]);
-    //            break;
-    //        case 1:
-    //            UIRewardContainer containerInstance2 = Instantiate(rewardContainerPrefab, rewardContainersParent);
-    //            containerInstance2.Configure(rewardEnergyIcon, cardboardEnergyPossibilities[randomEnergyNumber].ToString());
-    //            DataManager.instance.AddEnergy(cardboardEnergyPossibilities[randomEnergyNumber]);
-    //            break;
-    //    }
-
-    //}
-    //public void GoldBoxPass()
-    //{
-    //    rewardContainersParent.Clear();
-
-    //    int randomType = Random.Range(0, 2);
-    //    int randomGoldNumber = Random.Range(0, goldBoxGoldPossibilities.Length);
-    //    int randomEnergyNumber = Random.Range(0, goldBoxEnergyPossibilities.Length);
-    //    MenuManager.instance.TogglePanel(rewardPopUp);
-
-    //    switch (randomType)
-    //    {
-    //        case 0:
-    //            UIRewardContainer containerInstance = Instantiate(rewardContainerPrefab, rewardContainersParent);
-    //            containerInstance.Configure(rewardGoldIcon, goldBoxGoldPossibilities[randomGoldNumber].ToString());
-    //            DataManager.instance.AddGold(goldBoxGoldPossibilities[randomGoldNumber]);
-    //            break;
-    //        case 1:
-    //            UIRewardContainer containerInstance2 = Instantiate(rewardContainerPrefab, rewardContainersParent);
-    //            containerInstance2.Configure(rewardEnergyIcon, goldBoxEnergyPossibilities[randomEnergyNumber].ToString());
-    //            DataManager.instance.AddEnergy(goldBoxEnergyPossibilities[randomEnergyNumber]);
-    //            break;
-    //    }
-
-
-
-    //}
-
-
 }
