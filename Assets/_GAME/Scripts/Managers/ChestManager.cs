@@ -11,7 +11,7 @@ public class RewardData
     public RewardType rewardType;
     public int minAmount;
     public int maxAmount;
-    [Range(0f, 100f)] public float dropChance = 100f;
+    [Range(0f, 100f)] public float dropChance = 100f; 
 }
 
 [System.Serializable]
@@ -75,6 +75,34 @@ public class ChestManager : MonoBehaviour
     };
 
     [SerializeField]
+    private ChestConfig goldenChestConfig = new ChestConfig
+    {
+        chestName = "Golden Chest",
+        price = 500,
+        possibleRewards = new List<RewardData>
+        {
+            new RewardData { rewardType = RewardType.Gold, minAmount = 150, maxAmount = 300, dropChance = 80f },
+            new RewardData { rewardType = RewardType.Energy, minAmount = 3, maxAmount = 7, dropChance = 70f },
+            new RewardData { rewardType = RewardType.HeroUpgradeToken, minAmount = 15, maxAmount = 35, dropChance = 60f },
+            new RewardData { rewardType = RewardType.RandomHeroCard, minAmount = 1, maxAmount = 1, dropChance = 30f }
+        }
+    };
+
+    [SerializeField]
+    private ChestConfig epicChestConfig = new ChestConfig
+    {
+        chestName = "Golden Chest",
+        price = 1000,
+        possibleRewards = new List<RewardData>
+        {
+            new RewardData { rewardType = RewardType.Gold, minAmount = 150, maxAmount = 300, dropChance = 80f },
+            new RewardData { rewardType = RewardType.Energy, minAmount = 3, maxAmount = 7, dropChance = 70f },
+            new RewardData { rewardType = RewardType.HeroUpgradeToken, minAmount = 15, maxAmount = 35, dropChance = 60f },
+            new RewardData { rewardType = RewardType.RandomHeroCard, minAmount = 1, maxAmount = 1, dropChance = 30f }
+        }
+    };
+
+    [SerializeField]
     private ChestConfig legendaryChestConfig = new ChestConfig
     {
         chestName = "Legendary Chest",
@@ -91,13 +119,20 @@ public class ChestManager : MonoBehaviour
     [Header("Hero Cards Pool")]
     [SerializeField] private MenuHeroCardSO[] availableHeroCards;
 
-    public void WoodenChest() => OpenChest(woodenChestConfig, false, rewardContainersParent, rewardPopUp);
-    public void WoodenChestBuy() => OpenChest(woodenChestConfig, true, rewardContainersParent, rewardPopUp);
-    public void SilverChest() => OpenChest(silverChestConfig, false, rewardContainersParent, rewardPopUp);
-    public void SilverChestBuy() => OpenChest(silverChestConfig, true, rewardContainersParent, rewardPopUp);
-    public void LegendaryBox() => OpenChest(legendaryChestConfig, true, rewardContainersParentShop, rewardPopUpShop);
+    // Public methods for buttons
+    public void WoodenChest() => TypeGoldOpenChest(woodenChestConfig, false, rewardContainersParent, rewardPopUp);
+    public void WoodenChestBuy() => PassOpenChest(woodenChestConfig, true, rewardContainersParent, rewardPopUp);
+    public void SilverChest() => TypeGoldOpenChest(silverChestConfig, false, rewardContainersParent, rewardPopUp);
+    public void SilverChestBuy() => PassOpenChest(silverChestConfig, true, rewardContainersParent, rewardPopUp);
 
-    private void OpenChest(ChestConfig config, bool requiresPurchase, Transform containerParent, GameObject popUp)
+    public void GoldenChest() => TypeGemOpenChest(goldenChestConfig, true, rewardContainersParentShop, rewardPopUpShop);
+
+    public void EpicChest() => TypeGemOpenChest(epicChestConfig, true, rewardContainersParentShop, rewardPopUpShop);
+
+
+    public void LegendaryBox() => TypeGemOpenChest(legendaryChestConfig, true, rewardContainersParentShop, rewardPopUpShop);
+
+    private void TypeGoldOpenChest(ChestConfig config, bool requiresPurchase, Transform containerParent, GameObject popUp)
     {
         if (requiresPurchase && !DataManager.instance.TryPurchaseGold(config.price))
         {
@@ -122,6 +157,43 @@ public class ChestManager : MonoBehaviour
             button.SetActive(false);
         }
     }
+    private void TypeGemOpenChest(ChestConfig config, bool requiresPurchase, Transform containerParent, GameObject popUp)
+    {
+        if (requiresPurchase && !DataManager.instance.TryPurchaseEnergy(config.price))
+        {
+            return;
+        }
+
+        containerParent.Clear();
+
+        List<(RewardType type, int amount)> earnedRewards = GenerateRewards(config);
+
+        foreach (var reward in earnedRewards)
+        {
+            GiveReward(reward.type, reward.amount);
+            CreateRewardUI(reward.type, reward.amount, containerParent);
+        }
+
+        TogglePanel(popUp);
+    }
+
+    private void PassOpenChest(ChestConfig config, bool requiresPurchase, Transform containerParent, GameObject popUp)
+    {
+        containerParent.Clear();
+
+        List<(RewardType type, int amount)> earnedRewards = GenerateRewards(config);
+
+        foreach (var reward in earnedRewards)
+        {
+            GiveReward(reward.type, reward.amount);
+            CreateRewardUI(reward.type, reward.amount, containerParent);
+        }
+
+        TogglePanel(popUp);
+
+    }
+
+
 
     private List<(RewardType type, int amount)> GenerateRewards(ChestConfig config)
     {
@@ -177,14 +249,38 @@ public class ChestManager : MonoBehaviour
             case RewardType.RandomHeroCard:
                 if (availableHeroCards != null && availableHeroCards.Length > 0)
                 {
-                    MenuHeroCardSO randomHero = availableHeroCards[Random.Range(0, availableHeroCards.Length)];
-                    // Hero card sisteminize göre kart ekleme iþlemi
-                    // Örnek: HeroCardManager.Instance.AddCard(randomHero, 1);
-                    Debug.Log($"Hero Card kazanýldý: {randomHero.cardName}");
+                    List<MenuHeroCardSO> unpurchasedHeroes = new List<MenuHeroCardSO>();
+                    foreach (var hero in availableHeroCards)
+                    {
+                        if (!hero.IsPurchased())
+                        {
+                            unpurchasedHeroes.Add(hero);
+                        }
+                    }
+
+                    if (unpurchasedHeroes.Count > 0)
+                    {
+                        MenuHeroCardSO randomHero = unpurchasedHeroes[Random.Range(0, unpurchasedHeroes.Count)];
+
+                        PlayerPrefs.SetInt($"{randomHero.cardName}_Purchased", 1);
+                        PlayerPrefs.Save();
+
+                        lastEarnedHero = randomHero;
+
+                        Debug.Log($"Yeni Hero açýldý: {randomHero.cardName}");
+                    }
+                    else
+                    {
+                        DataManager.instance.AddHeroToken(50);
+                        lastEarnedHero = null; 
+                        Debug.Log("Tüm karakterler açýk 50 Token verildi.");
+                    }
                 }
                 break;
         }
     }
+
+    private MenuHeroCardSO lastEarnedHero = null;
 
     private void CreateRewardUI(RewardType type, int amount, Transform parent)
     {
@@ -195,10 +291,18 @@ public class ChestManager : MonoBehaviour
         Sprite icon = GetRewardIcon(type);
         targetImage.sprite = icon;
 
-        if (type == RewardType.RandomHeroCard && availableHeroCards.Length > 0)
+        if (type == RewardType.RandomHeroCard)
         {
-            MenuHeroCardSO randomHero = availableHeroCards[Random.Range(0, availableHeroCards.Length)];
-            amountText.text = randomHero.cardName;
+            if (lastEarnedHero != null)
+            {
+                targetImage.sprite = lastEarnedHero.heroIcon;
+                amountText.text = lastEarnedHero.cardName;
+            }
+            else
+            {
+                targetImage.sprite = rewardTokenIcon;
+                amountText.text = "50";
+            }
         }
         else
         {

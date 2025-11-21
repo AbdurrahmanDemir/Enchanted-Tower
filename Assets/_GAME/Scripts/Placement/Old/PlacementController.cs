@@ -37,31 +37,26 @@ public class PlacementController : MonoBehaviour
 
     bool GameOver = false;
 
-    // Satýn alýnmýþ karakterlerin index'lerini tutacak liste
     private List<int> purchasedCardIndexes = new List<int>();
 
     private void Start()
     {
-        // Her oyun baþladýðýnda satýn alýnmýþ karakterleri yeniden yükle
         LoadPurchasedHeroes();
         GenerateInitialCards();
     }
 
-    // Satýn alýnmýþ karakterleri yükle
     private void LoadPurchasedHeroes()
     {
         purchasedCardIndexes.Clear();
 
         for (int i = 0; i < cards.Length; i++)
         {
-            // Her seferinde güncel durumu kontrol et
             if (cards[i].IsPurchased())
             {
                 purchasedCardIndexes.Add(i);
             }
         }
 
-        // Eðer hiç satýn alýnmýþ karakter yoksa, uyarý ver
         if (purchasedCardIndexes.Count == 0)
         {
             Debug.LogWarning("Hiç satýn alýnmýþ karakter yok! En az bir karakteri açýk olarak iþaretleyin.");
@@ -74,14 +69,12 @@ public class PlacementController : MonoBehaviour
 
     private void GenerateInitialCards()
     {
-        // Satýn alýnmýþ karakterler yoksa çýk
         if (purchasedCardIndexes.Count == 0)
         {
             Debug.LogError("Oyuna baþlamak için en az 1 karakter satýn alýnmalý!");
             return;
         }
 
-        // Satýn alýnmýþ karakterlerden rastgele 3 tane seç (tekrar edebilir)
         activeCardIndexes = new int[3];
         for (int i = 0; i < 3; i++)
         {
@@ -217,7 +210,6 @@ public class PlacementController : MonoBehaviour
         int replacedCardIndex = -1;
         int arrayPosition = -1;
 
-        // Kullanýlan kartý bul ve yok et
         for (int i = 0; i < cardParent.childCount; i++)
         {
             PlacementCardUI ui = cardParent.GetChild(i).GetComponent<PlacementCardUI>();
@@ -227,7 +219,6 @@ public class PlacementController : MonoBehaviour
                 replacedCardIndex = ui.cardIndex;
                 Destroy(cardParent.GetChild(i).gameObject);
 
-                // activeCardIndexes'teki pozisyonunu bul
                 for (int j = 0; j < activeCardIndexes.Length; j++)
                 {
                     if (activeCardIndexes[j] == replacedCardIndex)
@@ -240,21 +231,16 @@ public class PlacementController : MonoBehaviour
             }
         }
 
-        // Eðer kart bulunduysa, yerine yeni kart ekle
         if (replacedCardIndex != -1 && arrayPosition != -1)
         {
-            // Satýn alýnmýþ karakterlerden rastgele yeni bir kart seç
             int newIndex = purchasedCardIndexes[Random.Range(0, purchasedCardIndexes.Count)];
 
-            // Yeni kartý oluþtur
             CreateCardUI(newIndex);
 
-            // activeCardIndexes dizisini güncelle
             activeCardIndexes[arrayPosition] = newIndex;
         }
     }
 
-    // Oyun sýrasýnda yeni karakter satýn alýndýðýnda bu metodu çaðýr
     public void RefreshPurchasedHeroes()
     {
         LoadPurchasedHeroes();

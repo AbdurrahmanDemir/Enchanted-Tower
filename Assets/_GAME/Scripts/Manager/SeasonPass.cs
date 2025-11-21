@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,230 +20,231 @@ public class SeasonPass : MonoBehaviour
 
     public Slider trophySlider;
 
-    [Header("Other Elements")]
+    [Header("Reward Icons")]
     [SerializeField] private Sprite goldImage;
     [SerializeField] private Sprite energyImage;
-    [SerializeField] private Sprite bronzeBoxImage;
-    [SerializeField] private Sprite goldBoxImage;
+    [SerializeField] private Sprite woodenChestImage;
+    [SerializeField] private Sprite silverChestImage;
+    [SerializeField] private Sprite goldenChestImage;
+    [SerializeField] private Sprite epicChestImage;
+    [SerializeField] private Sprite legendaryChestImage;
+
+    [Header("Backgrounds")]
     [SerializeField] private Sprite freeRewardBackground;
     [SerializeField] private Sprite goldRewardBackground;
 
-    Sprite rewardSprite;
-    bool rewardState;
+    [Header("Trophy Slider Milestones")]
+    [SerializeField]
+    private TrophyMilestone[] trophyMilestones = new TrophyMilestone[]
+    {
+        new TrophyMilestone { minTrophy = 0, maxTrophy = 4, sliderValue = 0 },
+        new TrophyMilestone { minTrophy = 5, maxTrophy = 10, sliderValue = 35 },
+        new TrophyMilestone { minTrophy = 11, maxTrophy = 15, sliderValue = 75 },
+        new TrophyMilestone { minTrophy = 16, maxTrophy = 20, sliderValue = 110 },
+        new TrophyMilestone { minTrophy = 21, maxTrophy = 30, sliderValue = 145 },
+        new TrophyMilestone { minTrophy = 31, maxTrophy = 40, sliderValue = 180 },
+        new TrophyMilestone { minTrophy = 41, maxTrophy = 50, sliderValue = 215 },
+        new TrophyMilestone { minTrophy = 51, maxTrophy = 60, sliderValue = 250 },
+        new TrophyMilestone { minTrophy = 61, maxTrophy = 70, sliderValue = 285 },
+        new TrophyMilestone { minTrophy = 71, maxTrophy = 100, sliderValue = 320 },
+        new TrophyMilestone { minTrophy = 101, maxTrophy = 150, sliderValue = 355 },
+        new TrophyMilestone { minTrophy = 151, maxTrophy = 200, sliderValue = 390 },
+        new TrophyMilestone { minTrophy = 201, maxTrophy = 250, sliderValue = 425 },
+        new TrophyMilestone { minTrophy = 251, maxTrophy = 300, sliderValue = 460 },
+        new TrophyMilestone { minTrophy = 301, maxTrophy = int.MaxValue, sliderValue = 500 }
+    };
+
     private void Start()
+    {
+        InitializeTrophySlider();
+        InitializePassRewards(freeSeasonPass, freePassTransform, freeRewardBackground, true);
+        InitializePassRewards(goldenSeasonPass, goldenPassTransform, goldRewardBackground, false);
+    }
+
+    private void InitializeTrophySlider()
     {
         trophySlider.maxValue = 500;
         int myTrophy = PlayerPrefs.GetInt("XP", 0);
 
-        if (myTrophy >= 5 && myTrophy <= 10)
-            trophySlider.value = 35;
-        else if (myTrophy >= 11 && myTrophy <= 15)
-            trophySlider.value = 75;
-        else if (myTrophy >= 16 && myTrophy <= 20)
-            trophySlider.value = 110;
-        else if (myTrophy >= 21 && myTrophy <= 30)
-            trophySlider.value = 145;
-        else if (myTrophy >= 31 && myTrophy <= 40)
-            trophySlider.value = 180;
-        else if (myTrophy >= 41 && myTrophy <= 50)
-            trophySlider.value = 215;
-        else if (myTrophy >= 51 && myTrophy <= 60)
-            trophySlider.value = 250;
-        else if (myTrophy >= 71 && myTrophy <= 100)
-            trophySlider.value = 285;
-        else if (myTrophy >= 101 && myTrophy <= 150)
-            trophySlider.value = 320;
-        else if (myTrophy >= 151 && myTrophy <= 200)
-            trophySlider.value = 355;
-        else if (myTrophy >= 201 && myTrophy <= 250)
-            trophySlider.value = 390;
-        else if (myTrophy >= 251 && myTrophy <= 300)
-            trophySlider.value = 425;
-        else if (myTrophy >= 301 && myTrophy <= 500)
-            trophySlider.value = 500;
-
-
-
-        for (int i = 0; i < freeSeasonPass.Length; i++)
+        foreach (var milestone in trophyMilestones)
         {
-            int currentIndex = i;
-
-            if (PlayerPrefs.HasKey("FreePassReward" + currentIndex))
-                rewardState = true;
-            else
-                rewardState = false;
-
-            switch (freeSeasonPass[currentIndex].rewardType)
+            if (myTrophy >= milestone.minTrophy && myTrophy <= milestone.maxTrophy)
             {
-                case PassReward.Gold:
-                    rewardSprite = goldImage;
-                    break;
-                case PassReward.Energy:
-                    rewardSprite = energyImage;
-                    break;
-                case PassReward.BronzeBox:
-                    rewardSprite = bronzeBoxImage;
-                    break;
-                case PassReward.GoldenBox:
-                    rewardSprite = goldBoxImage;
-                    break;
-                default:
-                    break;
+                trophySlider.value = milestone.sliderValue;
+                break;
             }
-
-            GameObject freeReward = Instantiate(freePassPrefabs, freePassTransform);
-            freeReward.GetComponent<FreePassRewardPrefabs>().Config(freeRewardBackground, rewardSprite, freeSeasonPass[currentIndex].rewardAmount, rewardState);
-
-            if (myTrophy >= freeSeasonPass[currentIndex].requireTrophy)
-            {
-                freeReward.GetComponent<FreePassRewardPrefabs>().GetClaimButton().onClick
-                .AddListener(() => FreeRewardClaim(freeSeasonPass[currentIndex].rewardType,
-                                                   currentIndex,
-                                                   freeSeasonPass[currentIndex].rewardAmount,
-                                                   freeReward));
-
-            }
-            else
-            {
-                PopUpController.instance.OpenPopUp("You don't have enough trophies.");
-            }
-
-
-        }
-
-        for (int i = 0; i < goldenSeasonPass.Length; i++)
-        {
-            int currentIndex = i;
-
-            if (PlayerPrefs.HasKey("GoldenPassReward" + currentIndex))
-                rewardState = true;
-            else
-                rewardState = false;
-
-            switch (goldenSeasonPass[currentIndex].rewardType)
-            {
-                case PassReward.Gold:
-                    rewardSprite = goldImage;
-                    break;
-                case PassReward.Energy:
-                    rewardSprite = energyImage;
-                    break;
-                case PassReward.BronzeBox:
-                    rewardSprite = bronzeBoxImage;
-                    break;
-                case PassReward.GoldenBox:
-                    rewardSprite = goldBoxImage;
-                    break;
-                default:
-                    break;
-            }
-
-            GameObject goldenReward = Instantiate(freePassPrefabs, goldenPassTransform);
-            goldenReward.GetComponent<FreePassRewardPrefabs>().Config(goldRewardBackground, rewardSprite, goldenSeasonPass[currentIndex].rewardAmount, rewardState);
-            goldenReward.GetComponent<FreePassRewardPrefabs>().AdIcon().SetActive(true);
-
-            if (myTrophy >= freeSeasonPass[currentIndex].requireTrophy)
-            {
-                goldenReward.GetComponent<FreePassRewardPrefabs>().GetClaimButton().onClick
-                .AddListener(() => GoldenRewardClaim(goldenSeasonPass[currentIndex].rewardType,
-                                                     currentIndex,
-                                                     goldenSeasonPass[currentIndex].rewardAmount,
-                                                     goldenReward));
-
-
-
-            }
-            else
-            {
-                PopUpController.instance.OpenPopUp("You don't have enough trophies.");
-            }
-
-
         }
     }
 
-    public void FreeRewardClaim(PassReward type, int index, int amount, GameObject prefabs)
+    private void InitializePassRewards(PassSegment[] passSegments, Transform parent, Sprite background, bool isFreePass)
     {
+        int myTrophy = PlayerPrefs.GetInt("XP", 0);
+        string passKey = isFreePass ? "FreePassReward" : "GoldenPassReward";
 
-        if (!PlayerPrefs.HasKey("FreePassReward" + index))
+        for (int i = 0; i < passSegments.Length; i++)
         {
-            switch (type)
+            int currentIndex = i;
+            bool isRewardClaimed = PlayerPrefs.HasKey(passKey + currentIndex);
+
+            Sprite rewardSprite = GetRewardSprite(passSegments[currentIndex].rewardType);
+
+            GameObject rewardObject = Instantiate(freePassPrefabs, parent);
+            FreePassRewardPrefabs rewardComponent = rewardObject.GetComponent<FreePassRewardPrefabs>();
+
+            rewardComponent.Config(background, rewardSprite, passSegments[currentIndex].rewardAmount, isRewardClaimed);
+
+            if (!isFreePass)
             {
-                case PassReward.Gold:
-                    DataManager.instance.AddGold(amount);
-                    break;
-                case PassReward.Energy:
-                    DataManager.instance.AddEnergy(amount);
-                    break;
-                case PassReward.BronzeBox:
-                    chestManager.SilverChest();
-                    break;
-                case PassReward.GoldenBox:
-                    chestManager.SilverChest();
-                    break;
-                default:
-                    break;
+                rewardComponent.AdIcon().SetActive(true);
             }
-            PlayerPrefs.SetInt("FreePassReward" + index, 1);
-            PopUpController.instance.OpenPopUp("YOU GOT THE AWARD!");
-            prefabs.GetComponent<FreePassRewardPrefabs>().CheckIcon().SetActive(true);
-        }
-        else
-        {
-            PopUpController.instance.OpenPopUp("You've already received this reward.");
-        }
 
-    }
+            bool hasEnoughTrophies = myTrophy >= passSegments[currentIndex].requireTrophy;
 
-    public void GoldenRewardClaim(PassReward type, int index, int amount, GameObject prefabs)
-    {
-
-        if (!PlayerPrefs.HasKey("GoldenPassReward" + index))
-        {
-
-                switch (type)
+            if (hasEnoughTrophies && !isRewardClaimed)
+            {
+                rewardComponent.GetClaimButton().onClick.AddListener(() =>
                 {
-                    case PassReward.Gold:
-                        DataManager.instance.AddGold(amount);
-                        break;
-                    case PassReward.Energy:
-                        DataManager.instance.AddEnergy(amount);
-                        break;
-                    case PassReward.BronzeBox:
-                        chestManager.SilverChest();
-                        break;
-                    case PassReward.GoldenBox:
-                        chestManager.SilverChest();
-                        break;
-                    default:
-                        break;
-                }
-                PlayerPrefs.SetInt("GoldenPassReward" + index, 1);
-            PopUpController.instance.OpenPopUp("YOU GOT THE AWARD!");
-                prefabs.GetComponent<FreePassRewardPrefabs>().CheckIcon().SetActive(true);
-
-
+                    if (isFreePass)
+                    {
+                        ClaimReward(passSegments[currentIndex].rewardType,
+                                  currentIndex,
+                                  passSegments[currentIndex].rewardAmount,
+                                  rewardObject,
+                                  passKey);
+                    }
+                    else
+                    {
+                        ClaimGoldenReward(passSegments[currentIndex].rewardType,
+                                        currentIndex,
+                                        passSegments[currentIndex].rewardAmount,
+                                        rewardObject,
+                                        passKey);
+                    }
+                });
+            }
+            else if (!hasEnoughTrophies)
+            {
+                rewardComponent.GetClaimButton().interactable = false;
+            }
         }
-        else
+    }
+
+    private Sprite GetRewardSprite(PassReward rewardType)
+    {
+        switch (rewardType)
+        {
+            case PassReward.Gold:
+                return goldImage;
+            case PassReward.Energy:
+                return energyImage;
+            case PassReward.WooodenChest:
+                return woodenChestImage;
+            case PassReward.SilverChest:
+                return silverChestImage;
+            case PassReward.GoldenChest:
+                return goldenChestImage;
+            case PassReward.EpicChest:
+                return epicChestImage;
+            case PassReward.LegendaryChest:
+                return legendaryChestImage;
+            default:
+                return goldImage;
+        }
+    }
+
+    private void ClaimReward(PassReward type, int index, int amount, GameObject prefabs, string passKey)
+    {
+        if (PlayerPrefs.HasKey(passKey + index))
         {
             PopUpController.instance.OpenPopUp("You've already received this reward.");
+            return;
         }
 
+        GiveReward(type, amount);
+
+        PlayerPrefs.SetInt(passKey + index, 1);
+        PlayerPrefs.Save();
+
+        PopUpController.instance.OpenPopUp("YOU GOT THE AWARD!");
+        prefabs.GetComponent<FreePassRewardPrefabs>().CheckIcon().SetActive(true);
+    }
+
+    private void ClaimGoldenReward(PassReward type, int index, int amount, GameObject prefabs, string passKey)
+    {
+        if (PlayerPrefs.HasKey(passKey + index))
+        {
+            PopUpController.instance.OpenPopUp("You've already received this reward.");
+            return;
+        }
+
+        GiveReward(type, amount);
+
+        PlayerPrefs.SetInt(passKey + index, 1);
+        PlayerPrefs.Save();
+
+        PopUpController.instance.OpenPopUp("YOU GOT THE AWARD!");
+        prefabs.GetComponent<FreePassRewardPrefabs>().CheckIcon().SetActive(true);
+    }
+
+    private void GiveReward(PassReward type, int amount)
+    {
+        switch (type)
+        {
+            case PassReward.Gold:
+                DataManager.instance.AddGold(amount);
+                break;
+
+            case PassReward.Energy:
+                DataManager.instance.AddEnergy(amount);
+                break;
+
+            case PassReward.WooodenChest:
+                chestManager.WoodenChestBuy();
+                break;
+
+            case PassReward.SilverChest:
+                chestManager.SilverChestBuy();
+                break;
+
+            case PassReward.GoldenChest:
+                chestManager.GoldenChest();
+                break;
+
+            case PassReward.EpicChest:
+                chestManager.EpicChest();
+                break;
+
+            case PassReward.LegendaryChest:
+                chestManager.LegendaryBox();
+                break;
+        }
     }
 }
-[System.Serializable]
 
+[System.Serializable]
 public struct PassSegment
 {
     public PassReward rewardType;
     public int rewardAmount;
     public int requireTrophy;
 }
+
+[System.Serializable]
+public struct TrophyMilestone
+{
+    public int minTrophy;
+    public int maxTrophy;
+    public float sliderValue;
+}
+
 [System.Serializable]
 public enum PassReward
 {
     Gold = 0,
     Energy = 1,
-    BronzeBox = 2,
-    GoldenBox = 3
+    WooodenChest = 2,
+    SilverChest = 3,
+    GoldenChest = 4,
+    EpicChest = 5,
+    LegendaryChest = 6
 }
