@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,12 +24,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI winGoldText;
     [SerializeField] private TextMeshProUGUI winBonusGoldText;
     [SerializeField] private TextMeshProUGUI winEnemyCountText;
+    [SerializeField] private TextMeshProUGUI winXPText;
     [SerializeField] private TextMeshProUGUI loseArenaText;
     [SerializeField] private TextMeshProUGUI loseGoldText;
     [SerializeField] private TextMeshProUGUI loseBonusGoldText;
     [SerializeField] private TextMeshProUGUI loseEnemyCountText;
+    [SerializeField] private TextMeshProUGUI loseXPText;
+    [Header("Game State")]
+    public static Action gameOver;
 
-  
 
     private void Start()
     {
@@ -56,9 +60,13 @@ public class UIManager : MonoBehaviour
         DOTween.To(() => 0, x => loseEnemyCountText.text = "Number of enemies killed: " + x.ToString(), enemyCount, 1f);
         DOTween.To(() => 0, x => loseBonusGoldText.text = x.ToString(), rewardedGold, 1f).SetDelay(0.5f);
         DOTween.To(() => 0, x => loseGoldText.text = x.ToString(), 0, 0.5f).SetDelay(1f);
+        DOTween.To(() => 0, x => loseXPText.text = x.ToString(), 0, 0.5f).SetDelay(1f);
+
 
         DataManager.instance.AddGold(rewardedGold);
-        DataManager.instance.AddXP(5);
+        DataManager.instance.AddXP(0);
+
+        gameOver?.Invoke();
 
     }
 
@@ -95,11 +103,14 @@ public class UIManager : MonoBehaviour
 
         DOTween.To(() => 0, x => winEnemyCountText.text = "Number of enemies killed: " + x.ToString(), enemyCount, 1f);
         DOTween.To(() => 0, x => winBonusGoldText.text = x.ToString(), rewardedGold, 1f).SetDelay(0.5f);
-        DOTween.To(() => 0, x => winGoldText.text = x.ToString(), 100 /*baseGold*/, 1f).SetDelay(1f);
+        DOTween.To(() => 0, x => winGoldText.text = x.ToString(), 100, 1f).SetDelay(1f);
+        DOTween.To(() => 0, x => winXPText.text = x.ToString(), 10, 1f).SetDelay(1f);
+
 
 
         DataManager.instance.AddGold(/*totalGold*/ 100);
-        DataManager.instance.AddXP(20);
+        DataManager.instance.AddXP(10);
+        gameOver?.Invoke();
 
     }
 

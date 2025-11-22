@@ -23,6 +23,7 @@ public class SeasonPass : MonoBehaviour
     [Header("Reward Icons")]
     [SerializeField] private Sprite goldImage;
     [SerializeField] private Sprite energyImage;
+    [SerializeField] private Sprite heroUpgradeTokenImage;
     [SerializeField] private Sprite woodenChestImage;
     [SerializeField] private Sprite silverChestImage;
     [SerializeField] private Sprite goldenChestImage;
@@ -137,6 +138,8 @@ public class SeasonPass : MonoBehaviour
                 return goldImage;
             case PassReward.Energy:
                 return energyImage;
+            case PassReward.HeroUpgradeToken:
+                return heroUpgradeTokenImage;
             case PassReward.WooodenChest:
                 return woodenChestImage;
             case PassReward.SilverChest:
@@ -217,6 +220,9 @@ public class SeasonPass : MonoBehaviour
             case PassReward.LegendaryChest:
                 chestManager.LegendaryBox();
                 break;
+            case PassReward.HeroUpgradeToken:
+                DataManager.instance.AddHeroToken(amount);
+                break;
         }
     }
 }
@@ -246,5 +252,6 @@ public enum PassReward
     SilverChest = 3,
     GoldenChest = 4,
     EpicChest = 5,
-    LegendaryChest = 6
+    LegendaryChest = 6,
+    HeroUpgradeToken=7
 }

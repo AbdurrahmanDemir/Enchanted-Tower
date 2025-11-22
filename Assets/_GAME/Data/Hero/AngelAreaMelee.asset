@@ -19,5 +19,5 @@ MonoBehaviour:
   maxHealth: 350
   damage: 60
   range: 0.8
-  moveSpeed: 0.3
+  moveSpeed: 0.5
   cooldown: 1

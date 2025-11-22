@@ -20,8 +20,10 @@ MonoBehaviour:
   damage: 60
   health: 500
   cooldown: 0.5
-  moveSpeed: 0.5
+  moveSpeed: 0.7
   undergroundRange: -30
+  purchasePrice: 0
+  requiresPurchase: 0
   specialStatName: He has no special powers.
   specialStat: 0
   cardDescription: Armored Knight deals damage to enemies with her sword.

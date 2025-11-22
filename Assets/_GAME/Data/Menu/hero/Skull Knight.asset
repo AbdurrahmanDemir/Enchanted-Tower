@@ -16,12 +16,14 @@ MonoBehaviour:
   heroIcon: {fileID: 21300000, guid: 2f4c5c697a970a14cb34e5ab2d891c41, type: 3}
   cardType: 1
   baseUpgradeCost: 100
-  range: 2
+  range: 3
   damage: 80
   health: 200
   cooldown: 1
-  moveSpeed: 0.2
+  moveSpeed: 0.6
   undergroundRange: -50
+  purchasePrice: 0
+  requiresPurchase: 0
   specialStatName: She has no special powers.
   specialStat: 0
   cardDescription: The Skull Knight casts damaging spells at enemies from a distance.

@@ -20,7 +20,7 @@ MonoBehaviour:
   damage: 60
   health: 350
   cooldown: 1
-  moveSpeed: 0.3
+  moveSpeed: 0.5
   undergroundRange: -50
   purchasePrice: 1000
   requiresPurchase: 1

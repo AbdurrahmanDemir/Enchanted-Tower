@@ -38,20 +38,25 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     public Vector2 scaleReduction = new Vector3(0.9f, 0.9f, 1f);
 
     [Header("Action")]
-    private bool onThrow = false;
+    private bool enemyStopped = false;
     public static Action<Vector2> onDead;
     public static Action OnAnyEnemyHealthChanged;
 
     private void Awake()
     {
-        UpgradeSelectManager.onPowerUpPanelOpened += OnThrowStartingCallBack;
-        UpgradeSelectManager.onPowerUpPanelClosed += OnThrowEndingCallBack;
+        UpgradeSelectManager.onPowerUpPanelOpened += StopTheEnemy;
+        UpgradeSelectManager.onPowerUpPanelClosed += FinishStoppingEnemy;
+
+        UIManager.gameOver += StopTheEnemy;
     }
 
     private void OnDestroy()
     {
-        UpgradeSelectManager.onPowerUpPanelOpened -= OnThrowStartingCallBack;
-        UpgradeSelectManager.onPowerUpPanelClosed -= OnThrowEndingCallBack;
+        UpgradeSelectManager.onPowerUpPanelOpened -= StopTheEnemy;
+        UpgradeSelectManager.onPowerUpPanelClosed -= FinishStoppingEnemy;
+
+        UIManager.gameOver -= StopTheEnemy;
+
     }
 
     private void Start()
@@ -93,7 +98,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if (onThrow) return;
+        if (enemyStopped) return;
 
         if (currentTarget == null)
         {
@@ -201,8 +206,8 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         }
     }
 
-    public void OnThrowStartingCallBack() => onThrow = true;
-    public void OnThrowEndingCallBack() => onThrow = false;
+    public void StopTheEnemy() => enemyStopped = true;
+    public void FinishStoppingEnemy() => enemyStopped = false;
     public int GetCurrentHealth() { return health; }
     public void ResetStats()
     {

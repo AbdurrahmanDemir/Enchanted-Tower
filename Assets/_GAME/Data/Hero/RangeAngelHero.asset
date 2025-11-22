@@ -18,6 +18,6 @@ MonoBehaviour:
   isAreaOfEffect: 0
   maxHealth: 200
   damage: 100
-  range: 2
-  moveSpeed: 0.2
+  range: 3
+  moveSpeed: 0.6
   cooldown: 1
