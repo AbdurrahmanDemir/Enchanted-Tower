@@ -15,12 +15,9 @@ public class UpgradeSelectSO : ScriptableObject
 
 public enum UpgradeType
 {
-    TowerHealth=0,
-    HookLenght=1,
-    HookStrenght=2,
-    EpicHeroCount=3,
-    LegendaryHeroCount=4,
+    AddGold=0,
+    AddCapacity=1,
+    AddUpgradeToken=2,
     DamageUpgrade=5,
-    HealthUpgrade=6,
-    TokenAdd=7
+    HealthUpgrade=6
 }

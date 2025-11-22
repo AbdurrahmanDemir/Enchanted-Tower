@@ -16,10 +16,10 @@ public class UpgradeSelectManager : MonoBehaviour
     [Header("Action")]
     public static Action onPowerUpPanelOpened;
     public static Action onPowerUpPanelClosed;
-    public static Action<int> towerHealthItem;
-    public static Action hookLenghtItem;
+    public static Action<int> addGold;
+    public static Action<int> addCapacity;
     public static Action hookStranghtItem;
-    public static Action<int> tokenAddItem;
+    public static Action<int> addUpgradeToken;
     public static Action<int> heroDamageItem;
     public static Action<int> heroHealthItem;
 
@@ -36,24 +36,20 @@ public class UpgradeSelectManager : MonoBehaviour
 
             switch (upgradeData[randomTypes].upgradeType)
             {
-                case UpgradeType.TowerHealth:
+                case UpgradeType.AddGold:
                     buttonInstance.GetComponent<UpgradeSelectButton>().GetButton().onClick
-                .AddListener(() => TowerUpgradeHealthItem(upgradeData[randomTypes].amount));
+                .AddListener(() => AddGold(upgradeData[randomTypes].amount));
 
                     break;
-                case UpgradeType.HookLenght:
+                case UpgradeType.AddCapacity:
                     buttonInstance.GetComponent<UpgradeSelectButton>().GetButton().onClick
-                .AddListener(() => HookLenghtUpgrade());
+                .AddListener(() => AddCapacity(upgradeData[randomTypes].amount));
 
                     break;
-                case UpgradeType.HookStrenght:
+                case UpgradeType.AddUpgradeToken:
                     buttonInstance.GetComponent<UpgradeSelectButton>().GetButton().onClick
                 .AddListener(() => HookStrangthItem());
 
-                    break;
-                case UpgradeType.EpicHeroCount:
-                    break;
-                case UpgradeType.LegendaryHeroCount:
                     break;
                 case UpgradeType.DamageUpgrade:
                     buttonInstance.GetComponent<UpgradeSelectButton>().GetButton().onClick
@@ -63,26 +59,23 @@ public class UpgradeSelectManager : MonoBehaviour
                     buttonInstance.GetComponent<UpgradeSelectButton>().GetButton().onClick
                 .AddListener(() => HeroHealthItem(upgradeData[randomTypes].amount));
                     break;
-                case UpgradeType.TokenAdd:
-                    buttonInstance.GetComponent<UpgradeSelectButton>().GetButton().onClick
-                .AddListener(() => TokenAddItem(upgradeData[randomTypes].amount));
 
-                    break;
                 default:
                     break;
             }
         }
     }
 
-    public void TowerUpgradeHealthItem(int amount)
+    public void AddGold(int amount)
     {
-        towerHealthItem?.Invoke(amount);
+        addGold?.Invoke(amount);
+        DataManager.instance.AddGold(amount);
         PowerUpPanelOpen();
 
     }
-    public void HookLenghtUpgrade()
+    public void AddCapacity(int amount)
     {
-        hookLenghtItem?.Invoke();
+        addCapacity?.Invoke(amount);
         PowerUpPanelOpen();
 
     }
@@ -92,9 +85,10 @@ public class UpgradeSelectManager : MonoBehaviour
         PowerUpPanelOpen();
 
     }
-    public void TokenAddItem(int amount)
+    public void AddUpgradeToken(int amount)
     {
-        tokenAddItem?.Invoke(amount);
+        addUpgradeToken?.Invoke(amount);
+        DataManager.instance.AddHeroToken(amount);
         PowerUpPanelOpen();
     }
     public void HeroDamageItem(int amount)

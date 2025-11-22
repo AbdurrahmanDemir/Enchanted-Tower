@@ -40,7 +40,7 @@ public abstract class Hero : MonoBehaviour, IDamageable
     public Vector2 scaleReduction = new Vector3(0.9f, 0.9f, 1f);
 
     [Header("Action")]
-    protected bool onThrow = false;
+    protected bool heroStopped = false;
     public static Action OnAnyHeroHealthChanged;
 
   
@@ -49,8 +49,10 @@ public abstract class Hero : MonoBehaviour, IDamageable
         UpgradeSelectManager.heroDamageItem += PowerUpHeroDamage;
         UpgradeSelectManager.heroHealthItem += PowerUpHeroHealth;
 
-        UpgradeSelectManager.onPowerUpPanelOpened += OnThrowStartingCallBack;
-        UpgradeSelectManager.onPowerUpPanelClosed += OnThrowEndingCallBack;
+        UpgradeSelectManager.onPowerUpPanelOpened += StopTheHero;
+        UpgradeSelectManager.onPowerUpPanelClosed += FinishStoppingHero;
+
+        UIManager.gameOver += StopTheHero;
 
         heroName = heroSO.heroName;
         heroImage = heroSO.heroImage;
@@ -79,8 +81,10 @@ public abstract class Hero : MonoBehaviour, IDamageable
         UpgradeSelectManager.heroDamageItem -= PowerUpHeroDamage;
         UpgradeSelectManager.heroHealthItem -= PowerUpHeroHealth;
 
-        UpgradeSelectManager.onPowerUpPanelOpened -= OnThrowStartingCallBack;
-        UpgradeSelectManager.onPowerUpPanelClosed -= OnThrowEndingCallBack;
+        UpgradeSelectManager.onPowerUpPanelOpened -= StopTheHero;
+        UpgradeSelectManager.onPowerUpPanelClosed -= FinishStoppingHero;
+
+        UIManager.gameOver -= StopTheHero;
 
 
 
@@ -107,7 +111,7 @@ public abstract class Hero : MonoBehaviour, IDamageable
 
     protected virtual void Update()
     {
-        if (onThrow) return;
+        if (heroStopped) return;
 
         if (currentTarget == null)
         {
@@ -232,16 +236,33 @@ public abstract class Hero : MonoBehaviour, IDamageable
         damage += amount;
     }
 
-    public void OnThrowStartingCallBack()
+    public void StopTheHero()
     {
-        onThrow = true;
-        Debug.Log("Avtipn çalýþtý" + onThrow);
-    }
-    public void OnThrowEndingCallBack()
-    {
-        onThrow = false;
+        heroStopped = true;
+        if (agent != null)
+        {
+            agent.isStopped = true;
+            agent.velocity = Vector3.zero;
+        }
 
-        Debug.Log("Avtipn çalýþtý" + onThrow);
+        if (animator != null)
+        {
+            animator.speed = 0f;
+        }
+    }
+    public void FinishStoppingHero()
+    {
+        heroStopped = false;
+
+        if (agent != null)
+        {
+            agent.isStopped = false;
+        }
+
+        if (animator != null)
+        {
+            animator.speed = 1f;
+        }
 
     }
     public bool IsFullHealth()

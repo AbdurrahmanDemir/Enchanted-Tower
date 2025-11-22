@@ -39,6 +39,18 @@ public class PlacementController : MonoBehaviour
 
     private List<int> purchasedCardIndexes = new List<int>();
 
+
+    private void Awake()
+    {
+        UpgradeSelectManager.addCapacity += AddCapacityPowerUp;
+
+    }
+    private void OnDestroy()
+    {
+        UpgradeSelectManager.addCapacity -= AddCapacityPowerUp;
+
+    }
+
     private void Start()
     {
         LoadPurchasedHeroes();
@@ -203,6 +215,12 @@ public class PlacementController : MonoBehaviour
             maxCapacity += 1;
             capacityText.text = $"{currentUsedCapacity} / {maxCapacity}";
         }
+    }
+    public void AddCapacityPowerUp(int amount)
+    {
+            maxCapacity += amount;
+            capacityText.text = $"{currentUsedCapacity} / {maxCapacity}";
+        
     }
 
     private void ReplaceCard(PlacementHeroData placedUnit)

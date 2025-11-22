@@ -49,32 +49,35 @@ public class MenuHeroCardSO : ScriptableObject
     {
         return PlayerPrefs.GetInt($"{cardName}_Damage", damage);
     }
-    public float GetUpgradeCost()
+    public int GetUpgradeCost()
     {
-        return PlayerPrefs.GetFloat($"{cardName}_UpgradeCost", baseUpgradeCost);
+        return PlayerPrefs.GetInt($"{cardName}_UpgradeCost", (int)baseUpgradeCost);
     }
+
     public void UpgradeHero()
     {
         int currentDamage = GetCurrentDamage();
-        float upgradeCost = GetUpgradeCost();
+        int upgradeCost = GetUpgradeCost();   
         int currentHealth = GetCurrentHealth();
         int upgradeLevel = PlayerPrefs.GetInt($"{cardName}_UpgradeLevel", 1);
 
-        if (DataManager.instance.TryPurchaseHeroUpgradeToken((int)upgradeCost))
+        if (DataManager.instance.TryPurchaseHeroUpgradeToken(upgradeCost))
         {
             int newDamage = currentDamage + 5;
-            float newUpgradeCost = upgradeCost * 1.5f;
             int newHealth = currentHealth + 50;
+
+            int newUpgradeCost = Mathf.RoundToInt(upgradeCost * 1.5f);
 
             upgradeLevel++;
 
             PlayerPrefs.SetInt($"{cardName}_Damage", newDamage);
             PlayerPrefs.SetInt($"{cardName}_Health", newHealth);
-            PlayerPrefs.SetFloat($"{cardName}_UpgradeCost", newUpgradeCost);
+            PlayerPrefs.SetInt($"{cardName}_UpgradeCost", newUpgradeCost);
             PlayerPrefs.SetInt($"{cardName}_UpgradeLevel", upgradeLevel);
             PlayerPrefs.Save();
         }
     }
+
 }
 public enum CardType
 {

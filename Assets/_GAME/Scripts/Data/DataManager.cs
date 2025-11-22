@@ -126,7 +126,7 @@ public class DataManager : MonoBehaviour
         }
         else
         {
-            PopUpController.instance.OpenPopUp("NOT ENOUGH ENERGY");
+            PopUpController.instance.OpenPopUp("NOT ENOUGH GEM");
         }
         return false;
     }

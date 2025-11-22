@@ -206,8 +206,36 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         }
     }
 
-    public void StopTheEnemy() => enemyStopped = true;
-    public void FinishStoppingEnemy() => enemyStopped = false;
+    public void StopTheEnemy()
+    {
+        enemyStopped = true;
+
+        if (agent != null)
+        {
+            agent.isStopped = true;
+            agent.velocity = Vector3.zero;
+        }
+
+        if (animator != null)
+        {
+            animator.speed = 0f;
+        }
+    }
+
+    public void FinishStoppingEnemy()
+    {
+        enemyStopped = false;
+
+        if (agent != null)
+        {
+            agent.isStopped = false;
+        }
+
+        if (animator != null)
+        {
+            animator.speed = 1f;
+        }
+    }
     public int GetCurrentHealth() { return health; }
     public void ResetStats()
     {

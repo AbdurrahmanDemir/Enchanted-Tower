@@ -9,7 +9,7 @@ public class TreeGolem : Hero
 
     private void Update()
     {
-        if (onThrow) return;
+        if (heroStopped) return;
 
         GameObject target = FindClosestInjuredHero();
         if (target == null)
