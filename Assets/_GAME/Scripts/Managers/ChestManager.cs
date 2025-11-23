@@ -67,6 +67,10 @@ public class ChestManager : MonoBehaviour
     public void EpicChest() => OpenGemChest(epicChestConfig, true, rewardContainersParentShop, rewardPopUpShop);
     public void LegendaryBox() => OpenGemChest(legendaryChestConfig, true, rewardContainersParentShop, rewardPopUpShop);
 
+    public void GoldenChestFree() => OpenChest(goldenChestConfig, true, rewardContainersParentShop, rewardPopUpShop);
+    public void EpicChestFree() => OpenChest(epicChestConfig, true, rewardContainersParentShop, rewardPopUpShop);
+    public void LegendaryChestFree() => OpenChest(legendaryChestConfig, true, rewardContainersParentShop, rewardPopUpShop);
+
     private void OpenGoldChest(ChestConfig config, bool requiresPurchase, Transform containerParent, GameObject popUp)
     {
         if (requiresPurchase && !DataManager.instance.TryPurchaseGold(config.price)) return;
@@ -88,6 +92,18 @@ public class ChestManager : MonoBehaviour
     {
         if (requiresPurchase && !DataManager.instance.TryPurchaseEnergy(config.price)) return;
 
+        containerParent.Clear();
+        List<(RewardType type, int amount)> rewards = GenerateRewards(config);
+
+        foreach (var r in rewards)
+            GiveReward(r.type, r.amount);
+
+        TogglePanel(popUp);
+        StartCoroutine(ShowRewardsSequentially(rewards, containerParent));
+    }
+
+    private void OpenChest(ChestConfig config, bool requiresPurchase, Transform containerParent, GameObject popUp)
+    {
         containerParent.Clear();
         List<(RewardType type, int amount)> rewards = GenerateRewards(config);
 
