@@ -22,7 +22,7 @@ MonoBehaviour:
   cooldown: 2
   moveSpeed: 0.4
   undergroundRange: -50
-  purchasePrice: 100
+  purchasePrice: 30000
   requiresPurchase: 1
   specialStatName: Freeze Duration
   specialStat: 3

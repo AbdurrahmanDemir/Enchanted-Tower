@@ -15,7 +15,10 @@ public class RewardedAdController : MonoBehaviour
 
     public RewardedAd _rewardedAd;
 
-    
+    private void Start()
+    {
+        LoadRewardedAd();
+    }
 
     /// <summary>
     /// Ödüllü reklamý yükler.

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SeasonPass : MonoBehaviour
 {
     [SerializeField] private ChestManager chestManager;
-
+    [SerializeField] private RewardedAdController rewardedAdController;
     [Header("Pass")]
     public PassSegment[] freeSeasonPass;
     public PassSegment[] goldenSeasonPass;
@@ -174,6 +174,8 @@ public class SeasonPass : MonoBehaviour
 
     private void ClaimGoldenReward(PassReward type, int index, int amount, GameObject prefabs, string passKey)
     {
+        rewardedAdController.ShowRewardedAd();
+
         if (PlayerPrefs.HasKey(passKey + index))
         {
             PopUpController.instance.OpenPopUp("You've already received this reward.");

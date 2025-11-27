@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour
     [Header("Game State")]
     public static Action gameOver;
 
-
+    [SerializeField] InterstitialAdController interstitialAdController;
     private void Start()
     {
         GameUIStageChanged(UIGameStage.Menu);
@@ -79,6 +79,8 @@ public class UIManager : MonoBehaviour
         //towerController.ResetTower();
         gameManager.PowerUpReset();
 
+        interstitialAdController.ShowInterstitialAd();
+
         SceneManager.LoadScene(0);
     }
 
@@ -116,8 +118,8 @@ public class UIManager : MonoBehaviour
 
     public void GameWinButton()
     {
-        //towerController.ResetTower();
         gameManager.PowerUpReset();
+        interstitialAdController.ShowInterstitialAd();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
 
@@ -177,7 +179,15 @@ public class UIManager : MonoBehaviour
     {
         panel.transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InBack).OnComplete(() => panel.SetActive(false));
     }
-
+    public void DiscordLink()
+    {
+        Application.OpenURL("https://discord.gg/f2vDJdq6d5");
+        if (!PlayerPrefs.HasKey("discordGift"))
+        {
+            DataManager.instance.AddGold(500);
+            PlayerPrefs.SetInt("discordGift", 1);
+        }
+    }
 }
 public enum UIGameStage
 {

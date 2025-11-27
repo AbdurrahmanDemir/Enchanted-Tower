@@ -22,7 +22,7 @@ MonoBehaviour:
   cooldown: 2
   moveSpeed: 1
   undergroundRange: -50
-  purchasePrice: 1000
+  purchasePrice: 30000
   requiresPurchase: 1
   specialStatName: Health
   specialStat: 3

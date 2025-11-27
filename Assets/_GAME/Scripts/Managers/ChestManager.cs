@@ -67,6 +67,8 @@ public class ChestManager : MonoBehaviour
     public void EpicChest() => OpenGemChest(epicChestConfig, true, rewardContainersParentShop, rewardPopUpShop);
     public void LegendaryBox() => OpenGemChest(legendaryChestConfig, true, rewardContainersParentShop, rewardPopUpShop);
 
+    public void WoodenChestFree() => OpenChest(woodenChestConfig, true, rewardContainersParentShop, rewardPopUpShop);
+    public void SilverChestFree() => OpenChest(silverChestConfig, true, rewardContainersParentShop, rewardPopUpShop);
     public void GoldenChestFree() => OpenChest(goldenChestConfig, true, rewardContainersParentShop, rewardPopUpShop);
     public void EpicChestFree() => OpenChest(epicChestConfig, true, rewardContainersParentShop, rewardPopUpShop);
     public void LegendaryChestFree() => OpenChest(legendaryChestConfig, true, rewardContainersParentShop, rewardPopUpShop);

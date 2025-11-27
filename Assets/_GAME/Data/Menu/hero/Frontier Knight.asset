@@ -22,7 +22,7 @@ MonoBehaviour:
   cooldown: 0.5
   moveSpeed: 0.7
   undergroundRange: -30
-  purchasePrice: 500
+  purchasePrice: 60000
   requiresPurchase: 1
   specialStatName: He has no special powers.
   specialStat: 0

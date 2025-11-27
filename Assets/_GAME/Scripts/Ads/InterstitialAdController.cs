@@ -15,6 +15,12 @@ public class InterstitialAdController : MonoBehaviour
 
     private InterstitialAd _interstitialAd;
 
+
+    private void Start()
+    {
+        LoadInterstitialAd();
+    }
+
     /// <summary>
     /// Geçiþ reklamýný yükler.
     /// </summary>
