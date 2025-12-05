@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 public abstract class Tower : MonoBehaviour, IDamageable
 {
-    public TeamType GetTeam() => TeamType.Enemy;
+    public TeamType GetTeam() => TeamType.Building;
     [Header("General Settings")]
     public TowerData towerData;
     public LayerMask targetMask;

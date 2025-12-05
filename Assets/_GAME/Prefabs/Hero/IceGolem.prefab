@@ -199,7 +199,7 @@ MonoBehaviour:
   heroSO: {fileID: 11400000, guid: 19f1dcb183dff49429b015119c07d8a3, type: 2}
   targetLayerMask:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 64
   health: 0
   scaleReduction: {x: 0.9, y: 0.9}
   placementData: {fileID: 0}

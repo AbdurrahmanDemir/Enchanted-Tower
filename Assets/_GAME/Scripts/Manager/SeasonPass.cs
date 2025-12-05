@@ -212,15 +212,15 @@ public class SeasonPass : MonoBehaviour
                 break;
 
             case PassReward.GoldenChest:
-                chestManager.GoldenChest();
+                chestManager.GoldenChestFree();
                 break;
 
             case PassReward.EpicChest:
-                chestManager.EpicChest();
+                chestManager.EpicChestFree();
                 break;
 
             case PassReward.LegendaryChest:
-                chestManager.LegendaryBox();
+                chestManager.LegendaryChestFree();
                 break;
             case PassReward.HeroUpgradeToken:
                 DataManager.instance.AddHeroToken(amount);

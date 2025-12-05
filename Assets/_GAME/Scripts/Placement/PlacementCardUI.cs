@@ -20,7 +20,7 @@ public class PlacementCardUI : MonoBehaviour
     {
         cardNameText.text = name;
         cardIconImage.sprite = icon;
-        cardCostText.text = cost.ToString();
+        //cardCostText.text = cost.ToString();
         cardSizeText.text = size.ToString();
         //switch (type)
         //{

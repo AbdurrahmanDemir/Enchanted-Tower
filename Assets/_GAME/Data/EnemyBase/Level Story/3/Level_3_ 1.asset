@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857c57952660309449fe3b118ba9871b, type: 3}
+  m_Name: Level_3_ 1
+  m_EditorClassIdentifier: 
+  baseName: 14
+  cardDescription: "At night the soldiers hear strange whispers \u2014\nthe psychic
+    echoes of people trapped in the Crimson Court\u2019s spells.\nFear spreads like
+    wildfire.\nKaelen must keep his army steady."
+  episodeDate: Year 1025, 8th Moon
+  levelType: 0

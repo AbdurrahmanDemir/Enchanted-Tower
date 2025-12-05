@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 6796921861341037847}
   m_Layer: 8
   m_Name: Bomb Tower
-  m_TagString: Enemy
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,8 +104,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.02, y: 2.28, z: 0}
-  m_LocalScale: {x: 1.2903409, y: 1.2903409, z: 1.2903409}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5524245504798100987}
   - {fileID: 4692389244264423205}
@@ -223,7 +223,7 @@ MonoBehaviour:
   towerData: {fileID: 11400000, guid: 7dec8756b173f3144ace9d3276823d2b, type: 2}
   targetMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
   firePoint: {fileID: 5524245504798100987}
   scaleReduction: {x: 0.9, y: 0.9}
   bullet: {fileID: 2078705761352428573, guid: 03718c121a6b48d4191940accd04c770, type: 3}

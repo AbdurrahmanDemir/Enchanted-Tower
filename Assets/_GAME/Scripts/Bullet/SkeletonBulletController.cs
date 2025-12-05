@@ -85,11 +85,19 @@ public class SkeletonBulletController : MonoBehaviour
                 damageable.TakeDamage(enemySO.damage);
             }
             shouldRelease = true;
-        }       
-        else if (hitObj.CompareTag("Wall") || hitObj.CompareTag("Obstacle"))
+        }
+        if (hitObj.CompareTag("Tower"))
         {
+            if (hitObj.TryGetComponent<IDamageable>(out var damageable) && damageable.GetTeam() == TeamType.Building)
+            {
+                damageable.TakeDamage(enemySO.damage);
+            }
             shouldRelease = true;
         }
+        //else if (hitObj.CompareTag("Wall") || hitObj.CompareTag("Obstacle"))
+        //{
+        //    shouldRelease = true;
+        //}
 
         if (shouldRelease)
         {

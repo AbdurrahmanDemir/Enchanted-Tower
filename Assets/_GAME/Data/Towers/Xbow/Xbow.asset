@@ -16,4 +16,4 @@ MonoBehaviour:
   range: 5
   attackCooldown: 0.3
   damage: 5
-  targetingType: 1
+  targetingType: 0

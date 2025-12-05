@@ -4,6 +4,7 @@ using System;
 using DG.Tweening;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public abstract class Enemy : MonoBehaviour, IDamageable
 {
@@ -27,8 +28,10 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     public float moveSpeed;
     public int health;
     public float cooldown;
-    public float detectionRange = 5f;
-
+    public float detectionRange = 50f;
+    [Header("Target Update")]
+    private float targetUpdateInterval = 0.2f;
+    private float lastTargetUpdateTime = 0f;
     [Header("Elements")]
     public Animator animator;
     private Slider healthSlider;
@@ -100,14 +103,24 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     {
         if (enemyStopped) return;
 
-        if (currentTarget == null)
+        GameObject potentialTarget = FindTargetInDetectionRange();
+
+        if (potentialTarget != null)
         {
-            currentTarget = FindTargetInDetectionRange();
+            if (currentTarget == null ||
+                Vector2.Distance(transform.position, potentialTarget.transform.position) <
+                Vector2.Distance(transform.position, currentTarget.transform.position))
+            {
+                currentTarget = potentialTarget;
+            }
+        }
+        else
+        {
+            currentTarget = null;
         }
 
         if (currentTarget != null)
         {
-            // Yön dönüþü
             if (currentTarget.transform.position.x < transform.position.x)
                 transform.rotation = Quaternion.Euler(0, -180, 0);
             else
@@ -115,7 +128,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
             float distanceToTarget = Vector2.Distance(transform.position, currentTarget.transform.position);
 
-            if (distanceToTarget > detectionRange * 1.5f)
+            if (distanceToTarget > 15f)
             {
                 currentTarget = null;
                 animator.Play("idle");
@@ -125,7 +138,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
             if (distanceToTarget <= range)
             {
-                agent.SetDestination(transform.position); // dur
+                agent.SetDestination(transform.position);
                 Attack(currentTarget);
             }
             else
@@ -140,10 +153,9 @@ public abstract class Enemy : MonoBehaviour, IDamageable
             agent.SetDestination(transform.position);
         }
     }
-
     private GameObject FindTargetInDetectionRange()
     {
-        Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, detectionRange, targetLayerMask);
+        Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, 50f, targetLayerMask);
         GameObject closestTarget = null;
         float closestDistance = Mathf.Infinity;
 
@@ -198,8 +210,13 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
         if (health <= 0)
         {
-            if (SceneManager.GetActiveScene().name == "PixelGame")
-                EnemyBaseManager.instance.UnRegisterObject();
+            //if (SceneManager.GetActiveScene().name == "PixelGame")
+            //    EnemyBaseManager.instance.UnRegisterObject();
+
+            if (WaveManager.instance != null)
+            {
+                WaveManager.instance.OnEnemyDied();
+            }
 
             onDead?.Invoke(transform.position);
             Destroy(gameObject);
@@ -247,7 +264,24 @@ public abstract class Enemy : MonoBehaviour, IDamageable
             agent.speed = moveSpeed;
         }
     }
+    bool isFrozen = false;
 
+    public void Freeze(float duration)
+    {
+        if (!isFrozen)
+        {
+            isFrozen = true;
+            moveSpeed = 0f;
+            StartCoroutine(UnfreezeAfter(duration));
+        }
+    }
+
+    private IEnumerator UnfreezeAfter(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        moveSpeed = enemySO.moveSpeed;
+        isFrozen = false;
+    }
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {

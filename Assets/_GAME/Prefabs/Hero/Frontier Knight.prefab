@@ -303,7 +303,7 @@ MonoBehaviour:
   heroSO: {fileID: 11400000, guid: 154f2659ba8e9f046be37f8f4a6742f3, type: 2}
   targetLayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 64
   health: 0
   scaleReduction: {x: 0.9, y: 0.9}
   placementData: {fileID: 0}

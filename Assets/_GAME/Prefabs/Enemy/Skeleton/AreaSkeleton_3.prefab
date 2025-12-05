@@ -625,7 +625,7 @@ MonoBehaviour:
   enemySO: {fileID: 11400000, guid: 64d80c8567c96d046a90948f50158939, type: 2}
   targetLayerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
   enemyName: 
   enemyImage: {fileID: 0}
   attackType: 

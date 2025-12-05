@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857c57952660309449fe3b118ba9871b, type: 3}
+  m_Name: Level_3_ 5
+  m_EditorClassIdentifier: 
+  baseName: 18
+  cardDescription: 'The outer stronghold is a crimson stone labyrinth filled with
+    illusions and ancient magic.
+
+    Soldiers lose sense of time and direction.
+
+    Kaelen
+    fights through to reach the Crimson Gate at the center.'
+  episodeDate: Year 1025, 10th Moon
+  levelType: 0

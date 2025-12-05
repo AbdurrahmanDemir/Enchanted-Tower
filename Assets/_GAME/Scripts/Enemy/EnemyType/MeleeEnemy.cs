@@ -20,7 +20,7 @@ public class MeleeEnemy : Enemy
         {
             if (target.TryGetComponent<IDamageable>(out var damageable))
             {
-                if (damageable.GetTeam() == TeamType.Hero)
+                if (damageable.GetTeam() == TeamType.Building)
                     damageable.TakeDamage(enemySO.damage);
             }
         }

@@ -4,12 +4,15 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using DG.Tweening;
+using DG.Tweening.Core.Easing;
+using System;
 
 public class LevelMapManager : MonoBehaviour
 {
 
     [SerializeField] private EnemyBaseManager enemyBaseManager;
     [SerializeField] private UIManager uiManager;
+    [SerializeField] private WaveManager waveManager;
     [Header("Elements")]
     [SerializeField] private int levelEpisodeIndex;
     [Header("Settings")]
@@ -23,6 +26,8 @@ public class LevelMapManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI levelDescription;
     [SerializeField] private Button levelPlayButton;
 
+
+
     private void Start()
     {
         levelEpisodeIndex = PlayerPrefs.GetInt("LevelEpisodeIndex", 0);
@@ -30,6 +35,7 @@ public class LevelMapManager : MonoBehaviour
 
         int currentLevel = GetCurrentLevelForEpisode(levelEpisodeIndex);
         Debug.Log($"Episode {levelEpisodeIndex} - Current Level: {currentLevel}");
+
     }
 
     public void LevelMapButtonUpdate()
@@ -55,7 +61,7 @@ public class LevelMapManager : MonoBehaviour
             {
                 if (isActive)
                 {
-                    buttonImage.color = Color.white;
+                    //buttonImage.color = Color.white;
                 }
                 else
                 {
@@ -133,6 +139,7 @@ public class LevelMapManager : MonoBehaviour
 
             int realAssetIndex = CalculateAssetIndex(levelEpisodeIndex, index);
             enemyBaseManager.LoadLevel(realAssetIndex);
+            waveManager.StartWaves(realAssetIndex);
             uiManager.GameUIStageChanged(UIGameStage.Game);
             levelEpisodes[levelEpisodeIndex].episodeLevelMap.SetActive(false);
         });

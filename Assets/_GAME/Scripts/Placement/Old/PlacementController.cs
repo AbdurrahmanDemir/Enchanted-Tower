@@ -11,9 +11,11 @@ public class PlacementController : MonoBehaviour
 {
     [SerializeField] private UIManager uiManager;
 
-    [Header("Settings")]
-    public int maxCapacity = 30;
-    public int currentUsedCapacity = 0;
+    [Header("Elixir Settings")]
+    public float maxElixir = 10f;
+    public float currentElixir = 5f; 
+    public float elixirRegenRate = 1f; 
+    private float elixirRegenTimer = 0f;
 
     [Header("Card Panel")]
     [SerializeField] PlacementHeroData[] cards;
@@ -30,7 +32,8 @@ public class PlacementController : MonoBehaviour
     private List<Hero> placedUnits = new List<Hero>();
 
     [Header("UI")]
-    [SerializeField] private TextMeshProUGUI capacityText;
+    [SerializeField] private Slider elixirSlider;
+    [SerializeField] private TextMeshProUGUI elixirText;
 
     private int[] activeCardIndexes = new int[3];
     private PlacementCardUI currentlySelectedCard;
@@ -39,22 +42,82 @@ public class PlacementController : MonoBehaviour
 
     private List<int> purchasedCardIndexes = new List<int>();
 
-
     private void Awake()
     {
-        UpgradeSelectManager.addCapacity += AddCapacityPowerUp;
-
+        UpgradeSelectManager.addCapacity += AddElixirPowerUp;
     }
+
     private void OnDestroy()
     {
-        UpgradeSelectManager.addCapacity -= AddCapacityPowerUp;
-
+        UpgradeSelectManager.addCapacity -= AddElixirPowerUp;
     }
 
     private void Start()
     {
         LoadPurchasedHeroes();
         GenerateInitialCards();
+        UpdateElixirUI();
+    }
+
+    private void Update()
+    {
+        // Ýksir dolumu
+        RegenerateElixir();
+
+        if (isPlacing && Input.GetMouseButtonDown(0))
+        {
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, groundLayer);
+
+                if (hit.collider != null && CanPlaceUnit(selectedUnitData))
+                {
+                    var unitObj = Instantiate(selectedUnitData.prefab, hit.point, Quaternion.identity, createTransform);
+                    Hero heroComponent = unitObj.GetComponent<Hero>();
+                    if (heroComponent != null) heroComponent.Initialize(selectedUnitData);
+
+                    PlaceUnit(selectedUnitData);
+                    ReplaceCard(selectedUnitData);
+                }
+            }
+        }
+
+        if (CheckLoseCondition() && !GameOver)
+        {
+            GameOver = true;
+            Debug.Log("bitti oyun");
+        }
+    }
+
+    private void RegenerateElixir()
+    {
+        if (currentElixir < maxElixir)
+        {
+            elixirRegenTimer += Time.deltaTime;
+
+            // Her saniye belirtilen miktarda iksir ekle
+            if (elixirRegenTimer >= 1f)
+            {
+                currentElixir = Mathf.Min(currentElixir + elixirRegenRate, maxElixir);
+                elixirRegenTimer = 0f;
+                UpdateElixirUI();
+            }
+        }
+    }
+
+    private void UpdateElixirUI()
+    {
+        if (elixirSlider != null)
+        {
+            elixirSlider.maxValue = maxElixir;
+            elixirSlider.value = currentElixir;
+        }
+
+        if (elixirText != null)
+        {
+            elixirText.text = Mathf.FloorToInt(currentElixir).ToString();
+        }
     }
 
     private void LoadPurchasedHeroes()
@@ -104,46 +167,11 @@ public class PlacementController : MonoBehaviour
         GameObject cardObj = Instantiate(CardPrefab, cardParent);
         PlacementCardUI cardScript = cardObj.GetComponent<PlacementCardUI>();
         var data = cards[cardIndex];
-        cardScript.Config(data.unitName, data.cardIcon, data.size, data.cost);
+        cardScript.Config(data.unitName, data.cardIcon, data.elixirCost, data.cost);
         cardScript.cardIndex = cardIndex;
 
         Button cardButton = cardScript.selectButton;
         cardButton.onClick.AddListener(() => SelectUnit(cardIndex, cardScript));
-    }
-
-    private void Update()
-    {
-        if (isPlacing && Input.GetMouseButtonDown(0))
-        {
-            if (!EventSystem.current.IsPointerOverGameObject())
-            {
-                Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, groundLayer);
-
-                if (hit.collider != null && CanPlaceUnit(selectedUnitData))
-                {
-                    var unitObj = Instantiate(selectedUnitData.prefab, hit.point, Quaternion.identity, createTransform);
-                    Hero heroComponent = unitObj.GetComponent<Hero>();
-                    if (heroComponent != null) heroComponent.Initialize(selectedUnitData);
-
-                    PlaceUnit(selectedUnitData);
-                    ReplaceCard(selectedUnitData);
-                }
-            }
-        }
-
-        if (CheckLoseCondition() && !GameOver)
-        {
-            GameOver = true;
-            uiManager.GameLosePanel();
-            Debug.Log("bitti oyun");
-        }
-    }
-
-    public void ReduceCapacity(int size)
-    {
-        currentUsedCapacity = Mathf.Max(0, currentUsedCapacity - size);
-        capacityText.text = $"{currentUsedCapacity} / {maxCapacity}";
     }
 
     public void SelectUnit(int unitData, PlacementCardUI placementCardUI)
@@ -165,17 +193,19 @@ public class PlacementController : MonoBehaviour
 
     public bool CanPlaceUnit(PlacementHeroData unit)
     {
-        return (currentUsedCapacity + unit.size <= maxCapacity)
+        return (currentElixir >= unit.elixirCost)
             && (DataManager.instance.GetGoldCount() >= unit.cost);
     }
 
     public void PlaceUnit(PlacementHeroData unit)
     {
-        currentUsedCapacity += unit.size;
+        // Ýksir harca
+        currentElixir -= unit.elixirCost;
+        currentElixir = Mathf.Max(0, currentElixir);
 
         DataManager.instance.TryPurchaseGold(unit.cost);
 
-        capacityText.text = $"{currentUsedCapacity} / {maxCapacity}";
+        UpdateElixirUI();
 
         if (currentlySelectedCard != null)
         {
@@ -208,19 +238,17 @@ public class PlacementController : MonoBehaviour
         return noUnitsOnScene && noPlayableCards;
     }
 
-    public void AddCapacity()
+    // Güç arttýrmalarý için
+    public void AddElixirPowerUp(int amount)
     {
-        if (DataManager.instance.TryPurchaseGold(100))
-        {
-            maxCapacity += 1;
-            capacityText.text = $"{currentUsedCapacity} / {maxCapacity}";
-        }
+        maxElixir += amount;
+        UpdateElixirUI();
     }
-    public void AddCapacityPowerUp(int amount)
+
+    // Ýksir hýzýný arttýrma power-up'ý
+    public void IncreaseElixirRegenRate(float amount)
     {
-            maxCapacity += amount;
-            capacityText.text = $"{currentUsedCapacity} / {maxCapacity}";
-        
+        elixirRegenRate += amount;
     }
 
     private void ReplaceCard(PlacementHeroData placedUnit)

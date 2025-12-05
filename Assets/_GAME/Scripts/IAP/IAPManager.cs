@@ -105,12 +105,12 @@ public class IAPManager : MonoBehaviour, IStoreListener
             DataManager.instance.AddGold(81250);
             return PurchaseProcessingResult.Complete;
         }
-        else if (string.Equals(e.purchasedProduct.definition.id, product[4], StringComparison.Ordinal))//175000 altýn paketi
+        else if (string.Equals(e.purchasedProduct.definition.id, product[5], StringComparison.Ordinal))//175000 altýn paketi
         {
             DataManager.instance.AddGold(175000);
             return PurchaseProcessingResult.Complete;
         }
-        else if (string.Equals(e.purchasedProduct.definition.id, product[5], StringComparison.Ordinal)) //started pack
+        else if (string.Equals(e.purchasedProduct.definition.id, product[6], StringComparison.Ordinal)) //started pack
         {
             DataManager.instance.AddGold(1000);
             DataManager.instance.AddEnergy(50);
@@ -120,7 +120,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
 
             return PurchaseProcessingResult.Complete;
         }
-        else if (string.Equals(e.purchasedProduct.definition.id, product[6], StringComparison.Ordinal)) //legendary pack
+        else if (string.Equals(e.purchasedProduct.definition.id, product[7], StringComparison.Ordinal)) //legendary pack
         {
             DataManager.instance.AddEnergy(300);
             DataManager.instance.AddHeroToken(3000);
@@ -130,7 +130,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
 
             return PurchaseProcessingResult.Complete;
         }
-        else if (string.Equals(e.purchasedProduct.definition.id, product[7], StringComparison.Ordinal)) //started pack
+        else if (string.Equals(e.purchasedProduct.definition.id, product[8], StringComparison.Ordinal)) //started pack
         {
             //ShopManager.instance.shopPlayerBuy(7);
             //ShopManager.instance.shopPlayerBuy(19);
@@ -140,19 +140,19 @@ public class IAPManager : MonoBehaviour, IStoreListener
 
             return PurchaseProcessingResult.Complete;
         }
-        else if (string.Equals(e.purchasedProduct.definition.id, product[8], StringComparison.Ordinal))//100000 altýn paketi
+        else if (string.Equals(e.purchasedProduct.definition.id, product[9], StringComparison.Ordinal))//100000 altýn paketi
         {
             DataManager.instance.AddGold(500000);
 
             return PurchaseProcessingResult.Complete;
         }
-        else if (string.Equals(e.purchasedProduct.definition.id, product[9], StringComparison.Ordinal))//premieum paketi
+        else if (string.Equals(e.purchasedProduct.definition.id, product[10], StringComparison.Ordinal))//premieum paketi
         {
             DataManager.instance.AddGold(150);
 
             return PurchaseProcessingResult.Complete;
         }
-        else if (string.Equals(e.purchasedProduct.definition.id, product[10], StringComparison.Ordinal))//premieum paketi
+        else if (string.Equals(e.purchasedProduct.definition.id, product[11], StringComparison.Ordinal))//premieum paketi
         {
             DataManager.instance.AddGold(500);
             DataManager.instance.AddGold(1000000);

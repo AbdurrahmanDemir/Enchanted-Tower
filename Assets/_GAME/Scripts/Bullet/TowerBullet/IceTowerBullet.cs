@@ -38,11 +38,11 @@ public class IceTowerBullet : MonoBehaviour
     {
         if (target.TryGetComponent<IDamageable>(out var damageable))
         {
-            if (damageable.GetTeam() == TeamType.Hero)
+            if (damageable.GetTeam() == TeamType.Enemy)
             {
                 damageable.TakeDamage(TowerData.damage);
 
-                if (target.TryGetComponent<Hero>(out var enemy))
+                if (target.TryGetComponent<Enemy>(out var enemy))
                 {
                     enemy.Freeze(freezeDuration);
                     onBombParticle?.Invoke(enemy.gameObject.transform.position);

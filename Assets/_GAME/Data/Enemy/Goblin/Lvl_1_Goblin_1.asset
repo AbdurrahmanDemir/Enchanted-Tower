@@ -22,3 +22,4 @@ MonoBehaviour:
   range: 0.7
   moveSpeed: 0.5
   cooldown: 0.5
+  scalingConfig: {fileID: 11400000, guid: 393e7fca2e054e842845554844b3ad93, type: 2}

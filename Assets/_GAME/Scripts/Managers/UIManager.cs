@@ -3,12 +3,12 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
 
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private GameManager gameManager;   
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private HeadquartersController headquartersController;
 
     [Header("Elements")]
     [SerializeField] private GameObject menuPanel;
@@ -38,7 +38,15 @@ public class UIManager : MonoBehaviour
     {
         GameUIStageChanged(UIGameStage.Menu);
     }
-  
+
+    private void Awake()
+    {
+        HeadquartersController.onGameLose += GameLosePanel;
+    }
+    private void OnDestroy()
+    {
+        HeadquartersController.onGameLose -= GameLosePanel;
+    }
     public void GameLosePanel()
     {
         Time.timeScale = 1;
@@ -76,7 +84,7 @@ public class UIManager : MonoBehaviour
     {
         GameUIStageChanged(UIGameStage.Menu);
 
-        //towerController.ResetTower();
+        headquartersController.ResetTower();
         gameManager.PowerUpReset();
 
         interstitialAdController.ShowInterstitialAd();
@@ -120,7 +128,9 @@ public class UIManager : MonoBehaviour
     {
         gameManager.PowerUpReset();
         interstitialAdController.ShowInterstitialAd();
+        headquartersController.ResetTower();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
 
 
     }
