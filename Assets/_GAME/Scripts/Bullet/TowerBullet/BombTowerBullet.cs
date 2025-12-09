@@ -47,7 +47,7 @@ public class BombTowerBullet : MonoBehaviour
             {
                 if (damageable.GetTeam() == TeamType.Enemy)
                 {
-                    damageable.TakeDamage(TowerData.damage);
+                    damageable.TakeDamage(TowerData.GetCurrentDamage());
                     onBombParticle?.Invoke(hit.gameObject.transform.position);
 
                 }

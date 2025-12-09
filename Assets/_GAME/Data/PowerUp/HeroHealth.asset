@@ -16,5 +16,5 @@ MonoBehaviour:
   upgradeIcon: {fileID: 21300000, guid: 1681cd1c1893a48cb9f2bea5bbb8bece, type: 3}
   upgradeBg: {fileID: 21300000, guid: 174818656b25145bb87ed63f541f1c13, type: 3}
   upgradeName: HEROES HEALTH
-  upgradeDescription: Increases the health of all heroes by 50
-  amount: 50
+  upgradeDescription: Increases the health of all heroes by 10
+  amount: 10

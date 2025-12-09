@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd25a96bd5861bc4898ce8c4eae25b02, type: 3}
   m_Name: Tower Health
   m_EditorClassIdentifier: 
-  upgradeType: 0
+  upgradeType: 1
   upgradeIcon: {fileID: 21300000, guid: 8d24fea86af604a8eb983fa2bda1efa1, type: 3}
   upgradeBg: {fileID: 21300000, guid: 349353f64dda24aa5b153c752484bd04, type: 3}
   upgradeName: TOWER HEALTH

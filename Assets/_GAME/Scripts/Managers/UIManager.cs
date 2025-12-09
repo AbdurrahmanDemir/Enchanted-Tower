@@ -131,8 +131,6 @@ public class UIManager : MonoBehaviour
         headquartersController.ResetTower();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
-
-
     }
     public void GameUIStageChanged(UIGameStage stage)
     {

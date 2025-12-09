@@ -1,12 +1,13 @@
-using UnityEngine;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class WaveManager : MonoBehaviour
 {
     public static WaveManager instance;
     public UIManager uiManager;
+    public LevelMapManager levelMapManager;
 
     [Header("Elements")]
     [SerializeField] private Wave[] waves;
@@ -29,6 +30,8 @@ public class WaveManager : MonoBehaviour
 
     [Header("Action")]
     private bool onThrow = false;
+
+
 
 
     private void Awake()
@@ -120,13 +123,9 @@ public class WaveManager : MonoBehaviour
 
                 if (currentSegmentIndex >= currentWave.segments.Count)
                 {
-                    Debug.Log("All segments in the wave completed.");
-
-
-
-                    Debug.Log("All waves completed.");
-
                     isTimerOn = false;
+                    Debug.Log("All segments in the wave completed.");
+                    CheckWaveCompleted();
                     return;
                 }
 
@@ -150,6 +149,30 @@ public class WaveManager : MonoBehaviour
 
             if (uiManager != null)
             {
+                int playingEpisode = PlayerPrefs.GetInt("PlayingEpisode", 0);
+                int playingLevel = PlayerPrefs.GetInt("PlayingLevel", 0);
+
+                Debug.Log($"Tamamlanan Episode: {playingEpisode}, Level: {playingLevel}");
+
+                int newLevel = playingLevel + 2;
+                levelMapManager.SetCurrentLevelForEpisode(playingEpisode, newLevel);
+
+                int totalLevelsInEpisode = GetTotalLevelsInEpisode(playingEpisode);
+
+                if (playingLevel >= totalLevelsInEpisode - 1)
+                {
+                    Debug.Log($"Episode {playingEpisode} tamamland?! Yeni episode a??l?yor...");
+
+                    int newEpisodeIndex = playingEpisode + 1;
+                    PlayerPrefs.SetInt("LevelEpisodeIndex", newEpisodeIndex);
+
+                    levelMapManager.SetCurrentLevelForEpisode(newEpisodeIndex, 1);
+
+                    PlayerPrefs.Save();
+
+                    Debug.Log($"Yeni episode a??ld?: {newEpisodeIndex}");
+                }
+
                 uiManager.GameWinPanel();
             }
             else
@@ -157,6 +180,16 @@ public class WaveManager : MonoBehaviour
                 Debug.LogError("uiManager atanmadý!");
             }
         }
+    }
+    private int GetTotalLevelsInEpisode(int episodeIndex)
+    {
+
+        if (levelMapManager != null)
+        {
+            return levelMapManager.GetEpisodeLevelCount(episodeIndex);
+        }
+
+        return 6;
     }
 
     private void StartNextSegment()

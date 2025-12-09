@@ -95,9 +95,7 @@ public class PlacementController : MonoBehaviour
         if (currentElixir < maxElixir)
         {
             elixirRegenTimer += Time.deltaTime;
-
-            // Her saniye belirtilen miktarda iksir ekle
-            if (elixirRegenTimer >= 1f)
+            if (elixirRegenTimer >= 2.5f)
             {
                 currentElixir = Mathf.Min(currentElixir + elixirRegenRate, maxElixir);
                 elixirRegenTimer = 0f;

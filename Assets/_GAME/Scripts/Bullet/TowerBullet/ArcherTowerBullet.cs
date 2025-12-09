@@ -37,7 +37,7 @@ public class ArcherTowerBullet : MonoBehaviour
         {
             if (damageable.GetTeam() == TeamType.Enemy)
             {
-                damageable.TakeDamage(TowerData.damage);
+                damageable.TakeDamage(TowerData.GetCurrentDamage());
             }
         }
     }

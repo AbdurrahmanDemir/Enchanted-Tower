@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79448c26a54945d4382717fa8b4bb0dd, type: 3}
   m_Name: Bomb Tower
   m_EditorClassIdentifier: 
-  health: 2000
+  towerName: Bomb Tower
+  health: 1000
   range: 4
   attackCooldown: 3
   damage: 60

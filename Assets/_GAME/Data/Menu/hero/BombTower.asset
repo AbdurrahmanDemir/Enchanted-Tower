@@ -18,7 +18,7 @@ MonoBehaviour:
   baseUpgradeCost: 100
   range: 4
   damage: 60
-  health: 2000
+  health: 1000
   cooldown: 3
   moveSpeed: 0
   undergroundRange: 0

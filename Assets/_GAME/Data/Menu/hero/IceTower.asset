@@ -17,7 +17,7 @@ MonoBehaviour:
   cardType: 1
   baseUpgradeCost: 100
   range: 5
-  damage: 10
+  damage: 20
   health: 1500
   cooldown: 3.5
   moveSpeed: 0

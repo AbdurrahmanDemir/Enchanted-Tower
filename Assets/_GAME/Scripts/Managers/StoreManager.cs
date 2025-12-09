@@ -49,6 +49,7 @@ public class StoreManager : MonoBehaviour
         if (DataManager.instance.TryPurchaseGold(1500))
         {
             DataManager.instance.AddHeroToken(300);
+            PopUpController.instance.OpenPopUp("SUCCESSFULLY PURCHASED.");
         }
     }
     public void HeroUpgradeToken1500()
@@ -56,6 +57,8 @@ public class StoreManager : MonoBehaviour
         if (DataManager.instance.TryPurchaseGold(5000))
         {
             DataManager.instance.AddHeroToken(1500);
+            PopUpController.instance.OpenPopUp("SUCCESSFULLY PURCHASED.");
+
         }
     }
     public void HeroUpgradeToken10000()
@@ -63,6 +66,8 @@ public class StoreManager : MonoBehaviour
         if (DataManager.instance.TryPurchaseGold(25000))
         {
             DataManager.instance.AddHeroToken(10000);
+            PopUpController.instance.OpenPopUp("SUCCESSFULLY PURCHASED.");
+
         }
     }
     public void Gem50()
@@ -70,6 +75,8 @@ public class StoreManager : MonoBehaviour
         if (DataManager.instance.TryPurchaseGold(1000))
         {
             DataManager.instance.AddEnergy(50);
+            PopUpController.instance.OpenPopUp("SUCCESSFULLY PURCHASED.");
+
         }
     }
 
@@ -78,6 +85,8 @@ public class StoreManager : MonoBehaviour
         if (DataManager.instance.TryPurchaseGold(10000))
         {
             DataManager.instance.AddEnergy(550);
+            PopUpController.instance.OpenPopUp("SUCCESSFULLY PURCHASED.");
+
         }
     }
     public void Gem2000()
@@ -85,6 +94,8 @@ public class StoreManager : MonoBehaviour
         if (DataManager.instance.TryPurchaseGold(30000))
         {
             DataManager.instance.AddEnergy(2000);
+            PopUpController.instance.OpenPopUp("SUCCESSFULLY PURCHASED.");
+
         }
     }
 }

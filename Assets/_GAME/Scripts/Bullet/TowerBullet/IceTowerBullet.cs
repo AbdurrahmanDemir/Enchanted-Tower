@@ -40,7 +40,7 @@ public class IceTowerBullet : MonoBehaviour
         {
             if (damageable.GetTeam() == TeamType.Enemy)
             {
-                damageable.TakeDamage(TowerData.damage);
+                damageable.TakeDamage(TowerData.GetCurrentDamage());
 
                 if (target.TryGetComponent<Enemy>(out var enemy))
                 {

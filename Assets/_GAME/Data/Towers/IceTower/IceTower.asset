@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79448c26a54945d4382717fa8b4bb0dd, type: 3}
   m_Name: IceTower
   m_EditorClassIdentifier: 
+  towerName: Ice Tower
   health: 1500
   range: 5
   attackCooldown: 3.5
-  damage: 10
+  damage: 20
   targetingType: 2

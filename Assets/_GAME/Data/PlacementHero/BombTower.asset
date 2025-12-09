@@ -16,7 +16,7 @@ MonoBehaviour:
   cardIcon: {fileID: 21300000, guid: 28eb140bb5d642045ab8ca0c59641133, type: 3}
   unitType: 1
   prefab: {fileID: 578766004734205452, guid: af7d7b1cf50d9514e832a98bb2dc4855, type: 3}
-  elixirCost: 6
+  elixirCost: 7
   cost: 0
   requiresPurchase: 1
   purchasePrice: 1000
