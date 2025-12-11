@@ -17,8 +17,8 @@ MonoBehaviour:
   enemyLevel: 2
   attackType: Range
   isAreaOfEffect: 1
-  maxHealth: 450
-  damage: 50
+  maxHealth: 600
+  damage: 60
   range: 0.8
   moveSpeed: 0.6
   cooldown: 1

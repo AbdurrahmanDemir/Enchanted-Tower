@@ -142,6 +142,12 @@ public class LevelMapManager : MonoBehaviour
             waveManager.StartWaves(realAssetIndex);
             uiManager.GameUIStageChanged(UIGameStage.Game);
             levelEpisodes[levelEpisodeIndex].episodeLevelMap.SetActive(false);
+
+            if (!PlayerPrefs.HasKey("Tutorial"))
+            {
+                TutorialManager.instance.tutorialPanel2.SetActive(false);
+            }
+
         });
     }
 

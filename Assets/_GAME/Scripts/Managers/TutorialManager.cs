@@ -8,8 +8,8 @@ public class TutorialManager : MonoBehaviour
 
     [Header("Elements")]
     [SerializeField] private GameObject tutorialPanel1;
-    [SerializeField] private GameObject tutorialPanel2;
-    [SerializeField] private GameObject tutorialPanel3;
+    public GameObject tutorialPanel2;
+    public GameObject tutorialPanel3;
     [SerializeField] private GameObject tutorialPanel4;
     [SerializeField] private GameObject tutorialPanel5;
     [SerializeField] private GameObject tutorialPanel6;
@@ -72,14 +72,15 @@ public class TutorialManager : MonoBehaviour
     public void TutorailPanel5()
     {
         ClosePanel(tutorialPanel4);
-        OpenPanel(tutorialPanel5);
+        PlayerPrefs.SetInt("Tutorial", 1);
+        finishTutorial = true;
     }
     public void TutorailPanel6()
     {
         ClosePanel(tutorialPanel5);
         PlayerPrefs.SetInt("Tutorial", 1);
         finishTutorial = true;
-        StartCoroutine(TutorialPanel6());
+        //StartCoroutine(TutorialPanel6());
     }
 
     //public void TutorailPanelOff()
@@ -114,6 +115,9 @@ public class TutorialManager : MonoBehaviour
     {
         return finishTutorial;
     }
+
+
+
 
     private void OpenPanel(GameObject panel)
     {

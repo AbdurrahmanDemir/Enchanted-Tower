@@ -17,7 +17,7 @@ MonoBehaviour:
   enemyLevel: 3
   attackType: Range
   isAreaOfEffect: 1
-  maxHealth: 450
+  maxHealth: 700
   damage: 50
   range: 0.8
   moveSpeed: 0.6

@@ -89,6 +89,11 @@ public class WaveManager : MonoBehaviour
         isTimerOn = true;
         SetupNextSegment();
         waveUI.waveSegmentText.text = "Wave " + currentSegmentIndex + " / " + currentWave.segments.Count;
+
+        if (!PlayerPrefs.HasKey("Tutorial"))
+        {
+            TutorialManager.instance.tutorialPanel3.SetActive(true);
+        }
     }
 
     private void ManageCurrentWave()

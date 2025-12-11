@@ -204,11 +204,11 @@ public class SeasonPass : MonoBehaviour
                 break;
 
             case PassReward.WooodenChest:
-                chestManager.WoodenChestBuy();
+                chestManager.WoodenChestFree();
                 break;
 
             case PassReward.SilverChest:
-                chestManager.SilverChestBuy();
+                chestManager.SilverChestFree();
                 break;
 
             case PassReward.GoldenChest:
