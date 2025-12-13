@@ -4,17 +4,34 @@ using UnityEngine;
 public class AdManager : MonoBehaviour
 {
     private static bool _isInitialized = false;
+    public static AdManager Instance { get; private set; }
 
-    void Awake()
+    private void Awake()
     {
-        if (_isInitialized) return;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        MobileAds.Initialize((InitializationStatus initStatus) =>
+        if (!_isInitialized)
         {
-            Debug.Log("AdMob SDK baþlatýldý (tek sefer).");
-        });
+            MobileAds.Initialize((InitializationStatus initStatus) =>
+            {
+                Debug.Log("AdMob SDK baþlatýldý.");
+                _isInitialized = true;
+            });
+        }
+    }
 
-        _isInitialized = true;
+    public bool ShouldShowAds()
+    {
+        if (RemoveAdsManager.Instance == null)
+            return true;
+
+        return !RemoveAdsManager.Instance.IsAdsPurchased();
     }
 }

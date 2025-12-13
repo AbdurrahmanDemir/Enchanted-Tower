@@ -95,7 +95,7 @@ public class PlacementController : MonoBehaviour
         if (currentElixir < maxElixir)
         {
             elixirRegenTimer += Time.deltaTime;
-            if (elixirRegenTimer >= 2.5f)
+            if (elixirRegenTimer >= 1.8f)
             {
                 currentElixir = Mathf.Min(currentElixir + elixirRegenRate, maxElixir);
                 elixirRegenTimer = 0f;

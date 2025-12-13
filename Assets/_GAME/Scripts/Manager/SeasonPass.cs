@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,11 @@ public class SeasonPass : MonoBehaviour
     public Transform goldenPassTransform;
 
     public Slider trophySlider;
+
+    [Header("Panel")]
+    public GameObject goldenPassDetails;
+    public Button goldenPassButton;
+
 
     [Header("Reward Icons")]
     [SerializeField] private Sprite goldImage;
@@ -60,6 +66,10 @@ public class SeasonPass : MonoBehaviour
         InitializeTrophySlider();
         InitializePassRewards(freeSeasonPass, freePassTransform, freeRewardBackground, true);
         InitializePassRewards(goldenSeasonPass, goldenPassTransform, goldRewardBackground, false);
+
+        if (IsGoldenPassPurchased())
+            goldenPassButton.interactable = false;
+
     }
 
     private void InitializeTrophySlider()
@@ -174,21 +184,27 @@ public class SeasonPass : MonoBehaviour
 
     private void ClaimGoldenReward(PassReward type, int index, int amount, GameObject prefabs, string passKey)
     {
-        rewardedAdController.ShowRewardedAd();
-
-        if (PlayerPrefs.HasKey(passKey + index))
+        if (IsGoldenPassPurchased())
         {
-            PopUpController.instance.OpenPopUp("You've already received this reward.");
-            return;
+            if (PlayerPrefs.HasKey(passKey + index))
+            {
+                PopUpController.instance.OpenPopUp("You've already received this reward.");
+                return;
+            }
+
+            GiveReward(type, amount);
+
+            PlayerPrefs.SetInt(passKey + index, 1);
+            PlayerPrefs.Save();
+
+            PopUpController.instance.OpenPopUp("YOU GOT THE AWARD!");
+            prefabs.GetComponent<FreePassRewardPrefabs>().CheckIcon().SetActive(true);
         }
+        else
+            OpenPanel(goldenPassDetails);
 
-        GiveReward(type, amount);
 
-        PlayerPrefs.SetInt(passKey + index, 1);
-        PlayerPrefs.Save();
 
-        PopUpController.instance.OpenPopUp("YOU GOT THE AWARD!");
-        prefabs.GetComponent<FreePassRewardPrefabs>().CheckIcon().SetActive(true);
     }
 
     private void GiveReward(PassReward type, int amount)
@@ -226,6 +242,29 @@ public class SeasonPass : MonoBehaviour
                 DataManager.instance.AddHeroToken(amount);
                 break;
         }
+    }
+    public bool IsGoldenPassPurchased()
+    {
+        return PlayerPrefs.GetInt("goldenpass", 0) == 1;
+    }
+
+    public void PurchaseGoldenPass()
+    {
+        PlayerPrefs.SetInt("goldenpass", 1);
+        PlayerPrefs.Save();
+        Debug.Log("Remove Ads purchased successfully!");
+        goldenPassButton.interactable = false;
+    }
+    public void OpenPanel(GameObject panel)
+    {
+        panel.SetActive(true);
+        panel.transform.localScale = Vector3.zero;
+        panel.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
+    }
+
+    public void ClosePanel(GameObject panel)
+    {
+        panel.transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InBack).OnComplete(() => panel.SetActive(false));
     }
 }
 

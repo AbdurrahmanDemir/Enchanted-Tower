@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class InterstitialAdController : MonoBehaviour
 {
-    // Bu kimlikleri kendi AdMob kimliklerinizle deðiþtirmeyi unutmayýn!
 #if UNITY_ANDROID
     private string _adUnitId = "ca-app-pub-9662935799337911/7044687080";
 #elif UNITY_IPHONE
@@ -15,18 +14,13 @@ public class InterstitialAdController : MonoBehaviour
 
     private InterstitialAd _interstitialAd;
 
-
     private void Start()
     {
         LoadInterstitialAd();
     }
 
-    /// <summary>
-    /// Geçiþ reklamýný yükler.
-    /// </summary>
     public void LoadInterstitialAd()
     {
-        // Önceki reklamý temizle.
         if (_interstitialAd != null)
         {
             _interstitialAd.Destroy();
@@ -35,14 +29,11 @@ public class InterstitialAdController : MonoBehaviour
 
         Debug.Log("Geçiþ reklamý yükleniyor...");
 
-        // Reklam isteðini oluþtur.
         var adRequest = new AdRequest();
 
-        // Reklamý yükleme isteðini gönder.
         InterstitialAd.Load(_adUnitId, adRequest,
             (InterstitialAd ad, LoadAdError error) =>
             {
-                // Hata kontrolü.
                 if (error != null || ad == null)
                 {
                     Debug.LogError("Geçiþ reklamý yüklenemedi: " + error);
@@ -51,58 +42,65 @@ public class InterstitialAdController : MonoBehaviour
 
                 Debug.Log("Geçiþ reklamý baþarýyla yüklendi.");
                 _interstitialAd = ad;
-
-                // ?? ÖNERÝLEN DEÐÝÞÝKLÝK: Reklam yüklendikten hemen sonra olaylarý kaydet.
                 RegisterEventHandlers(_interstitialAd);
             });
     }
 
-    /// <summary>
-    /// Yüklü reklamý gösterir.
-    /// </summary>
     public void ShowInterstitialAd()
     {
+        // Remove Ads satýn alýndýysa reklamý atlat
+        if (RemoveAdsManager.Instance != null && RemoveAdsManager.Instance.IsAdsPurchased())
+        {
+            Debug.Log("Ads removed - Interstitial ad skipped");
+            return;
+        }
+
+        // Reklam yüklü mü kontrol et
         if (_interstitialAd != null && _interstitialAd.CanShowAd())
         {
-            Debug.Log("Geçiþ reklamý gösteriliyor.");
+            Debug.Log("Showing Interstitial Ad");
+
+            // ÖNEMLÝ: Reklamý göster
             _interstitialAd.Show();
         }
         else
         {
-            Debug.LogError("Geçiþ reklamý gösterilmeye hazýr deðil veya yüklenemedi.");
+            Debug.LogError("Interstitial ad is not ready yet.");
+            // Reklam hazýr deðilse yeniden yükle
+            LoadInterstitialAd();
         }
     }
 
     private void RegisterEventHandlers(InterstitialAd interstitialAd)
     {
-        // Reklamý kapattýktan sonra yeni reklamý otomatik yüklemek için kritik olay.
         interstitialAd.OnAdFullScreenContentClosed += () =>
         {
             Debug.Log("Geçiþ reklamý tam ekran içeriði kapandý.");
-            LoadInterstitialAd(); // Reklam kapandýktan sonra hemen yeni reklam yükle.
+            LoadInterstitialAd();
         };
 
-        // Hata durumunda yeni reklamý otomatik yüklemek için kritik olay.
         interstitialAd.OnAdFullScreenContentFailed += (AdError error) =>
         {
             Debug.LogError("Geçiþ reklamý tam ekran içeriði gösterilemedi: " + error);
-            LoadInterstitialAd(); // Hata olsa bile yeni reklam yüklemeyi dene.
+            LoadInterstitialAd();
         };
 
-        // Diðer olay iþleyicileri (isteðe baðlý)
         interstitialAd.OnAdPaid += (adValue) =>
         {
             Debug.Log(String.Format("Geçiþ reklamýndan kazanýlan deðer: {0} {1}",
                 adValue.Value, adValue.CurrencyCode));
         };
+
         interstitialAd.OnAdImpressionRecorded += () =>
         {
             Debug.Log("Geçiþ reklamý gösterimi kaydedildi.");
         };
+
         interstitialAd.OnAdClicked += () =>
         {
             Debug.Log("Geçiþ reklama týklandý.");
         };
+
         interstitialAd.OnAdFullScreenContentOpened += () =>
         {
             Debug.Log("Geçiþ reklamý tam ekran içeriði açýldý.");

@@ -13,10 +13,11 @@ public class IAPManager : MonoBehaviour, IStoreListener
     [SerializeField] private GameObject startedPack1;
     [SerializeField] private GameObject startedPack2;
     [SerializeField] private GameObject starPack1;
-    [SerializeField] private GameObject galaPack;
+    [SerializeField] private GameObject adsPack;
 
     IStoreController controller;
     [SerializeField] private ChestManager chestManager;
+    [SerializeField] private SeasonPass seasonPass;
 
     public string[] product;
 
@@ -43,10 +44,10 @@ public class IAPManager : MonoBehaviour, IStoreListener
         //    starPack1.SetActive(true);
         //}
 
-        //if (!PlayerPrefs.HasKey("galaPack"))
-        //    galaPack.SetActive(true);
-        //else
-        //    galaPack.SetActive(false);
+        if (!PlayerPrefs.HasKey("adsPack"))
+            adsPack.SetActive(true);
+        else
+            adsPack.SetActive(false);
     }
 
     [Obsolete]
@@ -130,36 +131,23 @@ public class IAPManager : MonoBehaviour, IStoreListener
 
             return PurchaseProcessingResult.Complete;
         }
-        else if (string.Equals(e.purchasedProduct.definition.id, product[8], StringComparison.Ordinal)) //started pack
+        else if (string.Equals(e.purchasedProduct.definition.id, product[8], StringComparison.Ordinal)) //ad pack
         {
-            //ShopManager.instance.shopPlayerBuy(7);
-            //ShopManager.instance.shopPlayerBuy(19);
-            //ShopManager.instance.shopPlayerBuy(20);
-            //PlayerPrefs.SetInt("galaPack", 1);
-            galaPack.SetActive(false);
+            OnRemoveAdsPurchaseSuccess();
+            PlayerPrefs.SetInt("adsPack", 1);
+            adsPack.SetActive(false);
 
             return PurchaseProcessingResult.Complete;
         }
-        else if (string.Equals(e.purchasedProduct.definition.id, product[9], StringComparison.Ordinal))//100000 altýn paketi
+        else if (string.Equals(e.purchasedProduct.definition.id, product[9], StringComparison.Ordinal)) //golden pass
         {
-            DataManager.instance.AddGold(500000);
+            OnGoldenPassPurchaseSuccess();
+            PlayerPrefs.SetInt("goldenpass", 1);
 
             return PurchaseProcessingResult.Complete;
         }
-        else if (string.Equals(e.purchasedProduct.definition.id, product[10], StringComparison.Ordinal))//premieum paketi
-        {
-            DataManager.instance.AddGold(150);
-
-            return PurchaseProcessingResult.Complete;
-        }
-        else if (string.Equals(e.purchasedProduct.definition.id, product[11], StringComparison.Ordinal))//premieum paketi
-        {
-            DataManager.instance.AddGold(500);
-            DataManager.instance.AddGold(1000000);
 
 
-            return PurchaseProcessingResult.Complete;
-        }
         //else if (string.Equals(e.purchasedProduct.definition.id, product[6], StringComparison.Ordinal))//8000 altýn paketi
         //{
         //    PlayerPrefs.SetInt("gold", PlayerPrefs.GetInt("gold") + 8000);
@@ -213,6 +201,19 @@ public class IAPManager : MonoBehaviour, IStoreListener
 
     }
 
+    private void OnRemoveAdsPurchaseSuccess()
+    {
+        if (RemoveAdsManager.Instance != null)
+        {
+            RemoveAdsManager.Instance.PurchaseRemoveAds();
+            PopUpController.instance.OpenPopUp("ADS REMOVED SUCCESSFULLY!");
+        }
+    }
+    private void OnGoldenPassPurchaseSuccess()
+    {
+        seasonPass.PurchaseGoldenPass();
+        
+    }
     public void IAPButton(string id)
     {
         Product product = controller.products.WithID(id);

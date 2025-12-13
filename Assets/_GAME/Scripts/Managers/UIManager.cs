@@ -87,7 +87,10 @@ public class UIManager : MonoBehaviour
         headquartersController.ResetTower();
         gameManager.PowerUpReset();
 
-        interstitialAdController.ShowInterstitialAd();
+        if (AdManager.Instance != null && AdManager.Instance.ShouldShowAds())
+        {
+            interstitialAdController.ShowInterstitialAd();
+        }
 
         SceneManager.LoadScene(0);
     }
@@ -127,7 +130,10 @@ public class UIManager : MonoBehaviour
     public void GameWinButton()
     {
         gameManager.PowerUpReset();
-        interstitialAdController.ShowInterstitialAd();
+        if (AdManager.Instance != null && AdManager.Instance.ShouldShowAds())
+        {
+            interstitialAdController.ShowInterstitialAd();
+        }
         headquartersController.ResetTower();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 

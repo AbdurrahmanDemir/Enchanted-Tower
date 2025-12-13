@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RewardedAdController : MonoBehaviour
 {
-    // Bu kimlikleri kendi AdMob kimliklerinizle deðiþtirmeyi unutmayýn!
 #if UNITY_ANDROID
     private string _adUnitId = "ca-app-pub-9662935799337911/6137007511";
 #elif UNITY_IPHONE
@@ -20,12 +19,8 @@ public class RewardedAdController : MonoBehaviour
         LoadRewardedAd();
     }
 
-    /// <summary>
-    /// Ödüllü reklamý yükler.
-    /// </summary>
     public void LoadRewardedAd()
     {
-        // Önceki reklamý temizle.
         if (_rewardedAd != null)
         {
             _rewardedAd.Destroy();
@@ -34,14 +29,11 @@ public class RewardedAdController : MonoBehaviour
 
         Debug.Log("Ödüllü reklam yükleniyor...");
 
-        // Reklam isteðini oluþtur.
         var adRequest = new AdRequest();
 
-        // Reklamý yükleme isteðini gönder.
         RewardedAd.Load(_adUnitId, adRequest,
             (RewardedAd ad, LoadAdError error) =>
             {
-                // Hata kontrolü.
                 if (error != null || ad == null)
                 {
                     Debug.LogError("Ödüllü reklam yüklenemedi: " + error);
@@ -50,64 +42,78 @@ public class RewardedAdController : MonoBehaviour
 
                 Debug.Log("Ödüllü reklam baþarýyla yüklendi.");
                 _rewardedAd = ad;
-
-                // ?? ÖNERÝLEN DEÐÝÞÝKLÝK: Reklam yüklendikten hemen sonra olaylarý kaydet.
                 RegisterEventHandlers(_rewardedAd);
             });
     }
 
-    /// <summary>
-    /// Yüklü reklamý gösterir.
-    /// </summary>
     public void ShowRewardedAd()
     {
-        const string rewardMsg = "Kullanýcý ödüllendirildi. Tür: {0}, Miktar: {1}.";
+        // Remove Ads satýn alýndýysa direkt ödül ver
+        if (RemoveAdsManager.Instance != null && RemoveAdsManager.Instance.IsAdsPurchased())
+        {
+            Debug.Log("Ads removed - Auto-rewarding player");
+            OnRewardedAdSuccess();
+            return;
+        }
 
+        // Reklam yüklü mü kontrol et
         if (_rewardedAd != null && _rewardedAd.CanShowAd())
         {
+            Debug.Log("Showing Rewarded Ad");
+
+            // ÖNEMLÝ: Reklamý göster
             _rewardedAd.Show((Reward reward) =>
             {
-                // ?? BURASI ÇOK ÖNEMLÝ: KULLANICIYA ÖDÜLÜNÜ VERDÝÐÝNÝZ YER
-                Debug.Log(String.Format(rewardMsg, reward.Type, reward.Amount));
-                // Örneðin: GameManager.Instance.AddCoins((int)reward.Amount);
+                // Kullanýcý reklamý izledi, ödül ver
+                Debug.Log($"Rewarded ad watched! Reward: {reward.Amount} {reward.Type}");
+                OnRewardedAdSuccess();
             });
         }
         else
         {
-            Debug.LogError("Ödüllü reklam gösterilmeye hazýr deðil veya yüklenemedi.");
+            Debug.LogError("Rewarded ad is not ready yet.");
+            // Reklam hazýr deðilse yeniden yükle
+            LoadRewardedAd();
         }
+    }
+
+    private void OnRewardedAdSuccess()
+    {
+        Debug.Log("Player rewarded!");
+        // Buraya ödül verme kodunuzu ekleyin
+        // Örneðin: DataManager.instance.AddGold(100);
     }
 
     private void RegisterEventHandlers(RewardedAd ad)
     {
-        // Reklamý kapattýktan sonra yeni reklamý otomatik yüklemek için kritik olay.
         ad.OnAdFullScreenContentClosed += () =>
         {
             Debug.Log("Ödüllü reklam tam ekran içeriði kapandý.");
-            LoadRewardedAd(); // Reklam kapandýktan sonra hemen yeni reklam yükle.
+            LoadRewardedAd();
         };
 
-        // Hata durumunda yeni reklamý otomatik yüklemek için kritik olay.
         ad.OnAdFullScreenContentFailed += (AdError error) =>
         {
             Debug.LogError("Ödüllü reklam tam ekran içeriði gösterilemedi: " + error);
-            LoadRewardedAd(); // Hata olsa bile yeni reklam yüklemeyi dene.
+            LoadRewardedAd();
         };
 
-        // Diðer olay iþleyicileri (isteðe baðlý, ama bilgilendirici)
         ad.OnAdPaid += (adValue) =>
         {
             Debug.Log(String.Format("Ödüllü reklamdan kazanýlan deðer: {0} {1}",
                 adValue.Value, adValue.CurrencyCode));
         };
+
         ad.OnAdImpressionRecorded += () =>
         {
             Debug.Log("Ödüllü reklam gösterimi kaydedildi.");
         };
+
         ad.OnAdClicked += () =>
         {
             Debug.Log("Ödüllü reklama týklandý.");
         };
+
         ad.OnAdFullScreenContentOpened += () =>
         {
             Debug.Log("Ödüllü reklam tam ekran içeriði açýldý.");

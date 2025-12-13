@@ -16,7 +16,11 @@ public class StoreManager : MonoBehaviour
 
     public void WoodenChestStore()
     {
-        rewarded.ShowRewardedAd();
+        if (AdManager.Instance != null && AdManager.Instance.ShouldShowAds())
+        {
+            rewarded.ShowRewardedAd();
+        }
+        
         chestManager.WoodenChestFree();
         UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.SetActive(false);
 
@@ -30,7 +34,10 @@ public class StoreManager : MonoBehaviour
             return;
         }
 
-        rewarded.ShowRewardedAd();
+        if (AdManager.Instance != null && AdManager.Instance.ShouldShowAds())
+        {
+            rewarded.ShowRewardedAd();
+        }
         silverAdsWatched++;
         silverAdsWatchedText.text = silverAdsWatched + "/" + 2;
 

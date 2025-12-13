@@ -122,8 +122,8 @@ public class TutorialManager : MonoBehaviour
     private void OpenPanel(GameObject panel)
     {
         panel.SetActive(true);
-        panel.transform.localScale = Vector3.zero;  // Ýlk baþta küçültülmüþ halde
-        panel.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);  // Yumuþak bir þekilde büyüme efekti
+        panel.transform.localScale = Vector3.zero;
+        panel.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
     }
 
     private void ClosePanel(GameObject panel)
