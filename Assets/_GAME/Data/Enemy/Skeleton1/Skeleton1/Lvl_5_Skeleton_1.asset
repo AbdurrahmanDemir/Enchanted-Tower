@@ -17,8 +17,8 @@ MonoBehaviour:
   enemyLevel: 5
   attackType: Melee
   isAreaOfEffect: 0
-  maxHealth: 800
-  damage: 60
+  maxHealth: 400
+  damage: 40
   range: 0.8
   moveSpeed: 0.6
   cooldown: 0.5

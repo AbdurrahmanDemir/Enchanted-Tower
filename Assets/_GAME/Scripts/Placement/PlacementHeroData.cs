@@ -9,12 +9,21 @@ public class PlacementHeroData : ScriptableObject
     public GameObject prefab;
 
     [Header("Elixir Cost")]
-    public int elixirCost; 
+    public int elixirCost;
+    public int cost;
 
-    public int cost; 
     [Header("Purchase Settings")]
-    public bool requiresPurchase = false; 
-    public int purchasePrice = 500; 
+    public bool requiresPurchase = false;
+    public int purchasePrice = 500;
+
+    [Header("Placement Settings")]
+    [Tooltip("Tower'lar için minimum yerleþtirme mesafesi")]
+    public float placementRadius = 1.5f;
+
+    public bool IsTower()
+    {
+        return unitType == UnitType.Building;
+    }
 
     public bool IsPurchased()
     {
@@ -23,7 +32,6 @@ public class PlacementHeroData : ScriptableObject
             Debug.Log($"{unitName} - Satýn alma gerektirmiyor, otomatik açýk.");
             return true;
         }
-
         bool purchased = PlayerPrefs.GetInt($"{unitName}_Purchased", 0) == 1;
         Debug.Log($"{unitName} - Satýn alma durumu: {purchased} (Key: {unitName}_Purchased)");
         return purchased;
@@ -40,7 +48,6 @@ public class PlacementHeroData : ScriptableObject
             PlayerPrefs.Save();
             return true;
         }
-
         return false;
     }
 }
@@ -48,6 +55,6 @@ public class PlacementHeroData : ScriptableObject
 public enum UnitType
 {
     Hero,
-    Building,
+    Building,  
     Spell
 }

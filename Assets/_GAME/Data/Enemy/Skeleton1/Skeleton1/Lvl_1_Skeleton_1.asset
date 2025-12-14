@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Skeleton
   enemyImage: {fileID: 5025148291701961715, guid: 7c2eaf2d016fdcd4ca977b7e9f460adf, type: 3}
-  enemyLevel: 0
+  enemyLevel: 1
   attackType: Melee
   isAreaOfEffect: 0
-  maxHealth: 600
+  maxHealth: 400
   damage: 40
   range: 0.8
   moveSpeed: 0.6

@@ -1,11 +1,10 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PlacementController : MonoBehaviour
 {
@@ -13,23 +12,32 @@ public class PlacementController : MonoBehaviour
 
     [Header("Elixir Settings")]
     public float maxElixir = 10f;
-    public float currentElixir = 5f; 
-    public float elixirRegenRate = 1f; 
+    public float currentElixir = 5f;
+    public float elixirRegenRate = 1f;
     private float elixirRegenTimer = 0f;
 
     [Header("Card Panel")]
-    [SerializeField] PlacementHeroData[] cards;
-    [SerializeField] GameObject CardPrefab;
-    [SerializeField] Transform cardParent;
+    [SerializeField] private PlacementHeroData[] cards;
+    [SerializeField] private GameObject CardPrefab;
+    [SerializeField] private Transform cardParent;
 
     [Header("Placement")]
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask towerLayer;
     [SerializeField] private Camera mainCamera;
-    [SerializeField] Transform createTransform;
+    [SerializeField] private Transform createTransform;
     private PlacementHeroData selectedUnitData;
     private bool isPlacing = false;
-    [SerializeField] private Transform heroTransform;
-    private List<Hero> placedUnits = new List<Hero>();
+
+    [Header("Tower Placement Settings")]
+    [SerializeField] private float heroOverlapCheckRadius = 0.5f;
+    [SerializeField] private float towerPadding = 0.05f;
+
+    [Header("Visual Feedback")]
+    [SerializeField] private Color validPlacementColor = new Color(0, 1, 0, 0.5f);
+    [SerializeField] private Color invalidPlacementColor = new Color(1, 0, 0, 0.5f);
+    private GameObject currentPreview;
+    private SpriteRenderer previewRenderer;
 
     [Header("UI")]
     [SerializeField] private Slider elixirSlider;
@@ -37,10 +45,9 @@ public class PlacementController : MonoBehaviour
 
     private int[] activeCardIndexes = new int[3];
     private PlacementCardUI currentlySelectedCard;
+    private bool GameOver = false;
 
-    bool GameOver = false;
-
-    private List<int> purchasedCardIndexes = new List<int>();
+    private readonly List<int> purchasedCardIndexes = new List<int>();
 
     private void Awake()
     {
@@ -50,6 +57,9 @@ public class PlacementController : MonoBehaviour
     private void OnDestroy()
     {
         UpgradeSelectManager.addCapacity -= AddElixirPowerUp;
+
+        if (currentPreview != null)
+            Destroy(currentPreview);
     }
 
     private void Start()
@@ -61,25 +71,43 @@ public class PlacementController : MonoBehaviour
 
     private void Update()
     {
-        // Ýksir dolumu
         RegenerateElixir();
 
-        if (isPlacing && Input.GetMouseButtonDown(0))
+        if (isPlacing)
         {
-            if (!EventSystem.current.IsPointerOverGameObject())
+            ShowPlacementPreview();
+
+            if (Input.GetMouseButtonDown(0))
             {
-                Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, groundLayer);
-
-                if (hit.collider != null && CanPlaceUnit(selectedUnitData))
+                if (!EventSystem.current.IsPointerOverGameObject())
                 {
-                    var unitObj = Instantiate(selectedUnitData.prefab, hit.point, Quaternion.identity, createTransform);
-                    Hero heroComponent = unitObj.GetComponent<Hero>();
-                    if (heroComponent != null) heroComponent.Initialize(selectedUnitData);
+                    Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                    RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, groundLayer);
 
-                    PlaceUnit(selectedUnitData);
-                    ReplaceCard(selectedUnitData);
+                    if (hit.collider != null && CanPlaceUnit(selectedUnitData))
+                    {
+                        bool isTower = IsTowerUnit(selectedUnitData);
+
+                        if (IsPositionValid(hit.point, isTower))
+                        {
+                            var unitObj = Instantiate(selectedUnitData.prefab, hit.point, Quaternion.identity, createTransform);
+                            Hero heroComponent = unitObj.GetComponent<Hero>();
+                            if (heroComponent != null) heroComponent.Initialize(selectedUnitData);
+
+                            PlaceUnit(selectedUnitData);
+                            ReplaceCard(selectedUnitData);
+                        }
+                        else
+                        {
+                            ShowInvalidPlacementFeedback(hit.point);
+                        }
+                    }
                 }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                CancelPlacement();
             }
         }
 
@@ -88,6 +116,155 @@ public class PlacementController : MonoBehaviour
             GameOver = true;
             Debug.Log("bitti oyun");
         }
+    }
+
+    private void ShowPlacementPreview()
+    {
+        if (selectedUnitData == null || selectedUnitData.prefab == null) return;
+
+        Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+
+        if (currentPreview == null && selectedUnitData.prefab != null)
+        {
+            currentPreview = new GameObject("PlacementPreview");
+            previewRenderer = currentPreview.AddComponent<SpriteRenderer>();
+
+            var prefabSR = selectedUnitData.prefab.GetComponent<SpriteRenderer>();
+            Transform scaleSource = selectedUnitData.prefab.transform;
+
+            if (prefabSR == null)
+            {
+                prefabSR = selectedUnitData.prefab.GetComponentInChildren<SpriteRenderer>();
+                if (prefabSR != null) scaleSource = prefabSR.transform;
+            }
+
+            if (prefabSR != null)
+            {
+                previewRenderer.sprite = prefabSR.sprite;
+                previewRenderer.flipX = prefabSR.flipX;
+                previewRenderer.flipY = prefabSR.flipY;
+                previewRenderer.sortingLayerName = "UI";
+                previewRenderer.sortingOrder = 100;
+
+                currentPreview.transform.localScale = scaleSource.lossyScale;
+            }
+        }
+
+
+        currentPreview.transform.position = mousePosition;
+
+        bool isTower = IsTowerUnit(selectedUnitData);
+        bool isValid = IsPositionValid(mousePosition, isTower);
+
+        previewRenderer.color = isValid ? validPlacementColor : invalidPlacementColor;
+    }
+
+    private Vector2 GetTowerCheckSize(PlacementHeroData unitData)
+    {
+        if (unitData == null || unitData.prefab == null) return Vector2.one;
+
+        var box = unitData.prefab.GetComponent<BoxCollider2D>();
+        if (box == null) return Vector2.one;
+
+        Vector3 s = unitData.prefab.transform.lossyScale;
+        Vector2 size = new Vector2(box.size.x * Mathf.Abs(s.x), box.size.y * Mathf.Abs(s.y));
+
+        size += Vector2.one * (towerPadding * 2f);
+
+        return size;
+    }
+
+    private bool IsPositionValid(Vector2 position, bool isTower)
+    {
+        if (selectedUnitData == null) return false;
+
+        if (isTower)
+        {
+            Vector2 boxSize = GetTowerCheckSize(selectedUnitData);
+
+            Collider2D[] hits = Physics2D.OverlapBoxAll(position, boxSize, 0f, towerLayer);
+            if (hits != null && hits.Length > 0) return false;
+
+            Collider2D[] allHits = Physics2D.OverlapBoxAll(position, boxSize, 0f);
+            foreach (var col in allHits)
+            {
+                if (col.CompareTag("Tower") || col.CompareTag("EnemyTower")) return false;
+                if (col.GetComponent<Tower>() != null) return false;
+            }
+
+            return true;
+        }
+        else
+        {
+            Collider2D[] obstacleColliders = Physics2D.OverlapCircleAll(position, heroOverlapCheckRadius);
+            foreach (var col in obstacleColliders)
+            {
+                if (col.CompareTag("Obstacle")) return false;
+            }
+            return true;
+        }
+    }
+
+    private bool IsTowerUnit(PlacementHeroData unitData)
+    {
+        if (unitData == null) return false;
+        return unitData.IsTower();
+    }
+
+    private void ShowInvalidPlacementFeedback(Vector2 position)
+    {
+        if (PopUpController.instance != null)
+            PopUpController.instance.OpenPopUp("You can't place a Tower here!");
+
+        StartCoroutine(ShowInvalidEffect(position));
+    }
+
+    private IEnumerator ShowInvalidEffect(Vector2 position)
+    {
+        GameObject effect = new GameObject("InvalidEffect");
+        effect.transform.position = position;
+
+        SpriteRenderer sr = effect.AddComponent<SpriteRenderer>();
+        sr.color = invalidPlacementColor;
+        sr.sortingOrder = 100;
+
+        Texture2D tex = new Texture2D(64, 64);
+        for (int y = 0; y < 64; y++)
+        {
+            for (int x = 0; x < 64; x++)
+            {
+                float dist = Vector2.Distance(new Vector2(x, y), new Vector2(32, 32));
+                tex.SetPixel(x, y, dist < 30 ? Color.white : Color.clear);
+            }
+        }
+        tex.Apply();
+
+        sr.sprite = Sprite.Create(tex, new Rect(0, 0, 64, 64), new Vector2(0.5f, 0.5f));
+
+        sr.DOFade(0, 0.5f);
+        effect.transform.DOScale(2f, 0.5f);
+
+        yield return new WaitForSeconds(0.5f);
+        Destroy(effect);
+    }
+
+    private void CancelPlacement()
+    {
+        isPlacing = false;
+
+        if (currentlySelectedCard != null)
+        {
+            currentlySelectedCard.SelectedImage().SetActive(false);
+            currentlySelectedCard = null;
+        }
+
+        if (currentPreview != null)
+        {
+            Destroy(currentPreview);
+            currentPreview = null;
+        }
+
+        selectedUnitData = null;
     }
 
     private void RegenerateElixir()
@@ -125,39 +302,21 @@ public class PlacementController : MonoBehaviour
         for (int i = 0; i < cards.Length; i++)
         {
             if (cards[i].IsPurchased())
-            {
                 purchasedCardIndexes.Add(i);
-            }
-        }
-
-        if (purchasedCardIndexes.Count == 0)
-        {
-            Debug.LogWarning("Hiç satýn alýnmýþ karakter yok! En az bir karakteri açýk olarak iþaretleyin.");
-        }
-        else
-        {
-            Debug.Log($"Yüklenen satýn alýnmýþ karakter sayýsý: {purchasedCardIndexes.Count}");
         }
     }
 
     private void GenerateInitialCards()
     {
-        if (purchasedCardIndexes.Count == 0)
-        {
-            Debug.LogError("Oyuna baþlamak için en az 1 karakter satýn alýnmalý!");
-            return;
-        }
+        if (purchasedCardIndexes.Count == 0) return;
 
         activeCardIndexes = new int[3];
-        for (int i = 0; i < 3; i++)
-        {
-            activeCardIndexes[i] = purchasedCardIndexes[Random.Range(0, purchasedCardIndexes.Count)];
-        }
 
-        foreach (int index in activeCardIndexes)
-        {
-            CreateCardUI(index);
-        }
+        for (int i = 0; i < 3; i++)
+            activeCardIndexes[i] = purchasedCardIndexes[Random.Range(0, purchasedCardIndexes.Count)];
+
+        for (int i = 0; i < 3; i++)
+            CreateCardUI(activeCardIndexes[i]);
     }
 
     private void CreateCardUI(int cardIndex)
@@ -165,6 +324,7 @@ public class PlacementController : MonoBehaviour
         GameObject cardObj = Instantiate(CardPrefab, cardParent);
         PlacementCardUI cardScript = cardObj.GetComponent<PlacementCardUI>();
         var data = cards[cardIndex];
+
         cardScript.Config(data.unitName, data.cardIcon, data.elixirCost, data.cost);
         cardScript.cardIndex = cardIndex;
 
@@ -179,11 +339,13 @@ public class PlacementController : MonoBehaviour
 
         placementCardUI.SelectedImage().SetActive(true);
         currentlySelectedCard = placementCardUI;
+
         selectedUnitData = cards[unitData];
         isPlacing = true;
 
         RectTransform rt = placementCardUI.GetComponent<RectTransform>();
         Vector3 originalScale = rt.localScale;
+
         rt.DOScale(originalScale * 1.1f, 0.15f)
             .SetEase(Ease.OutQuad)
             .OnComplete(() => rt.DOScale(originalScale, 0.15f));
@@ -191,13 +353,11 @@ public class PlacementController : MonoBehaviour
 
     public bool CanPlaceUnit(PlacementHeroData unit)
     {
-        return (currentElixir >= unit.elixirCost)
-            && (DataManager.instance.GetGoldCount() >= unit.cost);
+        return (currentElixir >= unit.elixirCost) && (DataManager.instance.GetGoldCount() >= unit.cost);
     }
 
     public void PlaceUnit(PlacementHeroData unit)
     {
-        // Ýksir harca
         currentElixir -= unit.elixirCost;
         currentElixir = Mathf.Max(0, currentElixir);
 
@@ -209,8 +369,15 @@ public class PlacementController : MonoBehaviour
         {
             currentlySelectedCard.SelectedImage().SetActive(false);
             currentlySelectedCard = null;
-            isPlacing = false;
         }
+
+        if (currentPreview != null)
+        {
+            Destroy(currentPreview);
+            currentPreview = null;
+        }
+
+        isPlacing = false;
 
         if (CheckLoseCondition())
         {
@@ -224,8 +391,9 @@ public class PlacementController : MonoBehaviour
         bool noUnitsOnScene = createTransform.childCount == 0;
 
         bool noPlayableCards = true;
-        foreach (int index in activeCardIndexes)
+        for (int i = 0; i < activeCardIndexes.Length; i++)
         {
+            int index = activeCardIndexes[i];
             if (CanPlaceUnit(cards[index]))
             {
                 noPlayableCards = false;
@@ -236,14 +404,12 @@ public class PlacementController : MonoBehaviour
         return noUnitsOnScene && noPlayableCards;
     }
 
-    // Güç arttýrmalarý için
     public void AddElixirPowerUp(int amount)
     {
         maxElixir += amount;
         UpdateElixirUI();
     }
 
-    // Ýksir hýzýný arttýrma power-up'ý
     public void IncreaseElixirRegenRate(float amount)
     {
         elixirRegenRate += amount;
@@ -275,18 +441,37 @@ public class PlacementController : MonoBehaviour
             }
         }
 
-        if (replacedCardIndex != -1 && arrayPosition != -1)
-        {
-            int newIndex = purchasedCardIndexes[Random.Range(0, purchasedCardIndexes.Count)];
+        if (replacedCardIndex == -1 || arrayPosition == -1) return;
 
-            CreateCardUI(newIndex);
-
-            activeCardIndexes[arrayPosition] = newIndex;
-        }
+        int newIndex = purchasedCardIndexes[Random.Range(0, purchasedCardIndexes.Count)];
+        CreateCardUI(newIndex);
+        activeCardIndexes[arrayPosition] = newIndex;
     }
 
     public void RefreshPurchasedHeroes()
     {
         LoadPurchasedHeroes();
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        if (!isPlacing || mainCamera == null || selectedUnitData == null) return;
+
+        Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        bool isTower = IsTowerUnit(selectedUnitData);
+
+        Gizmos.color = IsPositionValid(mousePos, isTower) ? Color.green : Color.red;
+
+        if (isTower)
+        {
+            Vector2 size = GetTowerCheckSize(selectedUnitData);
+            Gizmos.DrawWireCube(mousePos, size);
+        }
+        else
+        {
+            Gizmos.DrawWireSphere(mousePos, heroOverlapCheckRadius);
+        }
+    }
+#endif
 }
