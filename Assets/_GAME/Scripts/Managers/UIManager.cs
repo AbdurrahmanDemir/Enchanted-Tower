@@ -32,6 +32,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI loseXPText;
     [Header("Game State")]
     public static Action gameOver;
+    [Header("Quest Action")]
+    public static Action gameWinCount;
+
 
     [SerializeField] InterstitialAdController interstitialAdController;
     private void Start()
@@ -124,6 +127,7 @@ public class UIManager : MonoBehaviour
         DataManager.instance.AddGold(/*totalGold*/ 100);
         DataManager.instance.AddXP(10);
         gameOver?.Invoke();
+        gameWinCount?.Invoke();
 
     }
 

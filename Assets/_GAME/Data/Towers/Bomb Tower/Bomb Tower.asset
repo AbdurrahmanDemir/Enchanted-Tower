@@ -16,5 +16,5 @@ MonoBehaviour:
   health: 1000
   range: 4
   attackCooldown: 3
-  damage: 60
+  damage: 85
   targetingType: 0

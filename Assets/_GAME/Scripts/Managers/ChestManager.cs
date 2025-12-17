@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using System;
+using Random = UnityEngine.Random;
 
 [System.Serializable]
 public class RewardData
@@ -57,6 +59,7 @@ public class ChestManager : MonoBehaviour
     [SerializeField] private MenuHeroCardSO[] availableHeroCards;
 
     private MenuHeroCardSO lastEarnedHero = null;
+    public static Action openedChest; 
 
     public void WoodenChest() => OpenGoldChest(woodenChestConfig, false, rewardContainersParent, rewardPopUp);
     public void WoodenChestBuy() => OpenGoldChest(woodenChestConfig, true, rewardContainersParent, rewardPopUp);
@@ -88,6 +91,8 @@ public class ChestManager : MonoBehaviour
 
         GameObject button = EventSystem.current.currentSelectedGameObject;
         if (button != null) button.SetActive(false);
+
+        openedChest?.Invoke();
     }
 
     private void OpenGemChest(ChestConfig config, bool requiresPurchase, Transform containerParent, GameObject popUp)
@@ -102,6 +107,7 @@ public class ChestManager : MonoBehaviour
 
         TogglePanel(popUp);
         StartCoroutine(ShowRewardsSequentially(rewards, containerParent));
+        openedChest?.Invoke();
     }
 
     private void OpenChest(ChestConfig config, bool requiresPurchase, Transform containerParent, GameObject popUp)
@@ -114,6 +120,7 @@ public class ChestManager : MonoBehaviour
 
         TogglePanel(popUp);
         StartCoroutine(ShowRewardsSequentially(rewards, containerParent));
+        openedChest?.Invoke();
     }
 
     private List<(RewardType type, int amount)> GenerateRewards(ChestConfig config)

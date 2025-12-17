@@ -1,6 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class CardList : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class CardList : MonoBehaviour
     [SerializeField] GameObject heroCardDetailsPrefabs;
     [SerializeField] Transform heroDetailsTransform;
 
+    public static Action cardUpgrade;
     private void Start()
     {
         HeroPanelUpdate();
@@ -77,7 +79,8 @@ public class CardList : MonoBehaviour
         upgradeButton.onClick.AddListener(() =>
         {
             heroes[capturedIndex].UpgradeHero();
-            CardDetailsPanel(capturedIndex); 
+            CardDetailsPanel(capturedIndex);
+            cardUpgrade?.Invoke();
         });
 
 

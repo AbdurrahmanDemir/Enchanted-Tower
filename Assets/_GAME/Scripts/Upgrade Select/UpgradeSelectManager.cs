@@ -12,7 +12,8 @@ public class UpgradeSelectManager : MonoBehaviour
     [Header("Buttons")]
     [SerializeField] private GameObject buttonPrefabs;
     [SerializeField] private Transform buttonTransform;
-
+    [Header("References")]
+    [SerializeField] private GameManager gameManager;
     [Header("Action")]
     public static Action onPowerUpPanelOpened;
     public static Action onPowerUpPanelClosed;
@@ -70,36 +71,36 @@ public class UpgradeSelectManager : MonoBehaviour
     {
         addGold?.Invoke(amount);
         DataManager.instance.AddGold(amount);
-        PowerUpPanelOpen();
+        ClosePowerUpPanel();
 
     }
     public void AddCapacity(int amount)
     {
         addCapacity?.Invoke(amount);
-        PowerUpPanelOpen();
+        ClosePowerUpPanel();
 
     }
     public void HookStrangthItem()
     {
         hookStranghtItem?.Invoke();
-        PowerUpPanelOpen();
+        ClosePowerUpPanel();
 
     }
     public void AddUpgradeToken(int amount)
     {
         addUpgradeToken?.Invoke(amount);
         DataManager.instance.AddHeroToken(amount);
-        PowerUpPanelOpen();
+        ClosePowerUpPanel();
     }
     public void HeroDamageItem(int amount)
     {
         heroDamageItem?.Invoke(amount);
-        PowerUpPanelOpen();
+        ClosePowerUpPanel();
     }
     public void HeroHealthItem(int amount)
     {
         heroHealthItem?.Invoke(amount);
-        PowerUpPanelOpen();
+        ClosePowerUpPanel();
     }
 
     public void PowerUpPanelOpen()
@@ -116,6 +117,24 @@ public class UpgradeSelectManager : MonoBehaviour
             powerUpPanel.transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutBack);
             GetUpgrade();
             onPowerUpPanelOpened?.Invoke();
+        }
+    }
+    private void ClosePowerUpPanel()
+    {
+        if (powerUpPanel.activeSelf)
+        {
+            powerUpPanel.transform.DOScale(Vector3.zero, 0.2f)
+                .SetEase(Ease.InBack)
+                .OnComplete(() =>
+                {
+                    powerUpPanel.SetActive(false);
+                    onPowerUpPanelClosed?.Invoke();
+
+                    if (gameManager != null)
+                    {
+                        gameManager.RestoreSavedGameSpeed();
+                    }
+                });
         }
     }
 }

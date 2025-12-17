@@ -27,6 +27,7 @@ public class LevelMapManager : MonoBehaviour
     [SerializeField] private Button levelPlayButton;
 
 
+    public static Action levelPlayed;
 
     private void Start()
     {
@@ -147,7 +148,7 @@ public class LevelMapManager : MonoBehaviour
             {
                 TutorialManager.instance.tutorialPanel2.SetActive(false);
             }
-
+            levelPlayed?.Invoke();
         });
     }
 

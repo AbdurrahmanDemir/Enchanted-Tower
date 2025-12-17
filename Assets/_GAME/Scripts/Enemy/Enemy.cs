@@ -44,6 +44,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     private bool enemyStopped = false;
     public static Action<Vector2> onDead;
     public static Action OnAnyEnemyHealthChanged;
+    public static Action enemyDead;
 
     private void Awake()
     {
@@ -219,6 +220,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
             }
 
             onDead?.Invoke(transform.position);
+            enemyDead?.Invoke();
             Destroy(gameObject);
         }
     }

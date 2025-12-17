@@ -6,14 +6,18 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Elements")]
     [SerializeField] private UpgradeSelectManager upgradeSelectManager;
-
+    [SerializeField] private RewardedAdController rewarded;
     [Header("Settings")]
     [SerializeField] private Slider powerUpSlider;
     [SerializeField] private int[] powerUpLevel;
     int powerUpIndex=0;
 
     public static int enemyCount=0;
+
+    private float savedTimeScale = 1f;
+    public float SavedTimeScale => savedTimeScale;
 
     private void Awake()
     {
@@ -33,13 +37,25 @@ public class GameManager : MonoBehaviour
     }
     
 
-  
     public void GameSpeedController()
     {
         if (Time.timeScale == 1)
+        {
+            if (AdManager.Instance != null && AdManager.Instance.ShouldShowAds())
+            {
+                rewarded.ShowRewardedAd();
+            }
+
             Time.timeScale = 2;
+            savedTimeScale = 2f;
+        }
         else
+        {
             Time.timeScale = 1;
+            savedTimeScale = 1f; 
+        }
+
+        Debug.Log($"Game speed changed to: {Time.timeScale}x (Saved: {savedTimeScale}x)");
     }
 
     public void PowerUpSliderUpdate(Vector2 createPosition)
@@ -50,6 +66,7 @@ public class GameManager : MonoBehaviour
         {
             powerUpIndex++;
             powerUpSlider.maxValue = powerUpLevel[powerUpIndex];
+            SaveCurrentGameSpeed();
             upgradeSelectManager.PowerUpPanelOpen();
             powerUpSlider.value = 0;
         }
@@ -60,5 +77,13 @@ public class GameManager : MonoBehaviour
         powerUpSlider.value = 0;
         powerUpSlider.maxValue = powerUpLevel[powerUpIndex];
     }
+    public void SaveCurrentGameSpeed()
+    {
+        savedTimeScale = Time.timeScale;
+    }
 
+    public void RestoreSavedGameSpeed()
+    {
+        Time.timeScale = savedTimeScale;
+    }
 }
