@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ca14795c6866fb428cbd68bfe81d2a5, type: 3}
+  m_Name: Wave_04_RangeSkeleton
+  m_EditorClassIdentifier: 
+  waveName: Level 4 - Range Skeleton
+  segments:
+  - segmentDuration: 1.5
+    enemyGroups:
+    - enemyPrefab: {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+      enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+      enemyCount: 5
+  - segmentDuration: 2
+    enemyGroups:
+    - enemyPrefab: {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+      enemyLevel: {fileID: 11400000, guid: a475c3751b304804cb56fd980bf1ab14, type: 2}
+      enemyCount: 2
+    - enemyPrefab: {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+      enemyLevel: {fileID: 11400000, guid: c4fee84f1db4c634ea1149f14267b0c6, type: 2}
+      enemyCount: 3
+  - segmentDuration: 1.5
+    enemyGroups:
+    - enemyPrefab: {fileID: 6225863552684781358, guid: 812b41ef72a63ea429710d90cae144e8, type: 3}
+      enemyLevel: {fileID: 11400000, guid: b9d49a1dbcf3e904d8961730fc001a18, type: 2}
+      enemyCount: 4
+  - segmentDuration: 1.2
+    enemyGroups:
+    - enemyPrefab: {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+      enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+      enemyCount: 4
+    - enemyPrefab: {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+      enemyLevel: {fileID: 11400000, guid: a475c3751b304804cb56fd980bf1ab14, type: 2}
+      enemyCount: 2

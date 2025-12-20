@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class QuestManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class QuestManager : MonoBehaviour
 
     [Header("KingQuest")]
     private int kingQuestCount;
+    [SerializeField] TextMeshProUGUI kingQuestCountText;
 
     private void Awake()
     {
@@ -27,6 +29,7 @@ public class QuestManager : MonoBehaviour
     private void Start()
     {
         CreateQuestContainers();
+        kingQuestCountText.text = PlayerPrefs.GetInt("KingQuest").ToString();
     }
 
     private void QuestRewardClaimedCallback(int questIndex)
@@ -37,6 +40,7 @@ public class QuestManager : MonoBehaviour
         int reward = quests[questIndex].reward;
         DataManager.instance.AddGold(reward);
         kingQuestCount++;
+        kingQuestCountText.text= kingQuestCount.ToString();
         PlayerPrefs.SetInt("KingQuest", kingQuestCount);
         UpdateQuest();
     }
@@ -151,7 +155,10 @@ public class QuestManager : MonoBehaviour
             DataManager.instance.AddEnergy(20);
             DataManager.instance.AddHeroToken(300);
             kingQuestCount = 0;
+            kingQuestCountText.text = kingQuestCount.ToString();
             PlayerPrefs.SetInt("KingQuest", kingQuestCount);
+            PopUpController.instance.OpenPopUp("SUCCESSFULLY PURCHASED.");
+
 
         }
         else

@@ -49,6 +49,7 @@ public class BombTowerBullet : MonoBehaviour
                 {
                     damageable.TakeDamage(TowerData.GetCurrentDamage());
                     onBombParticle?.Invoke(hit.gameObject.transform.position);
+                    Debug.Log("BOMB TOWER HASAR VERDÝ");
 
                 }
             }

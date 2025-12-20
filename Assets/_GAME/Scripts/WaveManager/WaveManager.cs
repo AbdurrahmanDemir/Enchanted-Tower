@@ -10,29 +10,25 @@ public class WaveManager : MonoBehaviour
     public LevelMapManager levelMapManager;
 
     [Header("Elements")]
-    [SerializeField] private Wave[] waves;
-    private Wave currentWave;
-    [SerializeField] private Transform[] creatEnemyPosition;
-    [SerializeField] private Transform enemyParent;
-    [SerializeField] private WaveUIManager waveUI;
+    public WaveUIManager waveUI;
+    public Transform[] creatEnemyPosition;
+    public Transform enemyParent;
+
+    [Header("Wave Data")]
+    public WaveSO[] waves;
 
     [Header("Settings")]
-    [SerializeField] private float timer;
-    private bool isTimerOn;
+    public float segmentDelay = 2f;
+
+    private WaveSO currentWave;
     private int currentWaveIndex;
     private int currentSegmentIndex;
-    private int currentEnemySubIndex;
-    private int currentEnemyIndex;
-    public int currentEnemyCount;
-    private float segmentDelay = 5f;
-    public int aliveEnemyCount;
-
-
-    [Header("Action")]
-    private bool onThrow = false;
-
-
-
+    private int currentEnemyGroupIndex;
+    private int currentEnemyCount;
+    private float timer;
+    private bool isTimerOn;
+    private bool onThrow;
+    private int aliveEnemyCount;
 
     private void Awake()
     {
@@ -40,34 +36,19 @@ public class WaveManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
+    }
 
-        //Hook.onThrowStarting += OnThrowStartingCallBack;
-        //Hook.onThrowEnding += OnThrowEndingCallBack;
-
+    private void OnEnable()
+    {
         UpgradeSelectManager.onPowerUpPanelOpened += OnThrowStartingCallBack;
         UpgradeSelectManager.onPowerUpPanelClosed += OnThrowEndingCallBack;
-
-
-        //TowerController.onGameLose += OnThrowStartingCallBack;
-        //EnemyTowerController.onGameWin += OnThrowStartingCallBack;
     }
+
     private void OnDestroy()
     {
-        //Hook.onThrowStarting -= OnThrowStartingCallBack;
-        //Hook.onThrowEnding -= OnThrowEndingCallBack;
-
         UpgradeSelectManager.onPowerUpPanelOpened -= OnThrowStartingCallBack;
         UpgradeSelectManager.onPowerUpPanelClosed -= OnThrowEndingCallBack;
-
-        //TowerController.onGameLose -= OnThrowStartingCallBack;
-        //EnemyTowerController.onGameWin -= OnThrowStartingCallBack;
     }
-
-    //private void Start()
-    //{
-    //    //StartWaves(0);
-    //    //isTimerOn = true;
-    //}
 
     private void Update()
     {
@@ -81,14 +62,20 @@ public class WaveManager : MonoBehaviour
     {
         currentWaveIndex = index;
         currentSegmentIndex = 0;
-        currentEnemyIndex = 0;
-        //enemyTowerController.towerSO = waves[currentWaveIndex].waveTower;
-        //enemyTowerController.TowerInfoUpdate();
+        currentEnemyGroupIndex = 0;
+        aliveEnemyCount = 0;
+
+        if (index >= waves.Length)
+        {
+            Debug.LogError("Wave index " + index + " is out of range. Total waves: " + waves.Length);
+            return;
+        }
+
         currentWave = waves[currentWaveIndex];
-        //waveUI.waveIndexText.text= currentWaveIndex.ToString();
         isTimerOn = true;
+        timer = 0;
         SetupNextSegment();
-        waveUI.waveSegmentText.text = "Wave " + currentSegmentIndex + " / " + currentWave.segments.Count;
+        waveUI.waveSegmentText.text = "Wave " + (currentSegmentIndex + 1) + " / " + currentWave.segments.Count;
 
         if (!PlayerPrefs.HasKey("Tutorial"))
         {
@@ -102,20 +89,18 @@ public class WaveManager : MonoBehaviour
         {
             isTimerOn = false;
             Debug.Log("All segments in the wave completed.");
-
             CheckWaveCompleted();
             return;
         }
 
-
         if (onThrow)
             return;
 
-        WaveSegmet currentSegment = currentWave.segments[currentSegmentIndex];
+        WaveSegment currentSegment = currentWave.segments[currentSegmentIndex];
 
         timer += Time.deltaTime;
 
-        if (timer >= currentSegment.segmetDuration)
+        if (timer >= currentSegment.segmentDuration)
         {
             if (SpawnEnemy(currentSegment))
             {
@@ -141,12 +126,13 @@ public class WaveManager : MonoBehaviour
             }
         }
     }
+
     private void CheckWaveCompleted()
     {
         bool allSegmentsFinished = currentSegmentIndex >= currentWave.segments.Count;
         bool noEnemiesAlive = aliveEnemyCount <= 0;
 
-        Debug.Log($"CheckWaveCompleted -> segmentsFinished:{allSegmentsFinished}, noEnemiesAlive:{noEnemiesAlive}, alive:{aliveEnemyCount}");
+        Debug.Log("CheckWaveCompleted -> segmentsFinished:" + allSegmentsFinished + ", noEnemiesAlive:" + noEnemiesAlive + ", alive:" + aliveEnemyCount);
 
         if (allSegmentsFinished && noEnemiesAlive)
         {
@@ -157,7 +143,7 @@ public class WaveManager : MonoBehaviour
                 int playingEpisode = PlayerPrefs.GetInt("PlayingEpisode", 0);
                 int playingLevel = PlayerPrefs.GetInt("PlayingLevel", 0);
 
-                Debug.Log($"Tamamlanan Episode: {playingEpisode}, Level: {playingLevel}");
+                Debug.Log("Tamamlanan Episode: " + playingEpisode + ", Level: " + playingLevel);
 
                 int newLevel = playingLevel + 2;
                 levelMapManager.SetCurrentLevelForEpisode(playingEpisode, newLevel);
@@ -166,7 +152,7 @@ public class WaveManager : MonoBehaviour
 
                 if (playingLevel >= totalLevelsInEpisode - 1)
                 {
-                    Debug.Log($"Episode {playingEpisode} tamamland?! Yeni episode a??l?yor...");
+                    Debug.Log("Episode " + playingEpisode + " tamamlandi! Yeni episode aciliyor...");
 
                     int newEpisodeIndex = playingEpisode + 1;
                     PlayerPrefs.SetInt("LevelEpisodeIndex", newEpisodeIndex);
@@ -175,25 +161,24 @@ public class WaveManager : MonoBehaviour
 
                     PlayerPrefs.Save();
 
-                    Debug.Log($"Yeni episode a??ld?: {newEpisodeIndex}");
+                    Debug.Log("Yeni episode acildi: " + newEpisodeIndex);
                 }
 
                 uiManager.GameWinPanel();
             }
             else
             {
-                Debug.LogError("uiManager atanmadý!");
+                Debug.LogError("uiManager atanmadi!");
             }
         }
     }
+
     private int GetTotalLevelsInEpisode(int episodeIndex)
     {
-
         if (levelMapManager != null)
         {
             return levelMapManager.GetEpisodeLevelCount(episodeIndex);
         }
-
         return 6;
     }
 
@@ -205,17 +190,16 @@ public class WaveManager : MonoBehaviour
         SetupNextSegment();
     }
 
-
-
     private void SetupNextSegment()
     {
-        currentEnemyIndex = 0;
-        currentEnemySubIndex = 0;
+        currentEnemyGroupIndex = 0;
+
         if (currentSegmentIndex < currentWave.segments.Count)
         {
-            if (currentWave.segments[currentSegmentIndex].segmentEnemys.Length > 0)
+            WaveSegment segment = currentWave.segments[currentSegmentIndex];
+            if (segment.enemyGroups.Count > 0)
             {
-                currentEnemyCount = currentWave.segments[currentSegmentIndex].segmentEnemys[currentEnemyIndex].enemyCount;
+                currentEnemyCount = segment.enemyGroups[currentEnemyGroupIndex].enemyCount;
                 Debug.Log("Setting up next segment. Enemy Count: " + currentEnemyCount);
             }
             else
@@ -225,98 +209,71 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-
-    private bool SpawnEnemy(WaveSegmet segment)
+    private bool SpawnEnemy(WaveSegment segment)
     {
         if (currentEnemyCount <= 0)
         {
-            currentEnemySubIndex++;
-            if (currentEnemySubIndex < segment.segmentEnemys[currentEnemyIndex].enemy.Length)
+            currentEnemyGroupIndex++;
+            if (currentEnemyGroupIndex < segment.enemyGroups.Count)
             {
-                currentEnemyCount = segment.segmentEnemys[currentEnemyIndex].enemyCount;
+                currentEnemyCount = segment.enemyGroups[currentEnemyGroupIndex].enemyCount;
             }
             else
             {
-                currentEnemySubIndex = 0;
-                currentEnemyIndex++;
-                if (currentEnemyIndex < segment.segmentEnemys.Length)
-                {
-                    currentEnemyCount = segment.segmentEnemys[currentEnemyIndex].enemyCount;
-                }
-                else
-                {
-                    return false;
-                }
+                return false;
             }
         }
 
-        // Dizi sýnýr kontrolü
-        if (currentEnemyIndex >= segment.segmentEnemys.Length ||
-            currentEnemySubIndex >= segment.segmentEnemys[currentEnemyIndex].enemy.Length)
+        if (currentEnemyGroupIndex >= segment.enemyGroups.Count)
         {
             Debug.LogError("Index out of range error.");
             return false;
         }
 
+        WaveEnemyGroup enemyGroup = segment.enemyGroups[currentEnemyGroupIndex];
+
+        if (enemyGroup.enemyPrefab == null)
+        {
+            Debug.LogError("Enemy prefab is null!");
+            currentEnemyCount--;
+            return true;
+        }
+
         int randomCreatPos = Random.Range(0, creatEnemyPosition.Length);
         GameObject enemyInstance = Instantiate(
-    segment.segmentEnemys[currentEnemyIndex].enemy[currentEnemySubIndex],
-    creatEnemyPosition[randomCreatPos].position,
-    Quaternion.Euler(0f, 180f, 0f), enemyParent);
+            enemyGroup.enemyPrefab,
+            creatEnemyPosition[randomCreatPos].position,
+            Quaternion.Euler(0f, 180f, 0f),
+            enemyParent
+        );
 
         Enemy enemy = enemyInstance.GetComponent<Enemy>();
-        enemy.Initialize(segment.segmentEnemys[currentEnemyIndex].enemyLevel);
+        if (enemy != null && enemyGroup.enemyLevel != null)
+        {
+            enemy.Initialize(enemyGroup.enemyLevel);
+        }
 
         aliveEnemyCount++;
-
         currentEnemyCount--;
         return true;
-
     }
-
 
     public void OnEnemyDied()
     {
         aliveEnemyCount = Mathf.Max(0, aliveEnemyCount - 1);
-
         CheckWaveCompleted();
     }
-
-
-
 
     public void OnThrowStartingCallBack()
     {
         onThrow = true;
         Time.timeScale = 1;
-        Debug.Log("Avtipn çalýþtý" + onThrow);
+        Debug.Log("Action started: " + onThrow);
     }
+
     public void OnThrowEndingCallBack()
     {
         onThrow = false;
-        Debug.Log("Avtipn çalýþtý" + onThrow);
+        Debug.Log("Action ended: " + onThrow);
     }
-}
-
-[Serializable]
-public struct Wave
-{
-    public string waveName;
-    //public TowerSO waveTower;
-    public List<WaveSegmet> segments;
-}
-
-[Serializable]
-public struct WaveSegmet
-{
-    public float segmetDuration;
-    public WaveSegmentEnemyManage[] segmentEnemys;
-}
-
-[Serializable]
-public struct WaveSegmentEnemyManage
-{
-    public GameObject[] enemy;
-    public EnemySO enemyLevel;
-    public int enemyCount;
 }

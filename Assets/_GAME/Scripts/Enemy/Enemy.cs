@@ -274,6 +274,10 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         {
             isFrozen = true;
             moveSpeed = 0f;
+            if (agent != null)
+            {
+                agent.speed = 0f;
+            }
             StartCoroutine(UnfreezeAfter(duration));
         }
     }
@@ -282,6 +286,10 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     {
         yield return new WaitForSeconds(duration);
         moveSpeed = enemySO.moveSpeed;
+        if (agent != null)
+        {
+            agent.speed = moveSpeed;
+        }
         isFrozen = false;
     }
 #if UNITY_EDITOR

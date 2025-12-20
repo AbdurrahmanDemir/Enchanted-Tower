@@ -55,15 +55,8 @@ public class IceGolemBulletController : MonoBehaviour
     {
         if (enemy == null) return;
 
-        enemy.moveSpeed = 0f;
-        enemy.cooldown = enemy.enemySO.cooldown + 2f;
-
-        if (enemy.TryGetComponent<UnityEngine.AI.NavMeshAgent>(out var agent))
-        {
-            agent.speed = 0f;
-        }
-
-        enemy.Invoke(nameof(enemy.ResetStats), slowDuration);
+        // Use the standardized Freeze method from Enemy class
+        enemy.Freeze(slowDuration);
     }
 
 

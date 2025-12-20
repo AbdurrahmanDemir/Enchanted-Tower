@@ -7636,8 +7636,8 @@ Transform:
   m_GameObject: {fileID: 75443146}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -17.71, z: -0.06297017}
-  m_LocalScale: {x: 2.23, y: 2.23, z: 2.23}
+  m_LocalPosition: {x: -0.08761542, y: -16.69, z: -0.06297017}
+  m_LocalScale: {x: 2.09, y: 2.09, z: 2.09}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 637606277}
@@ -45357,7 +45357,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 23
+  m_text: 11
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bbf71d8a58305463e9d91aeaca31eaa0, type: 2}
   m_sharedMaterial: {fileID: -4171563015097924827, guid: bbf71d8a58305463e9d91aeaca31eaa0, type: 2}
@@ -66526,7 +66526,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 19
+  m_text: 7
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bbf71d8a58305463e9d91aeaca31eaa0, type: 2}
   m_sharedMaterial: {fileID: -4171563015097924827, guid: bbf71d8a58305463e9d91aeaca31eaa0, type: 2}
@@ -184170,7 +184170,1513 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManager: {fileID: 1967824169}
   levelMapManager: {fileID: 756297629}
-  waveUI: {fileID: 853717079}
+  waves:
+  - waveName: Wave 1
+    segments:
+    - segmetDuration: 2
+      segmentEnemys:
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 3
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 7e3002c2f9d0d98479afef7587ad43f0, type: 2}
+        enemyCount: 3
+  - waveName: Wave 2
+    segments:
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 3
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 2
+  - waveName: Wave 3
+    segments:
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: d82531edf9933c249b28a95acd38223e, type: 2}
+        enemyCount: 3
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: ee739d5e654ca334b9ad5c745eff0986, type: 2}
+        enemyCount: 5
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 3
+    - segmetDuration: 2
+      segmentEnemys:
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: d82531edf9933c249b28a95acd38223e, type: 2}
+        enemyCount: 5
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: ee739d5e654ca334b9ad5c745eff0986, type: 2}
+        enemyCount: 3
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 3
+  - waveName: Wave 4
+    segments:
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: ee739d5e654ca334b9ad5c745eff0986, type: 2}
+        enemyCount: 3
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 5
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 3
+    - segmetDuration: 2
+      segmentEnemys:
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: ee739d5e654ca334b9ad5c745eff0986, type: 2}
+        enemyCount: 3
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 3
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 3
+  - waveName: Wave 5
+    segments:
+    - segmetDuration: 2
+      segmentEnemys:
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: ee739d5e654ca334b9ad5c745eff0986, type: 2}
+        enemyCount: 2
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 4
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 3
+    - segmetDuration: 2
+      segmentEnemys:
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: ee739d5e654ca334b9ad5c745eff0986, type: 2}
+        enemyCount: 3
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 2
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 3
+    - segmetDuration: 2
+      segmentEnemys:
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: ee739d5e654ca334b9ad5c745eff0986, type: 2}
+        enemyCount: 3
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 2
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 3
+  - waveName: Wave 6
+    segments:
+    - segmetDuration: 2
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 5
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 5
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 5
+    - segmetDuration: 2
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 5
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 5
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 5
+  - waveName: Wave 7
+    segments:
+    - segmetDuration: 2
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 5
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 5
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 5
+    - segmetDuration: 2
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 5
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 5
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 5
+    - segmetDuration: 2
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 5
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 5
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: b9dd4236bff8ca149b0b8d3febccf6de, type: 2}
+        enemyCount: 5
+  - waveName: Wave 8
+    segments:
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 5
+    - segmetDuration: 2
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 5
+    - segmetDuration: 2
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 5
+  - waveName: Wave 9
+    segments:
+    - segmetDuration: 2
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 5
+    - segmetDuration: 2
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 5
+    - segmetDuration: 2
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 5
+  - waveName: Wave 10
+    segments:
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 5
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 5
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 5
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 5
+  - waveName: Wave 11
+    segments:
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 5
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 5
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 5
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 5
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 5
+  - waveName: Wave 12
+    segments:
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 12
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 5
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 5
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 9e8b97ec2ce787f4581518dbe99b7a3e, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 8
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 5
+  - waveName: Wave 13
+    segments:
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+  - waveName: Wave 14
+    segments:
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+  - waveName: Wave 15
+    segments:
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+  - waveName: Wave 16
+    segments:
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+  - waveName: Wave 17
+    segments:
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+  - waveName: Wave 18
+    segments:
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+  - waveName: Wave 19
+    segments:
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+    - segmetDuration: 3
+      segmentEnemys:
+      - enemy:
+        - {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
+        enemyLevel: {fileID: 11400000, guid: a82cebb9dd440134d84781bc18d234f3, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
+      - enemy:
+        - {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
+        enemyLevel: {fileID: 11400000, guid: 1fbe79b4289c5594e8a83cb0b20f78ec, type: 2}
+        enemyCount: 10
   creatEnemyPosition:
   - {fileID: 856241480}
   - {fileID: 1435415311}
@@ -184188,28 +185694,10 @@ MonoBehaviour:
   - {fileID: 1664064237}
   - {fileID: 491200299}
   enemyParent: {fileID: 1653600422}
-  waves:
-  - {fileID: 11400000, guid: 713581a80689495299de64c6a742dbf2, type: 2}
-  - {fileID: 11400000, guid: d59107281371493bb72757b891eebe92, type: 2}
-  - {fileID: 11400000, guid: 4f6ff2b76cc04b5699ee8fec6671158f, type: 2}
-  - {fileID: 11400000, guid: a0a5243931234131bd540656e7bff59d, type: 2}
-  - {fileID: 11400000, guid: eaf13295f0f44e8db22d47c19cef9201, type: 2}
-  - {fileID: 11400000, guid: cc46228d8e5b4f13ab48dddb6654364c, type: 2}
-  - {fileID: 11400000, guid: 9118225873884ae3943c4e683a11149d, type: 2}
-  - {fileID: 11400000, guid: b65989730f37400587421b01d958e017, type: 2}
-  - {fileID: 11400000, guid: 32e44589fdd64325bea5a0a634573efa, type: 2}
-  - {fileID: 11400000, guid: dc56a7321c4245bb80cef5d4f742db93, type: 2}
-  - {fileID: 11400000, guid: 413a8a87e7634164898872bb4abcd119, type: 2}
-  - {fileID: 11400000, guid: 36592a2fa1a5470883cb5722caacf1a3, type: 2}
-  - {fileID: 11400000, guid: 82393fb28b1d4f46b1d0d7dffe912fb2, type: 2}
-  - {fileID: 11400000, guid: dc8cdcdc9a734f169f89d8ef78ae3745, type: 2}
-  - {fileID: 11400000, guid: c328a3ab80504138b5c14f2076b440f5, type: 2}
-  - {fileID: 11400000, guid: 7f083a9005874c7dbf5bf6a09184eecb, type: 2}
-  - {fileID: 11400000, guid: 7e39577ef2ec4017b91fe5a826babcce, type: 2}
-  - {fileID: 11400000, guid: 647b4d90c8d54f02991118b80b4b2165, type: 2}
-  - {fileID: 11400000, guid: 7aff19ce208a4257ad10ba70d104131a, type: 2}
-  - {fileID: 11400000, guid: 779eb73e1f1741e49b81b113e52a387a, type: 2}
-  segmentDelay: 5
+  waveUI: {fileID: 853717079}
+  timer: 0
+  currentEnemyCount: 0
+  aliveEnemyCount: 0
 --- !u!1 &856241479
 GameObject:
   m_ObjectHideFlags: 0
@@ -210907,7 +212395,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 24
+  m_text: 12
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bbf71d8a58305463e9d91aeaca31eaa0, type: 2}
   m_sharedMaterial: {fileID: -4171563015097924827, guid: bbf71d8a58305463e9d91aeaca31eaa0, type: 2}
@@ -287006,7 +288494,6 @@ MonoBehaviour:
   createTransform: {fileID: 884952709}
   heroOverlapCheckRadius: 0.1
   towerPadding: 0.05
-  dragThreshold: 10
   validPlacementColor: {r: 0, g: 1, b: 0, a: 1}
   invalidPlacementColor: {r: 1, g: 0, b: 0, a: 1}
   elixirSlider: {fileID: 3975004941082712611}
@@ -302188,7 +303675,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 20
+  m_text: 8
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bbf71d8a58305463e9d91aeaca31eaa0, type: 2}
   m_sharedMaterial: {fileID: -4171563015097924827, guid: bbf71d8a58305463e9d91aeaca31eaa0, type: 2}
@@ -348800,8 +350287,8 @@ Tilemap:
   - first: {x: 18, y: 14, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 34
-      m_TileSpriteIndex: 33
+      m_TileIndex: 38
+      m_TileSpriteIndex: 37
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -349110,8 +350597,8 @@ Tilemap:
   - first: {x: 16, y: 17, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 35
-      m_TileSpriteIndex: 34
+      m_TileIndex: 38
+      m_TileSpriteIndex: 37
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -349700,8 +351187,8 @@ Tilemap:
   - first: {x: 20, y: 22, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 35
-      m_TileSpriteIndex: 34
+      m_TileIndex: 38
+      m_TileSpriteIndex: 37
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -350070,8 +351557,8 @@ Tilemap:
   - first: {x: 24, y: 25, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 35
-      m_TileSpriteIndex: 34
+      m_TileIndex: 38
+      m_TileSpriteIndex: 37
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -351100,8 +352587,8 @@ Tilemap:
   - first: {x: 17, y: 35, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 35
-      m_TileSpriteIndex: 34
+      m_TileIndex: 38
+      m_TileSpriteIndex: 37
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -351697,15 +353184,15 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 3
+  - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: d072cf3ef8e85bf4ea6960d08d314b9e, type: 2}
-  - m_RefCount: 12
+  - m_RefCount: 8
     m_Data: {fileID: 11400000, guid: 1fb179badd67cce4ebf7f9fb7d18044c, type: 2}
   - m_RefCount: 16
     m_Data: {fileID: 11400000, guid: 1438fc10d856f2b48b2ae15f2ca06bd3, type: 2}
   - m_RefCount: 20
     m_Data: {fileID: 11400000, guid: 07145f198ecee3d47bbad83ea190f44f, type: 2}
-  - m_RefCount: 247
+  - m_RefCount: 252
     m_Data: {fileID: 11400000, guid: 61b621e9d32f6d143ae3cb50af18c156, type: 2}
   - m_RefCount: 33
     m_Data: {fileID: 11400000, guid: 6bf4f580bdf06c444b3a8e56c136ef5b, type: 2}
@@ -351778,15 +353265,15 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 3
+  - m_RefCount: 2
     m_Data: {fileID: -34543475, guid: c2e59b4c63da1e7458ed923699dd5dff, type: 3}
-  - m_RefCount: 12
+  - m_RefCount: 8
     m_Data: {fileID: 978348360, guid: c2e59b4c63da1e7458ed923699dd5dff, type: 3}
   - m_RefCount: 16
     m_Data: {fileID: -679762639, guid: fe451ac83581fc9439c99701f882e145, type: 3}
   - m_RefCount: 20
     m_Data: {fileID: 2019732586, guid: fe451ac83581fc9439c99701f882e145, type: 3}
-  - m_RefCount: 247
+  - m_RefCount: 252
     m_Data: {fileID: -547788605, guid: fe451ac83581fc9439c99701f882e145, type: 3}
   - m_RefCount: 33
     m_Data: {fileID: 237938044, guid: fe451ac83581fc9439c99701f882e145, type: 3}
@@ -391945,7 +393432,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 22
+  m_text: 10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bbf71d8a58305463e9d91aeaca31eaa0, type: 2}
   m_sharedMaterial: {fileID: -4171563015097924827, guid: bbf71d8a58305463e9d91aeaca31eaa0, type: 2}
@@ -432633,7 +434120,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0009765625}
+  m_AnchoredPosition: {x: 0, y: 7.3876953}
   m_SizeDelta: {x: 1080, y: 4381.7656}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1972536838
@@ -432722,27 +434209,27 @@ MonoBehaviour:
   quests:
   - Type: 1
     target: 1
-    reward: 100
+    reward: 50
     progress: 0
   - Type: 2
     target: 1
-    reward: 120
+    reward: 60
     progress: 0
   - Type: 3
     target: 1
-    reward: 200
+    reward: 30
     progress: 0
   - Type: 4
     target: 2
-    reward: 200
+    reward: 40
     progress: 0
   - Type: 0
     target: 10
-    reward: 300
+    reward: 40
     progress: 0
   - Type: 1
     target: 1
-    reward: 100
+    reward: 50
     progress: 0
   - Type: 2
     target: 2
@@ -432800,41 +434287,32 @@ MonoBehaviour:
     target: 100
     reward: 500
     progress: 0
-  - Type: 2
-    target: 10
-    reward: 500
-    progress: 0
-  - Type: 3
-    target: 10
-    reward: 500
-    progress: 0
-  - Type: 4
-    target: 20
+  - Type: 0
+    target: 100
     reward: 500
     progress: 0
   - Type: 0
     target: 100
     reward: 500
     progress: 0
-  - Type: 1
-    target: 10
+  - Type: 0
+    target: 100
     reward: 500
     progress: 0
-  - Type: 2
-    target: 10
+  - Type: 0
+    target: 100
     reward: 500
     progress: 0
-  - Type: 3
-    target: 10
+  - Type: 0
+    target: 100
     reward: 500
     progress: 0
-  - Type: 4
-    target: 20
+  - Type: 0
+    target: 100
     reward: 500
     progress: 0
   questContainerPrefab: {fileID: 2261467722675541143, guid: 0526e12106b8e224a934f009e20a2f36, type: 3}
   questContainerParent: {fileID: 8724137346997996088}
-  kingQuestCountText: {fileID: 2015485594}
 --- !u!1 &1983700586
 GameObject:
   m_ObjectHideFlags: 0
@@ -467990,140 +469468,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010481559}
   m_CullTransparentMesh: 0
---- !u!1 &2015485592
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2015485593}
-  - component: {fileID: 2015485595}
-  - component: {fileID: 2015485594}
-  m_Layer: 5
-  m_Name: Text (TMP) (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2015485593
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2015485592}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8724137346719262119}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -10.018799, y: -0.2500763}
-  m_SizeDelta: {x: 369.5988, y: 63.7664}
-  m_Pivot: {x: 1, y: 1}
---- !u!114 &2015485594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2015485592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 'TOTAL: 5'
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d70f485aa27dc43f79a8fd168f58435c, type: 2}
-  m_sharedMaterial: {fileID: 5416806443266638455, guid: d70f485aa27dc43f79a8fd168f58435c, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 4
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 1
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &2015485595
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2015485592}
-  m_CullTransparentMesh: 0
 --- !u!1 &2022609657
 GameObject:
   m_ObjectHideFlags: 0
@@ -483700,7 +485044,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 21
+  m_text: 9
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bbf71d8a58305463e9d91aeaca31eaa0, type: 2}
   m_sharedMaterial: {fileID: -4171563015097924827, guid: bbf71d8a58305463e9d91aeaca31eaa0, type: 2}
@@ -501095,37 +502439,7 @@ Tilemap:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141294530}
   m_Enabled: 1
-  m_Tiles:
-  - first: {x: 18, y: 29, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 21
-      m_TileSpriteIndex: 20
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 19, y: 29, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 21
-      m_TileSpriteIndex: 20
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 18, y: 30, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 21
-      m_TileSpriteIndex: 20
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
+  m_Tiles: {}
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 0
@@ -501170,8 +502484,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 3
-    m_Data: {fileID: 11400000, guid: 3b9b9662a2b66b345ad7d72f30aecf34, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -501213,30 +502527,30 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 3
-    m_Data: {fileID: -326082648, guid: c2e59b4c63da1e7458ed923699dd5dff, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
-  - m_RefCount: 3
+  - m_RefCount: 0
     m_Data:
-      e00: 1
+      e00: -2.0403382e-19
       e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
+      e02: 0.0000026035668
+      e03: -2.0403506e-19
+      e10: 7.47e-43
+      e11: 0
+      e12: 1.36e-43
+      e13: 7.47e-43
+      e20: -1.951846e+38
+      e21: 0.051573396
+      e22: 5.982224e-19
+      e23: -1.7189311e+20
+      e30: 4.5905e-41
+      e31: 7.51e-43
+      e32: 7.48e-43
+      e33: 7.5e-43
   m_TileColorArray:
-  - m_RefCount: 3
-    m_Data: {r: 1, g: 1, b: 1, a: 1}
+  - m_RefCount: 0
+    m_Data: {r: 5.0141e-41, g: 5.0141e-41, b: 5.0141e-41, a: 5.0141e-41}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -580345,7 +581659,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MISSIONS
+  m_text: EVENTS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3015d2c5ebbad4fbc944c8238764609f, type: 2}
   m_sharedMaterial: {fileID: -3845100613933225147, guid: 80c19bd5a61a74838817798a99a42ac9, type: 2}
@@ -590591,7 +591905,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2928796424661156882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -621702,7 +623016,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -540, y: 0.027559888}
+  m_AnchoredPosition: {x: -540, y: -600.89264}
   m_SizeDelta: {x: 1080.5, y: 3229.746}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &5034836716261137795
@@ -623399,7 +624713,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &5478754109018947052
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -758697,7 +760011,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 6.059082, y: -0.2500763}
+  m_AnchoredPosition: {x: 6.0591125, y: -0.2500763}
   m_SizeDelta: {x: -12.1184, y: 149.92}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &8724137346044784943
@@ -759095,7 +760409,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MISSIONS
+  m_text: DAILY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d70f485aa27dc43f79a8fd168f58435c, type: 2}
   m_sharedMaterial: {fileID: 5416806443266638455, guid: d70f485aa27dc43f79a8fd168f58435c, type: 2}
@@ -759946,7 +761260,6 @@ RectTransform:
   m_Children:
   - {fileID: 8724137346820074923}
   - {fileID: 8724137346044784942}
-  - {fileID: 2015485593}
   - {fileID: 358674143}
   - {fileID: 8724137347698786698}
   - {fileID: 8724137347353808997}
@@ -760564,7 +761877,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.0009765625}
   m_SizeDelta: {x: -50, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &8724137346997996089

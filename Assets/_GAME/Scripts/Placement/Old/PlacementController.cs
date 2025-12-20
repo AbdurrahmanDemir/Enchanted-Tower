@@ -28,10 +28,16 @@ public class PlacementController : MonoBehaviour
     [SerializeField] private Transform createTransform;
     private PlacementHeroData selectedUnitData;
     private bool isPlacing = false;
+    private bool isDragging = false;
 
     [Header("Tower Placement Settings")]
     [SerializeField] private float heroOverlapCheckRadius = 0.5f;
     [SerializeField] private float towerPadding = 0.05f;
+
+    [Header("Drag Settings")]
+    [SerializeField] private float dragThreshold = 10f; // Sürükleme baþlangýç mesafesi
+    private Vector2 dragStartPos;
+    private PlacementCardUI draggedCard;
 
     [Header("Visual Feedback")]
     [SerializeField] private Color validPlacementColor = new Color(0, 1, 0, 0.5f);
@@ -73,7 +79,12 @@ public class PlacementController : MonoBehaviour
     {
         RegenerateElixir();
 
-        if (isPlacing)
+        // Sürükleme kontrolü
+        if (isDragging)
+        {
+            HandleDragging();
+        }
+        else if (isPlacing)
         {
             ShowPlacementPreview();
 
@@ -118,6 +129,117 @@ public class PlacementController : MonoBehaviour
         }
     }
 
+    private void HandleDragging()
+    {
+        ShowPlacementPreview();
+
+        // Mouse býrakýldýðýnda
+        if (Input.GetMouseButtonUp(0))
+        {
+            Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, groundLayer);
+
+            bool placementSuccessful = false;
+
+            if (hit.collider != null && CanPlaceUnit(selectedUnitData))
+            {
+                bool isTower = IsTowerUnit(selectedUnitData);
+
+                if (IsPositionValid(hit.point, isTower))
+                {
+                    var unitObj = Instantiate(selectedUnitData.prefab, hit.point, Quaternion.identity, createTransform);
+                    Hero heroComponent = unitObj.GetComponent<Hero>();
+                    if (heroComponent != null) heroComponent.Initialize(selectedUnitData);
+
+                    PlaceUnit(selectedUnitData);
+                    ReplaceCard(selectedUnitData);
+                    placementSuccessful = true;
+                }
+                else
+                {
+                    ShowInvalidPlacementFeedback(hit.point);
+                }
+            }
+
+            // Yerleþtirme baþarýsýz olduysa kartý normal boyuta döndür
+            if (!placementSuccessful)
+            {
+                if (currentlySelectedCard != null)
+                {
+                    RectTransform rt = currentlySelectedCard.GetComponent<RectTransform>();
+                    rt.DOKill();
+                    rt.DOScale(Vector3.one, 0.15f).SetEase(Ease.OutQuad);
+                }
+                CancelPlacement();
+            }
+
+            isDragging = false;
+        }
+    }
+
+    public void OnCardPointerDown(PlacementCardUI cardUI, int cardIndex)
+    {
+        dragStartPos = Input.mousePosition;
+        draggedCard = cardUI;
+        selectedUnitData = cards[cardIndex];
+    }
+
+    public void OnCardDrag(PlacementCardUI cardUI, int cardIndex)
+    {
+        if (draggedCard == null) return;
+
+        float dragDistance = Vector2.Distance(dragStartPos, Input.mousePosition);
+
+        // Belirli bir mesafe sürüklendiyse drag modunu baþlat
+        if (dragDistance > dragThreshold && !isDragging)
+        {
+            // Ýksir kontrolü - yetersizse drag yapma
+            if (!CanPlaceUnit(cards[cardIndex]))
+            {
+                draggedCard = null;
+                return;
+            }
+
+            isDragging = true;
+            isPlacing = true;
+
+            if (currentlySelectedCard != null && currentlySelectedCard != draggedCard)
+            {
+                currentlySelectedCard.SelectedImage().SetActive(false);
+                RectTransform oldRt = currentlySelectedCard.GetComponent<RectTransform>();
+                oldRt.DOKill();
+                oldRt.localScale = Vector3.one;
+            }
+
+            draggedCard.SelectedImage().SetActive(true);
+            currentlySelectedCard = draggedCard;
+
+            // Kartý biraz büyüt
+            RectTransform rt = draggedCard.GetComponent<RectTransform>();
+            rt.DOKill();
+            rt.DOScale(Vector3.one * 1.1f, 0.15f).SetEase(Ease.OutQuad);
+        }
+    }
+
+    public void OnCardPointerUp(PlacementCardUI cardUI, int cardIndex)
+    {
+        if (draggedCard != null && !isDragging)
+        {
+            // Sürükleme olmadý, normal týklama olarak iþle
+            SelectUnit(cardIndex, cardUI);
+        }
+
+        // Kartý normal boyutuna döndür (eðer drag yapýldýysa)
+        if (draggedCard != null && isDragging)
+        {
+            RectTransform rt = draggedCard.GetComponent<RectTransform>();
+            rt.DOKill();
+            rt.DOScale(Vector3.one, 0.15f).SetEase(Ease.OutQuad);
+        }
+
+        draggedCard = null;
+    }
+
     private void ShowPlacementPreview()
     {
         if (selectedUnitData == null || selectedUnitData.prefab == null) return;
@@ -149,7 +271,6 @@ public class PlacementController : MonoBehaviour
                 currentPreview.transform.localScale = scaleSource.lossyScale;
             }
         }
-
 
         currentPreview.transform.position = mousePosition;
 
@@ -251,10 +372,17 @@ public class PlacementController : MonoBehaviour
     private void CancelPlacement()
     {
         isPlacing = false;
+        isDragging = false;
 
         if (currentlySelectedCard != null)
         {
             currentlySelectedCard.SelectedImage().SetActive(false);
+
+            // Kartý normal boyuta döndür
+            RectTransform rt = currentlySelectedCard.GetComponent<RectTransform>();
+            rt.DOKill();
+            rt.DOScale(Vector3.one, 0.15f).SetEase(Ease.OutQuad);
+
             currentlySelectedCard = null;
         }
 
@@ -265,6 +393,7 @@ public class PlacementController : MonoBehaviour
         }
 
         selectedUnitData = null;
+        draggedCard = null;
     }
 
     private void RegenerateElixir()
@@ -328,14 +457,45 @@ public class PlacementController : MonoBehaviour
         cardScript.Config(data.unitName, data.cardIcon, data.elixirCost, data.cost);
         cardScript.cardIndex = cardIndex;
 
+        // EventTrigger ekle
+        EventTrigger trigger = cardObj.GetComponent<EventTrigger>();
+        if (trigger == null)
+            trigger = cardObj.AddComponent<EventTrigger>();
+
+        // PointerDown
+        EventTrigger.Entry pointerDown = new EventTrigger.Entry();
+        pointerDown.eventID = EventTriggerType.PointerDown;
+        pointerDown.callback.AddListener((data) => { OnCardPointerDown(cardScript, cardIndex); });
+        trigger.triggers.Add(pointerDown);
+
+        // Drag
+        EventTrigger.Entry drag = new EventTrigger.Entry();
+        drag.eventID = EventTriggerType.Drag;
+        drag.callback.AddListener((data) => { OnCardDrag(cardScript, cardIndex); });
+        trigger.triggers.Add(drag);
+
+        // PointerUp
+        EventTrigger.Entry pointerUp = new EventTrigger.Entry();
+        pointerUp.eventID = EventTriggerType.PointerUp;
+        pointerUp.callback.AddListener((data) => { OnCardPointerUp(cardScript, cardIndex); });
+        trigger.triggers.Add(pointerUp);
+
         Button cardButton = cardScript.selectButton;
         cardButton.onClick.AddListener(() => SelectUnit(cardIndex, cardScript));
     }
 
     public void SelectUnit(int unitData, PlacementCardUI placementCardUI)
     {
+        if (!CanPlaceUnit(cards[unitData])) return;
+
         if (currentlySelectedCard != null)
+        {
             currentlySelectedCard.SelectedImage().SetActive(false);
+            // Önceki kartýn scale'ini düzelt
+            RectTransform oldRt = currentlySelectedCard.GetComponent<RectTransform>();
+            oldRt.DOKill();
+            oldRt.localScale = Vector3.one;
+        }
 
         placementCardUI.SelectedImage().SetActive(true);
         currentlySelectedCard = placementCardUI;
@@ -344,11 +504,14 @@ public class PlacementController : MonoBehaviour
         isPlacing = true;
 
         RectTransform rt = placementCardUI.GetComponent<RectTransform>();
-        Vector3 originalScale = rt.localScale;
+        rt.DOKill(); // Mevcut animasyonlarý durdur
+        rt.localScale = Vector3.one; // Önce normal boyuta getir
 
-        rt.DOScale(originalScale * 1.1f, 0.15f)
+        rt.DOScale(Vector3.one * 1.1f, 0.15f)
             .SetEase(Ease.OutQuad)
-            .OnComplete(() => rt.DOScale(originalScale, 0.15f));
+            .OnComplete(() => {
+                rt.DOScale(Vector3.one, 0.15f).SetEase(Ease.OutQuad);
+            });
     }
 
     public bool CanPlaceUnit(PlacementHeroData unit)
@@ -367,6 +530,10 @@ public class PlacementController : MonoBehaviour
 
         if (currentlySelectedCard != null)
         {
+            RectTransform rt = currentlySelectedCard.GetComponent<RectTransform>();
+            rt.DOKill();
+            rt.DOScale(Vector3.one, 0.15f).SetEase(Ease.OutQuad);
+
             currentlySelectedCard.SelectedImage().SetActive(false);
             currentlySelectedCard = null;
         }
@@ -378,6 +545,7 @@ public class PlacementController : MonoBehaviour
         }
 
         isPlacing = false;
+        isDragging = false;
 
         if (CheckLoseCondition())
         {
@@ -456,7 +624,7 @@ public class PlacementController : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
-        if (!isPlacing || mainCamera == null || selectedUnitData == null) return;
+        if ((!isPlacing && !isDragging) || mainCamera == null || selectedUnitData == null) return;
 
         Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         bool isTower = IsTowerUnit(selectedUnitData);
