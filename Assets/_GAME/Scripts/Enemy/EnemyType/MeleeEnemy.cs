@@ -28,6 +28,5 @@ public class MeleeEnemy : Enemy
 
     protected override void PerformAreaAttack()
     {
-        // Alan hasarý uygulanmaz
     }
 }

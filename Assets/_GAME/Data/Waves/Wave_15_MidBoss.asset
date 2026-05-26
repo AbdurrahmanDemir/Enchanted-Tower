@@ -34,7 +34,7 @@ MonoBehaviour:
     enemyGroups:
     - enemyPrefab: {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
       enemyLevel: {fileID: 11400000, guid: 88306c9cd2f8683499711e530d08e0c9, type: 2}
-      enemyCount: 7
+      enemyCount: 5
     - enemyPrefab: {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
       enemyLevel: {fileID: 11400000, guid: 98a1e5fd60fb1bf4f889c25bfcc0155d, type: 2}
       enemyCount: 5
@@ -42,18 +42,18 @@ MonoBehaviour:
     enemyGroups:
     - enemyPrefab: {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
       enemyLevel: {fileID: 11400000, guid: cfa9aeaef26f16c44b51ef358b32b501, type: 2}
-      enemyCount: 6
+      enemyCount: 4
     - enemyPrefab: {fileID: 6225863552684781358, guid: 812b41ef72a63ea429710d90cae144e8, type: 3}
       enemyLevel: {fileID: 11400000, guid: b9d49a1dbcf3e904d8961730fc001a18, type: 2}
-      enemyCount: 6
+      enemyCount: 4
   - segmentDuration: 0.6
     enemyGroups:
     - enemyPrefab: {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
       enemyLevel: {fileID: 11400000, guid: 88306c9cd2f8683499711e530d08e0c9, type: 2}
-      enemyCount: 10
+      enemyCount: 4
     - enemyPrefab: {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
       enemyLevel: {fileID: 11400000, guid: 2528799c8f286f74b9dd214c93752a28, type: 2}
-      enemyCount: 6
+      enemyCount: 4
     - enemyPrefab: {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
       enemyLevel: {fileID: 11400000, guid: cfa9aeaef26f16c44b51ef358b32b501, type: 2}
       enemyCount: 5

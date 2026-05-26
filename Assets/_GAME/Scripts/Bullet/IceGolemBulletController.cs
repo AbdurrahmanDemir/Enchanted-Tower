@@ -55,7 +55,6 @@ public class IceGolemBulletController : MonoBehaviour
     {
         if (enemy == null) return;
 
-        // Use the standardized Freeze method from Enemy class
         enemy.Freeze(slowDuration);
     }
 

@@ -8,7 +8,6 @@ public class RemoveAdsManager : MonoBehaviour
 
     private void Awake()
     {
-        // Singleton pattern
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -37,7 +36,6 @@ public class RemoveAdsManager : MonoBehaviour
         Debug.Log($"Verification - Ads purchased: {IsAdsPurchased()}");
     }
 
-    // Test için - Inspector'dan çaðýrýlabilir
     [ContextMenu("Purchase Remove Ads (Test)")]
     public void TestPurchase()
     {

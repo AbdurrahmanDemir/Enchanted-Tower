@@ -1,4 +1,5 @@
 using UnityEngine;
+using GameAnalyticsSDK;
 
 [CreateAssetMenu(fileName = "MenuHero", menuName = "HeroCard")]
 
@@ -37,6 +38,16 @@ public class MenuHeroCardSO : ScriptableObject
         {
             PlayerPrefs.SetInt($"{cardName}_Purchased", 1);
             PlayerPrefs.Save();
+
+            // GameAnalytics: Hero Purchase Resource Event
+            GameAnalytics.NewResourceEvent(
+                GAResourceFlowType.Sink,
+                "Gold",
+                purchasePrice,
+                "Hero",
+                cardName
+            );
+
             return true;
         }
         return false;
@@ -75,6 +86,21 @@ public class MenuHeroCardSO : ScriptableObject
             PlayerPrefs.SetInt($"{cardName}_UpgradeCost", newUpgradeCost);
             PlayerPrefs.SetInt($"{cardName}_UpgradeLevel", upgradeLevel);
             PlayerPrefs.Save();
+
+            // GameAnalytics: Hero Upgrade Resource Event
+            GameAnalytics.NewResourceEvent(
+                GAResourceFlowType.Sink,
+                "HeroToken",
+                upgradeCost,
+                "HeroUpgrade",
+                cardName + "_Level" + upgradeLevel
+            );
+
+            // GameAnalytics: Hero Upgrade Design Event
+            GameAnalytics.NewDesignEvent(
+                "HeroUpgrade:" + cardName + ":Level" + upgradeLevel,
+                upgradeLevel
+            );
         }
     }
 

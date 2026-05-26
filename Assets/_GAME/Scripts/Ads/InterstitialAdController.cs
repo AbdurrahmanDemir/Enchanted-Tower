@@ -48,25 +48,21 @@ public class InterstitialAdController : MonoBehaviour
 
     public void ShowInterstitialAd()
     {
-        // Remove Ads satýn alýndýysa reklamý atlat
         if (RemoveAdsManager.Instance != null && RemoveAdsManager.Instance.IsAdsPurchased())
         {
             Debug.Log("Ads removed - Interstitial ad skipped");
             return;
         }
 
-        // Reklam yüklü mü kontrol et
         if (_interstitialAd != null && _interstitialAd.CanShowAd())
         {
             Debug.Log("Showing Interstitial Ad");
 
-            // ÖNEMLÝ: Reklamý göster
             _interstitialAd.Show();
         }
         else
         {
             Debug.LogError("Interstitial ad is not ready yet.");
-            // Reklam hazýr deðilse yeniden yükle
             LoadInterstitialAd();
         }
     }

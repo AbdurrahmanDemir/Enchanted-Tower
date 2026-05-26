@@ -3,12 +3,14 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using GameAnalyticsSDK;
 
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
     [SerializeField] private HeadquartersController headquartersController;
+    [SerializeField] private LevelMapManager levelMapManager;
 
     [Header("Elements")]
     [SerializeField] private GameObject menuPanel;
@@ -34,9 +36,14 @@ public class UIManager : MonoBehaviour
     public static Action gameOver;
     [Header("Quest Action")]
     public static Action gameWinCount;
-
+    [Header("Chest Elements")]
+    [SerializeField] private GameObject WoodenChestButtonAds;
+    [SerializeField] private GameObject WoodenChestButtonFree;
+    [SerializeField] private GameObject SilverChestButtonAds;
+    [SerializeField] private GameObject SilverChestButtonFree;
 
     [SerializeField] InterstitialAdController interstitialAdController;
+    [SerializeField] RewardedAdController rewardedAdController;
     private void Start()
     {
         GameUIStageChanged(UIGameStage.Menu);
@@ -77,6 +84,15 @@ public class UIManager : MonoBehaviour
         DataManager.instance.AddGold(rewardedGold);
         DataManager.instance.AddXP(0);
 
+        // GameAnalytics: Level Failed Event
+        int playingEpisode = PlayerPrefs.GetInt("PlayingEpisode", 0);
+        int playingLevel = PlayerPrefs.GetInt("PlayingLevel", 0);
+        GameAnalytics.NewProgressionEvent(
+            GAProgressionStatus.Fail,
+            "Episode" + playingEpisode,
+            "Level" + playingLevel
+        );
+
         gameOver?.Invoke();
 
     }
@@ -85,17 +101,30 @@ public class UIManager : MonoBehaviour
 
     public void GameLoseButton()
     {
+        StopWaveSystem();
+
+        ClearAllEntities();
+
+        ResetGameState();
+
         GameUIStageChanged(UIGameStage.Menu);
 
         headquartersController.ResetTower();
+
         gameManager.PowerUpReset();
 
-        if (AdManager.Instance != null && AdManager.Instance.ShouldShowAds())
+        WoodenChestButtonAds.SetActive(true);
+        WoodenChestButtonFree.SetActive(true);
+        SilverChestButtonAds.SetActive(true);
+        SilverChestButtonFree.SetActive(true);
+
+        // İlk 2 seviyede reklam gösterme
+        int playingLevel = PlayerPrefs.GetInt("PlayingLevel", 0);
+        if (playingLevel > 2 && AdManager.Instance != null && AdManager.Instance.ShouldShowAds())
         {
             interstitialAdController.ShowInterstitialAd();
         }
 
-        SceneManager.LoadScene(0);
     }
 
     public void GameWinPanel()
@@ -126,22 +155,80 @@ public class UIManager : MonoBehaviour
 
         DataManager.instance.AddGold(/*totalGold*/ 100);
         DataManager.instance.AddXP(10);
+
+        // GameAnalytics: Level Reward Resource Event
+        int playingEpisode = PlayerPrefs.GetInt("PlayingEpisode", 0);
+        int playingLevel = PlayerPrefs.GetInt("PlayingLevel", 0);
+        GameAnalytics.NewResourceEvent(
+            GAResourceFlowType.Source,
+            "Gold",
+            rewardedGold,
+            "LevelReward",
+            "Episode" + playingEpisode + "_Level" + playingLevel
+        );
+
         gameOver?.Invoke();
         gameWinCount?.Invoke();
 
     }
 
+    public void GameWinButton2X()
+    {
+        StopWaveSystem();
+
+        ClearAllEntities();
+
+        ResetGameState();
+
+        GameUIStageChanged(UIGameStage.Menu);
+
+        headquartersController.ResetTower();
+
+        gameManager.PowerUpReset();
+
+        DataManager.instance.AddGold(100);
+
+
+        WoodenChestButtonAds.SetActive(true);
+        WoodenChestButtonFree.SetActive(true);
+        SilverChestButtonAds.SetActive(true);
+        SilverChestButtonFree.SetActive(true);
+
+        if (AdManager.Instance != null && AdManager.Instance.ShouldShowAds())
+        {
+            rewardedAdController.ShowRewardedAd();
+        }
+
+
+    }
+
     public void GameWinButton()
     {
+        StopWaveSystem();
+
+        ClearAllEntities();
+
+        ResetGameState();
+
+        GameUIStageChanged(UIGameStage.Menu);
+
+        headquartersController.ResetTower();
+
         gameManager.PowerUpReset();
-        if (AdManager.Instance != null && AdManager.Instance.ShouldShowAds())
+
+
+        WoodenChestButtonAds.SetActive(true);
+        SilverChestButtonAds.SetActive(true);
+
+        int playingLevel = PlayerPrefs.GetInt("PlayingLevel", 0);
+        if (playingLevel > 2 && AdManager.Instance != null && AdManager.Instance.ShouldShowAds())
         {
             interstitialAdController.ShowInterstitialAd();
         }
-        headquartersController.ResetTower();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
+        // SceneManager.LoadScene
     }
+
     public void GameUIStageChanged(UIGameStage stage)
     {
         switch (stage)
@@ -152,6 +239,11 @@ public class UIManager : MonoBehaviour
                 gameWinPanel.SetActive(false);
                 gameLosePanel.SetActive(false);
                 menuBar.SetActive(true);
+                
+                if (levelMapManager != null)
+                {
+                    levelMapManager.OpenLevelMap();
+                }
                 break;
             case UIGameStage.Game:
                 menuPanel.SetActive(false);
@@ -205,6 +297,49 @@ public class UIManager : MonoBehaviour
             DataManager.instance.AddGold(500);
             PlayerPrefs.SetInt("discordGift", 1);
         }
+    }
+
+    private void StopWaveSystem()
+    {
+        if (WaveManager.instance != null)
+        {
+            WaveManager.instance.CancelInvoke();
+            
+            WaveManager.instance.StopAllWaves();
+        }
+    }
+    private async void ClearAllEntities()
+    {
+        if (enemyParent != null)
+        {
+            foreach (Transform child in enemyParent)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        if (heroParent != null)
+        {
+            foreach (Transform child in heroParent)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        if (EnemyBaseManager.instance != null)
+        {
+            await EnemyBaseManager.instance.UnloadCurrentLevel();
+        }
+    }
+
+
+    private void ResetGameState()
+    {
+        Time.timeScale = 1f;
+
+        GameManager.enemyCount = 0;
+
+        DOTween.KillAll();
     }
 }
 public enum UIGameStage

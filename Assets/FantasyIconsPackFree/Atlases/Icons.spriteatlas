@@ -21,7 +21,7 @@ SpriteAtlas:
       crunchedCompression: 1
       sRGB: 1
     platformSettings:
-    - serializedVersion: 3
+    - serializedVersion: 4
       m_BuildTarget: DefaultTexturePlatform
       m_MaxTextureSize: 2048
       m_ResizeAlgorithm: 0
@@ -223,7 +223,7 @@ SpriteAtlas:
   m_PackedSpriteNamesToIndex:
   - BattleBow
   - BattleBow
-  - Scout [Paint]
+  - 'Scout [Paint]'
   - RedwoodBow
   - VikingShortBow
   - SmallPotion
@@ -231,14 +231,14 @@ SpriteAtlas:
   - GladiatorShield
   - SteelAxe
   - MagicGoldenRing
-  - BalancedSword [Paint]
+  - 'BalancedSword [Paint]'
   - WoodenShield2
   - BattleguardArmor
   - BerserkAxe
   - FreeFolkAxe
   - WoodenBuckler
   - SandHealerStaff1
-  - Scout [Paint]
+  - 'Scout [Paint]'
   - SwampWarriorSpear
   - ManticoreArmor
   - DarkMountain
@@ -251,7 +251,7 @@ SpriteAtlas:
   - BattleguardHelm
   - DarkMountain
   - GreyKnight
-  - HunterKnife [Paint]
+  - 'HunterKnife [Paint]'
   - HunterBow
   - SharpenedInfantrySword
   - ButcherKnife
@@ -262,16 +262,16 @@ SpriteAtlas:
   - VikingShortBow
   - ScoutHelm
   - GoldenRing
-  - Katana1 [Paint]
+  - 'Katana1 [Paint]'
   - ManticoreHelmet
-  - BanditLightArmor [Paint]
+  - 'BanditLightArmor [Paint]'
   - GateCrusher
   - HighKnightHelm
   - Apple
   - HardwoodWand
   - RoyalTunic
   - WyvernHornBow
-  - KnightHelm [Paint]
+  - 'KnightHelm [Paint]'
   - MagicSilverRing
   - MarauderBow
   - WoodenClub
@@ -280,15 +280,15 @@ SpriteAtlas:
   - ManticoreArmor
   - ManticoreArmor
   - BattleguardArmor
-  - BanditLightArmor [Paint]
+  - 'BanditLightArmor [Paint]'
   - SteelTowerShield
-  - BanditLightArmor [Paint]
+  - 'BanditLightArmor [Paint]'
   - TwoHandedWoodenMace
-  - AssassinDagger [Paint]
+  - 'AssassinDagger [Paint]'
   - HawkHelm
   - Cheese
   - BattleguardArmor
-  - Scout [Paint]
+  - 'Scout [Paint]'
   - DestroyerAxe
   - GreyKnight
   - DarkMountain
@@ -302,7 +302,7 @@ SpriteAtlas:
   - ChickenLeg
   - OldPoleaxe
   - LongHammer
-  - MountainSword [Paint]
+  - 'MountainSword [Paint]'
   - MagicBronzeRing
   - HandBomb
   m_RenderDataMap: {}

@@ -7,6 +7,7 @@ using TMPro;
 using DG.Tweening;
 using System;
 using Random = UnityEngine.Random;
+using GameAnalyticsSDK;
 
 [System.Serializable]
 public class RewardData
@@ -92,6 +93,18 @@ public class ChestManager : MonoBehaviour
         GameObject button = EventSystem.current.currentSelectedGameObject;
         if (button != null) button.SetActive(false);
 
+        // GameAnalytics: Chest Purchase Resource Event
+        GameAnalytics.NewResourceEvent(
+            GAResourceFlowType.Sink,
+            "Gold",
+            config.price,
+            "Chest",
+            config.chestName
+        );
+
+        // GameAnalytics: Chest Opened Design Event
+        GameAnalytics.NewDesignEvent("ChestOpened:" + config.chestName);
+
         openedChest?.Invoke();
     }
 
@@ -107,6 +120,19 @@ public class ChestManager : MonoBehaviour
 
         TogglePanel(popUp);
         StartCoroutine(ShowRewardsSequentially(rewards, containerParent));
+
+        // GameAnalytics: Chest Purchase Resource Event
+        GameAnalytics.NewResourceEvent(
+            GAResourceFlowType.Sink,
+            "Gem",
+            config.price,
+            "Chest",
+            config.chestName
+        );
+
+        // GameAnalytics: Chest Opened Design Event
+        GameAnalytics.NewDesignEvent("ChestOpened:" + config.chestName);
+
         openedChest?.Invoke();
     }
 

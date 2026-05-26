@@ -175,7 +175,6 @@ public class SkeletonBulletController : MonoBehaviour
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.identity;
 
-        // Collider'ý tekrar aktif et
         if (bulletCollider != null)
             bulletCollider.enabled = true;
     }

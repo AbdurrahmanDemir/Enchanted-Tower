@@ -43,21 +43,17 @@ public class EnemyBaseManager : MonoBehaviour
 
     private void CheckAssetReferences()
     {
-        Debug.Log($"Toplam AssetReference say?s?: {levelAssetReferences.Length}");
 
         for (int i = 0; i < levelAssetReferences.Length; i++)
         {
             if (levelAssetReferences[i] == null)
             {
-                Debug.LogError($"AssetReference {i} NULL!");
             }
             else if (!levelAssetReferences[i].RuntimeKeyIsValid())
             {
-                Debug.LogError($"AssetReference {i} RuntimeKey ge?ersiz!");
             }
             else
             {
-                Debug.Log($"AssetReference {i} OK: {levelAssetReferences[i].AssetGUID}");
             }
         }
     }
@@ -66,13 +62,11 @@ public class EnemyBaseManager : MonoBehaviour
     {
         if (index < 0 || index >= levelAssetReferences.Length)
         {
-            Debug.LogError($"Ge?ersiz level index: {index}. Toplam level say?s?: {levelAssetReferences.Length}");
             return;
         }
 
         if (levelAssetReferences[index] == null)
         {
-            Debug.LogError($"Level AssetReference null: {index}");
             return;
         }
 
@@ -97,40 +91,37 @@ public class EnemyBaseManager : MonoBehaviour
 
             if (currentLevelHandle.Status == AsyncOperationStatus.Succeeded)
             {
-                Debug.Log($"Level prefab ba?ar?yla y?klendi: {levelPrefab.name}");
+              
 
                 currentLevelObj = Instantiate(levelPrefab, Vector3.zero, Quaternion.identity, levelSpawnRoot);
 
                 if (currentLevelObj == null)
                 {
-                    Debug.LogError("Level objesi olu?turulamad?!");
                     loadingPanel.SetActive(false);
                     return;
                 }
 
-                Debug.Log($"Level objesi olu?turuldu: {currentLevelObj.name}");
 
                 var navMeshSurface = currentLevelObj.GetComponentInChildren<NavMeshSurface>();
                 if (navMeshSurface != null)
                 {
-                    Debug.Log("NavMeshSurface bulundu, build ediliyor...");
                     navMeshSurface.BuildNavMesh();
                 }
                 else
                 {
-                    Debug.LogWarning("NavMeshSurface bulunamad?!");
+                    Debug.LogWarning("NavMeshSurface bulunamadý");
                 }
 
                 StartCoroutine(SpawnEnemiesSafely());
             }
             else
             {
-                Debug.LogError($"Level y?kleme ba?ar?s?z: {currentLevelHandle.Status}");
+                Debug.LogError($"Level yükleme baþarýsýz {currentLevelHandle.Status}");
             }
         }
         catch (System.Exception e)
         {
-            Debug.LogError($"Level y?klenirken hata: {e.Message}");
+            Debug.LogError($"Level yüklenirken hata: {e.Message}");
         }
         finally
         {
@@ -143,7 +134,6 @@ public class EnemyBaseManager : MonoBehaviour
         yield return null;
 
         NavMeshAgent[] agents = currentLevelObj.GetComponentsInChildren<NavMeshAgent>(true);
-        Debug.Log($"Bulunan NavMeshAgent say?s?: {agents.Length}");
 
         foreach (var agent in agents)
         {
@@ -151,11 +141,10 @@ public class EnemyBaseManager : MonoBehaviour
             if (NavMesh.SamplePosition(agent.transform.position, out hit, 1f, NavMesh.AllAreas))
             {
                 agent.Warp(hit.position);
-                Debug.Log($"Agent spawn edildi: {agent.name}");
             }
             else
             {
-                Debug.LogWarning("NavMeshAgent spawn pozisyonu NavMesh ?zerinde de?il: " + agent.name);
+                Debug.LogWarning("NavMeshAgent spawn pozisyonu NavMesh üzerinde deðil: " + agent.name);
             }
         }
 
@@ -166,7 +155,6 @@ public class EnemyBaseManager : MonoBehaviour
     {
         if (currentLevelObj != null)
         {
-            Debug.Log("Mevcut level destroy ediliyor...");
             Destroy(currentLevelObj);
             currentLevelObj = null;
         }
@@ -182,17 +170,14 @@ public class EnemyBaseManager : MonoBehaviour
     public void RegisterObject(string name)
     {
         aliveCount++;
-        Debug.Log($"Object registered. Alive count: {aliveCount} - {name}");
     }
 
     public void UnRegisterObject()
     {
         aliveCount--;
-        Debug.Log($"Object unregistered. Alive count: {aliveCount}");
 
         if (aliveCount <= 0)
         {
-            Debug.Log("T?m d??manlar ?ld?, oyun kazan?ld?!");
 
             int playingEpisode = PlayerPrefs.GetInt("PlayingEpisode", 0);
             int playingLevel = PlayerPrefs.GetInt("PlayingLevel", 0);
@@ -206,7 +191,6 @@ public class EnemyBaseManager : MonoBehaviour
 
             if (playingLevel >= totalLevelsInEpisode - 1)
             {
-                Debug.Log($"Episode {playingEpisode} tamamland?! Yeni episode a??l?yor...");
 
                 int newEpisodeIndex = playingEpisode + 1;
                 PlayerPrefs.SetInt("LevelEpisodeIndex", newEpisodeIndex);
@@ -215,7 +199,6 @@ public class EnemyBaseManager : MonoBehaviour
 
                 PlayerPrefs.Save();
 
-                Debug.Log($"Yeni episode a??ld?: {newEpisodeIndex}");
             }
 
             uiManager.GameWinPanel();

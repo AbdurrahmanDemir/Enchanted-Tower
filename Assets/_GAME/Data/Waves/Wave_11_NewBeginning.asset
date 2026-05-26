@@ -31,7 +31,7 @@ MonoBehaviour:
     enemyGroups:
     - enemyPrefab: {fileID: 6225863552684781358, guid: 812b41ef72a63ea429710d90cae144e8, type: 3}
       enemyLevel: {fileID: 11400000, guid: b9d49a1dbcf3e904d8961730fc001a18, type: 2}
-      enemyCount: 6
+      enemyCount: 4
   - segmentDuration: 1.2
     enemyGroups:
     - enemyPrefab: {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
@@ -39,7 +39,7 @@ MonoBehaviour:
       enemyCount: 4
     - enemyPrefab: {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
       enemyLevel: {fileID: 11400000, guid: 4e161704660595945a5b0e89c493f513, type: 2}
-      enemyCount: 6
+      enemyCount: 4
   - segmentDuration: 1
     enemyGroups:
     - enemyPrefab: {fileID: 1159897207262870502, guid: 9fffec811a56c7f458fc85c490c7c668, type: 3}
@@ -47,4 +47,4 @@ MonoBehaviour:
       enemyCount: 5
     - enemyPrefab: {fileID: 6225863552684781358, guid: 812b41ef72a63ea429710d90cae144e8, type: 3}
       enemyLevel: {fileID: 11400000, guid: b9d49a1dbcf3e904d8961730fc001a18, type: 2}
-      enemyCount: 5
+      enemyCount: 3

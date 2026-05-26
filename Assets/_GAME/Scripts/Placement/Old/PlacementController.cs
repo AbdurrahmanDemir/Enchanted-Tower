@@ -35,7 +35,7 @@ public class PlacementController : MonoBehaviour
     [SerializeField] private float towerPadding = 0.05f;
 
     [Header("Drag Settings")]
-    [SerializeField] private float dragThreshold = 10f; // Sürükleme baþlangýç mesafesi
+    [SerializeField] private float dragThreshold = 10f; 
     private Vector2 dragStartPos;
     private PlacementCardUI draggedCard;
 
@@ -79,7 +79,6 @@ public class PlacementController : MonoBehaviour
     {
         RegenerateElixir();
 
-        // Sürükleme kontrolü
         if (isDragging)
         {
             HandleDragging();
@@ -133,7 +132,6 @@ public class PlacementController : MonoBehaviour
     {
         ShowPlacementPreview();
 
-        // Mouse býrakýldýðýnda
         if (Input.GetMouseButtonUp(0))
         {
             Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -161,7 +159,6 @@ public class PlacementController : MonoBehaviour
                 }
             }
 
-            // Yerleþtirme baþarýsýz olduysa kartý normal boyuta döndür
             if (!placementSuccessful)
             {
                 if (currentlySelectedCard != null)
@@ -190,10 +187,8 @@ public class PlacementController : MonoBehaviour
 
         float dragDistance = Vector2.Distance(dragStartPos, Input.mousePosition);
 
-        // Belirli bir mesafe sürüklendiyse drag modunu baþlat
         if (dragDistance > dragThreshold && !isDragging)
         {
-            // Ýksir kontrolü - yetersizse drag yapma
             if (!CanPlaceUnit(cards[cardIndex]))
             {
                 draggedCard = null;
@@ -214,7 +209,6 @@ public class PlacementController : MonoBehaviour
             draggedCard.SelectedImage().SetActive(true);
             currentlySelectedCard = draggedCard;
 
-            // Kartý biraz büyüt
             RectTransform rt = draggedCard.GetComponent<RectTransform>();
             rt.DOKill();
             rt.DOScale(Vector3.one * 1.1f, 0.15f).SetEase(Ease.OutQuad);
@@ -225,11 +219,9 @@ public class PlacementController : MonoBehaviour
     {
         if (draggedCard != null && !isDragging)
         {
-            // Sürükleme olmadý, normal týklama olarak iþle
             SelectUnit(cardIndex, cardUI);
         }
 
-        // Kartý normal boyutuna döndür (eðer drag yapýldýysa)
         if (draggedCard != null && isDragging)
         {
             RectTransform rt = draggedCard.GetComponent<RectTransform>();
@@ -378,7 +370,6 @@ public class PlacementController : MonoBehaviour
         {
             currentlySelectedCard.SelectedImage().SetActive(false);
 
-            // Kartý normal boyuta döndür
             RectTransform rt = currentlySelectedCard.GetComponent<RectTransform>();
             rt.DOKill();
             rt.DOScale(Vector3.one, 0.15f).SetEase(Ease.OutQuad);
@@ -457,24 +448,20 @@ public class PlacementController : MonoBehaviour
         cardScript.Config(data.unitName, data.cardIcon, data.elixirCost, data.cost);
         cardScript.cardIndex = cardIndex;
 
-        // EventTrigger ekle
         EventTrigger trigger = cardObj.GetComponent<EventTrigger>();
         if (trigger == null)
             trigger = cardObj.AddComponent<EventTrigger>();
 
-        // PointerDown
         EventTrigger.Entry pointerDown = new EventTrigger.Entry();
         pointerDown.eventID = EventTriggerType.PointerDown;
         pointerDown.callback.AddListener((data) => { OnCardPointerDown(cardScript, cardIndex); });
         trigger.triggers.Add(pointerDown);
 
-        // Drag
         EventTrigger.Entry drag = new EventTrigger.Entry();
         drag.eventID = EventTriggerType.Drag;
         drag.callback.AddListener((data) => { OnCardDrag(cardScript, cardIndex); });
         trigger.triggers.Add(drag);
 
-        // PointerUp
         EventTrigger.Entry pointerUp = new EventTrigger.Entry();
         pointerUp.eventID = EventTriggerType.PointerUp;
         pointerUp.callback.AddListener((data) => { OnCardPointerUp(cardScript, cardIndex); });
@@ -491,7 +478,6 @@ public class PlacementController : MonoBehaviour
         if (currentlySelectedCard != null)
         {
             currentlySelectedCard.SelectedImage().SetActive(false);
-            // Önceki kartýn scale'ini düzelt
             RectTransform oldRt = currentlySelectedCard.GetComponent<RectTransform>();
             oldRt.DOKill();
             oldRt.localScale = Vector3.one;
@@ -504,8 +490,8 @@ public class PlacementController : MonoBehaviour
         isPlacing = true;
 
         RectTransform rt = placementCardUI.GetComponent<RectTransform>();
-        rt.DOKill(); // Mevcut animasyonlarý durdur
-        rt.localScale = Vector3.one; // Önce normal boyuta getir
+        rt.DOKill(); 
+        rt.localScale = Vector3.one;
 
         rt.DOScale(Vector3.one * 1.1f, 0.15f)
             .SetEase(Ease.OutQuad)

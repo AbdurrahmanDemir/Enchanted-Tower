@@ -47,7 +47,7 @@ MonoBehaviour:
     enemyGroups:
     - enemyPrefab: {fileID: 5335036324041323531, guid: f9f7ee675e1f4ff42956d814cd985679, type: 3}
       enemyLevel: {fileID: 11400000, guid: 4e161704660595945a5b0e89c493f513, type: 2}
-      enemyCount: 8
+      enemyCount: 5
     - enemyPrefab: {fileID: 7496126799002625026, guid: 781978142a526904ca90788dc0c50c57, type: 3}
       enemyLevel: {fileID: 11400000, guid: 64d80c8567c96d046a90948f50158939, type: 2}
       enemyCount: 4

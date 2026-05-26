@@ -6,6 +6,7 @@ using System;
 using Unity.VisualScripting;
 using Product = UnityEngine.Purchasing.Product;
 using UnityEditor;
+using Tabsil.Sijil;
 
 #pragma warning disable CS0618
 public class IAPManager : MonoBehaviour, IStoreListener
@@ -20,8 +21,17 @@ public class IAPManager : MonoBehaviour, IStoreListener
     [SerializeField] private SeasonPass seasonPass;
 
     public string[] product;
+    //public static IAPManager instance;
 
+    //private void Awake()
+    //{
+    //    if (instance == null)
+    //        instance = this;
+    //    else
+    //        Destroy(gameObject);
 
+    //    DontDestroyOnLoad(this);
+    //}
 
     [Obsolete]
     public void Start()
@@ -81,32 +91,32 @@ public class IAPManager : MonoBehaviour, IStoreListener
 
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs e)
     {
-        if (string.Equals(e.purchasedProduct.definition.id, product[0], StringComparison.Ordinal)) //1000 altýn paketi
-        {    
+        if (string.Equals(e.purchasedProduct.definition.id, product[0], StringComparison.Ordinal)) //1000 alt?n paketi
+        {
             DataManager.instance.AddGold(1000);
             return PurchaseProcessingResult.Complete;
         }
-        else if (string.Equals(e.purchasedProduct.definition.id, product[1], StringComparison.Ordinal)) //6250 altýn paketi
+        else if (string.Equals(e.purchasedProduct.definition.id, product[1], StringComparison.Ordinal)) //6250 alt?n paketi
         {
             DataManager.instance.AddGold(6250);
             return PurchaseProcessingResult.Complete;
         }
-        else if (string.Equals(e.purchasedProduct.definition.id, product[2], StringComparison.Ordinal))//15000 altýn paketi
+        else if (string.Equals(e.purchasedProduct.definition.id, product[2], StringComparison.Ordinal))//15000 alt?n paketi
         {
             DataManager.instance.AddGold(15000);
             return PurchaseProcessingResult.Complete;
         }
-        else if (string.Equals(e.purchasedProduct.definition.id, product[3], StringComparison.Ordinal))//31250 altýn paketi
+        else if (string.Equals(e.purchasedProduct.definition.id, product[3], StringComparison.Ordinal))//31250 alt?n paketi
         {
             DataManager.instance.AddGold(31250);
             return PurchaseProcessingResult.Complete;
         }
-        else if (string.Equals(e.purchasedProduct.definition.id, product[4], StringComparison.Ordinal))//81250 altýn paketi
+        else if (string.Equals(e.purchasedProduct.definition.id, product[4], StringComparison.Ordinal))//81250 alt?n paketi
         {
             DataManager.instance.AddGold(81250);
             return PurchaseProcessingResult.Complete;
         }
-        else if (string.Equals(e.purchasedProduct.definition.id, product[5], StringComparison.Ordinal))//175000 altýn paketi
+        else if (string.Equals(e.purchasedProduct.definition.id, product[5], StringComparison.Ordinal))//175000 alt?n paketi
         {
             DataManager.instance.AddGold(175000);
             return PurchaseProcessingResult.Complete;
@@ -148,7 +158,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
         }
 
 
-        //else if (string.Equals(e.purchasedProduct.definition.id, product[6], StringComparison.Ordinal))//8000 altýn paketi
+        //else if (string.Equals(e.purchasedProduct.definition.id, product[6], StringComparison.Ordinal))//8000 alt?n paketi
         //{
         //    PlayerPrefs.SetInt("gold", PlayerPrefs.GetInt("gold") + 8000);
         //    dataManager.goldText.text = PlayerPrefs.GetInt("gold").ToString();
@@ -212,7 +222,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
     private void OnGoldenPassPurchaseSuccess()
     {
         seasonPass.PurchaseGoldenPass();
-        
+
     }
     public void IAPButton(string id)
     {

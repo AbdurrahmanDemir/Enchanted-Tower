@@ -27,8 +27,6 @@ public class RewardedAdController : MonoBehaviour
             _rewardedAd = null;
         }
 
-        Debug.Log("Ödüllü reklam yükleniyor...");
-
         var adRequest = new AdRequest();
 
         RewardedAd.Load(_adUnitId, adRequest,
@@ -40,7 +38,6 @@ public class RewardedAdController : MonoBehaviour
                     return;
                 }
 
-                Debug.Log("Ödüllü reklam baþarýyla yüklendi.");
                 _rewardedAd = ad;
                 RegisterEventHandlers(_rewardedAd);
             });
@@ -48,31 +45,25 @@ public class RewardedAdController : MonoBehaviour
 
     public void ShowRewardedAd()
     {
-        // Remove Ads satýn alýndýysa direkt ödül ver
         if (RemoveAdsManager.Instance != null && RemoveAdsManager.Instance.IsAdsPurchased())
         {
-            Debug.Log("Ads removed - Auto-rewarding player");
             OnRewardedAdSuccess();
             return;
         }
 
-        // Reklam yüklü mü kontrol et
         if (_rewardedAd != null && _rewardedAd.CanShowAd())
         {
             Debug.Log("Showing Rewarded Ad");
 
-            // ÖNEMLÝ: Reklamý göster
             _rewardedAd.Show((Reward reward) =>
             {
-                // Kullanýcý reklamý izledi, ödül ver
                 Debug.Log($"Rewarded ad watched! Reward: {reward.Amount} {reward.Type}");
                 OnRewardedAdSuccess();
             });
         }
         else
         {
-            Debug.LogError("Rewarded ad is not ready yet.");
-            // Reklam hazýr deðilse yeniden yükle
+            Debug.LogError("Rewarded ad is not ready yet.");           
             LoadRewardedAd();
         }
     }
@@ -80,7 +71,6 @@ public class RewardedAdController : MonoBehaviour
     private void OnRewardedAdSuccess()
     {
         Debug.Log("Player rewarded!");
-        // Buraya ödül verme kodunuzu ekleyin
         // Örneðin: DataManager.instance.AddGold(100);
     }
 

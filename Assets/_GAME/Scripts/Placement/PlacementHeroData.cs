@@ -29,11 +29,9 @@ public class PlacementHeroData : ScriptableObject
     {
         if (!requiresPurchase)
         {
-            Debug.Log($"{unitName} - Satýn alma gerektirmiyor, otomatik açýk.");
             return true;
         }
         bool purchased = PlayerPrefs.GetInt($"{unitName}_Purchased", 0) == 1;
-        Debug.Log($"{unitName} - Satýn alma durumu: {purchased} (Key: {unitName}_Purchased)");
         return purchased;
     }
 

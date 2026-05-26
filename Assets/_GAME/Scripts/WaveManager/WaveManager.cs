@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using GameAnalyticsSDK;
 
 public class WaveManager : MonoBehaviour
 {
@@ -164,6 +165,13 @@ public class WaveManager : MonoBehaviour
                     Debug.Log("Yeni episode acildi: " + newEpisodeIndex);
                 }
 
+                // GameAnalytics: Level Complete Event
+                GameAnalytics.NewProgressionEvent(
+                    GAProgressionStatus.Complete,
+                    "Episode" + playingEpisode,
+                    "Level" + playingLevel
+                );
+
                 uiManager.GameWinPanel();
             }
             else
@@ -275,5 +283,22 @@ public class WaveManager : MonoBehaviour
     {
         onThrow = false;
         Debug.Log("Action ended: " + onThrow);
+    }
+
+    public void StopAllWaves()
+    {
+        isTimerOn = false;
+        
+        currentSegmentIndex = 0;
+        currentWaveIndex = 0;
+        currentEnemyGroupIndex = 0;
+        currentEnemyCount = 0;
+        
+        aliveEnemyCount = 0;
+        
+        timer = 0;
+        
+        onThrow = false;
+        
     }
 }

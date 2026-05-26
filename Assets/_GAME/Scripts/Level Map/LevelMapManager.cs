@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using DG.Tweening.Core.Easing;
 using System;
+using GameAnalyticsSDK;
 
 public class LevelMapManager : MonoBehaviour
 {
@@ -62,7 +63,7 @@ public class LevelMapManager : MonoBehaviour
             {
                 if (isActive)
                 {
-                    //buttonImage.color = Color.white;
+                    buttonImage.color = new Color(1, 1, 1, 0);
                 }
                 else
                 {
@@ -120,7 +121,7 @@ public class LevelMapManager : MonoBehaviour
         }
         else
         {
-            Debug.Log($"Episode {episodeIndex} henüz açýlmamýþ!");
+            Debug.Log($"Episode {episodeIndex} henÃ¼z aÃ§Ä±lmamÄ±ÅŸ!");
         }
     }
 
@@ -148,7 +149,15 @@ public class LevelMapManager : MonoBehaviour
             {
                 TutorialManager.instance.tutorialPanel2.SetActive(false);
             }
+
+            // GameAnalytics: Level Start Design Event
+            GameAnalytics.NewDesignEvent(
+                "LevelStart:Episode" + levelEpisodeIndex + ":Level" + index
+            );
+
             levelPlayed?.Invoke();
+
+            ClosePanel(levelDetailsPanel);
         });
     }
 
@@ -176,11 +185,41 @@ public class LevelMapManager : MonoBehaviour
         return 0;
     }
 
+
+    public void OpenLevelMap()
+    {
+        levelEpisodeIndex = PlayerPrefs.GetInt("LevelEpisodeIndex", 0);
+        LevelMapButtonUpdate();
+
+        for (int episodeIndex = 0; episodeIndex < levelEpisodes.Length; episodeIndex++)
+        {
+            if (levelEpisodes[episodeIndex].episodeLevelMap != null)
+            {
+                levelEpisodes[episodeIndex].episodeLevelMap.SetActive(false);
+            }
+        }
+        
+        if (levelEpisodeIndex < levelEpisodes.Length && 
+            levelEpisodes[levelEpisodeIndex].episodeLevelMap != null)
+        {
+            levelEpisodes[levelEpisodeIndex].episodeLevelMap.SetActive(true);
+        }
+        else
+        {
+            Debug.LogWarning($"Level map aÃ§Ä±lamadÄ±: Episode index {levelEpisodeIndex}");
+        }
+
+    }
     public void OpenPanel(GameObject panel)
     {
         panel.SetActive(true);
         panel.transform.localScale = Vector3.zero;
         panel.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack);
+    }
+
+    public void ClosePanel(GameObject panel)
+    {
+        panel.transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InBack).OnComplete(() => panel.SetActive(false));
     }
 }
 

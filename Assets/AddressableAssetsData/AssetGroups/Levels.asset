@@ -57,6 +57,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 612ea1673cb6b1c479accfaee8a50ccf
+    m_Address: Assets/_GAME/Prefabs/Levels/NEW/EPS1/Level05.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 78f3e6db4ec877d48ad65acf7cb8abe3
     m_Address: Assets/_GAME/Prefabs/Levels/Level_GoldMine_1.prefab
     m_ReadOnly: 0
